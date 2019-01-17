@@ -1,0 +1,25 @@
+CREATE TABLE `t_hpp_notice` (
+  `c_id` varchar(32) NOT NULL DEFAULT '',
+  `c_context` text COMMENT '消息内容',
+  `c_type` varchar(50) DEFAULT NULL COMMENT '消息类型',
+  `c_create_by` varchar(32) DEFAULT NULL COMMENT '创建人',
+  `d_create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `d_update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `c_send_flag` varchar(1) DEFAULT NULL COMMENT '是否发布',
+  `c_revoke_flag` varchar(1) DEFAULT NULL COMMENT '是否撤销',
+  `c_object` varchar(50) DEFAULT NULL COMMENT '通知对象',
+  `d_send_time` datetime DEFAULT NULL COMMENT '发送时间',
+  `d_revoke_time` datetime DEFAULT NULL COMMENT '撤销时间',
+  `c_del_flag` varchar(1) DEFAULT NULL COMMENT '是否删除',
+  `d_del_time` datetime DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`c_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `t_hpp_notice_sign` (
+  `c_id` varchar(32) NOT NULL DEFAULT '',
+  `c_mobile` varchar(30) DEFAULT NULL COMMENT '用户电话号码',
+  `c_notice_id` varchar(32) DEFAULT NULL COMMENT '消息Id',
+  `c_status` varchar(1) DEFAULT NULL COMMENT '是否阅读',
+  `d_read_time` datetime DEFAULT NULL COMMENT '阅读时间',
+  PRIMARY KEY (`c_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<style>
+    * {padding: 0;margin: 0;}
+    .head_div img, .foot_div img {width: 80%;}
+    .body_div p, .foot_div p {font-size: 14px;color: #000;line-height: 30px;text-indent: 2em;}
+    .account_div {margin: 20px 0;}
+    .foot_div p i {color: #ff0000;font-size: 12px;}
+</style>
+<div class="head_div">
+    <img src="http://tlb.txasfx.com/crm/img2/_20180723163728.png"/>
+</div>
+<div class="body_div">
+    <p>尊敬的<span th:text="${user.firstName}">Regards, </span> 先生/小姐，您好</p>
+    <p>我們很高興通知您，您的個人管理後台已經申請成功。信息如下：</p>
+
+    <div class="account_div">
+        <p><b>賬號：<span th:text="${user.login}"></span></b></p>
+        <p><b>密碼：<span th:text="${user.passwordRemark}"></span></b><span style="color:red;">（首次登錄請您及時修改密碼）</span></p>
+        <p><b>登錄網址：<span th:text="${baseUrl}"></span></b></p>
+    </div>
+    <div class="account_div">
+        <p><b>應用下載地址：</b></p>
+        <p>
+            <a href="https://www.pgyer.com/txasTLB"><img src="http://tlb.txasfx.com/crm/img2/ios_01.png"/></a>
+            <a href="https://www.pgyer.com/zK2m"><img src="http://tlb.txasfx.com/crm/img2/android_01.png"/></a>
+        </p>
+    </div>
+</div>
+<div class="foot_div">
+    <p>非常感謝您選擇TxasFx，祝您交易愉快！</p>
+    <p><i>*請妥善保存這份郵件，避免他人獲取您的賬戶資訊</i></p>
+    <img src="http://tlb.txasfx.com/crm/img2/_20180723163742.png"/>
+    <p>該郵件由系統自動發送，請勿直接回復。</p>
+</div>
+</body>
+</html>

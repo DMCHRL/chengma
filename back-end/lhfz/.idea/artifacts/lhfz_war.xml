@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lhfz:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="lhfz.war">
+      <element id="artifact" artifact-name="lhfz:war exploded" />
+    </root>
+  </artifact>
+</component>

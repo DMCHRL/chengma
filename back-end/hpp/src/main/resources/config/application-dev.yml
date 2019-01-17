@@ -1,0 +1,316 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+#
+# This configuration overrides the application.yml file.
+#
+# More information on profiles: https://jhipster.github.io/profiles/
+# More information on configuration properties: https://jhipster.github.io/common-application-properties/
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+spring:
+    redis:
+        ##默认redis客户端连接为0 可修改
+        database: 0
+        host: 127.0.0.1 #连接地址 如：00.000.000.000
+        ##连接端口号 默认是6379 可修改
+        port: 6379
+        password: 123456 #redis客户端密码
+        pool:
+          ##连接池最大空闲连接
+          max-idle: 8
+          ##连接池最小空闲连接
+          min-idle: 0
+          ##连接池最大连接数
+          max-active: 8
+          ##连接池最大等待时间
+          max-wait: 1
+        ##连接超时时间
+        timeout: 5000
+    jmx:
+        default-domain: hpp
+    #上传文件大小
+    http:
+      multipart:
+        maxFileSize: 2048MB
+        maxRequestSize: 2048MB
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: false # we use gulp + BrowserSync for livereload
+    jackson:
+        serialization.indent_output: true
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        #url: jdbc:mysql://192.168.1.139:3306/hpp?useUnicode=true&characterEncoding=utf8&useSSL=false
+        #username: root
+        #password: 123
+        url: jdbc:mysql://localhost:3306/hpp?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+        #url: jdbc:mysql://47.104.81.128:3306/hpp?useUnicode=true&characterEncoding=utf8&useSSL=false
+        #username: hppuser
+        #password: hpp123
+        hikari:
+            data-source-properties:
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database: MYSQL
+        show-sql: true
+        properties:
+            hibernate.id.new_generator_mappings: true
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: true
+#    datasource:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        url: jdbc:oracle:thin:@10.3.2.6:1521:orcl
+#        username: root
+#        password: root
+#    jpa:
+#        database-platform: org.hibernate.dialect.Oracle12cDialect
+#        database: ORACLE
+#        show-sql: true
+#        properties:
+#            hibernate.id.new_generator_mappings: true
+#            hibernate.cache.use_second_level_cache: false
+#            hibernate.cache.use_query_cache: false
+#            hibernate.generate_statistics: true
+    mail:
+        host: smtp.ym.163.com
+        port: 25
+        username: service@txasfx.com
+        password: abc123
+        properties:
+          mail:
+            smtp:
+              auth: true;
+              starttls:
+                enable: true;
+                required: true;
+        #host: smtp.qq.com
+        #username: 443099745@qq.com
+        #password: yypmcuvowbzybgci
+    messages:
+        cache-seconds: 1
+    thymeleaf:
+        cache: false
+
+liquibase:
+    contexts: dev
+    enabled: false
+
+# ===================================================================
+# To enable SSL, generate a certificate using:
+# keytool -genkey -alias devplatform -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
+#
+# You can also use Let's Encrypt:
+# https://maximilian-boehm.com/hp2121/Create-a-Java-Keystore-JKS-from-Let-s-Encrypt-Certificates.htm
+#
+# Then, modify the server.ssl properties so your "server" configuration looks like:
+#
+# server:
+#    port: 8443
+#    ssl:
+#        key-store: keystore.p12
+#        key-store-password: <your-password>
+#        keyStoreType: PKCS12
+#        keyAlias: devplatform
+# ===================================================================
+server:
+    port: 8080
+
+# ===================================================================
+# JHipster specific properties
+#
+# Full reference is available at: https://jhipster.github.io/common-application-properties/
+# ===================================================================
+jhipster:
+    http:
+        version: V_1_1 # To use HTTP/2 you will need SSL support (see above the "server.ssl" configuration)
+    # CORS is only enabled by default with the "dev" profile, so BrowserSync can access the API
+    cors:
+        allowed-origins: "*"
+        allowed-methods: GET, PUT, POST, DELETE, OPTIONS
+        allowed-headers: "*"
+        exposed-headers:
+        allow-credentials: true
+        max-age: 1800
+    security:
+        authentication:
+            jwt:
+                secret: my-secret-token-to-change-in-production
+                # Token is valid 24 hours
+                token-validity-in-seconds: 31536000
+                token-validity-in-seconds-for-remember-me: 2592000
+    mail: # specific JHipster mail property, for standard properties see MailProperties
+        from: service@txasfx.com
+        base-url: http://192.168.1.117:8001
+    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+        jmx.enabled: true
+        graphite: # Use the "graphite" Maven profile to have the Graphite dependencies
+            enabled: false
+            host: localhost
+            port: 2003
+            prefix: devplatform
+        prometheus: # Use the "prometheus" Maven profile to have the Prometheus dependencies
+            enabled: false
+            endpoint: /prometheusMetrics
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: false
+            report-frequency: 60 # in seconds
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: false
+            host: localhost
+            port: 5000
+            queue-size: 512
+
+# ===================================================================
+# Application specific properties
+# Add your own application properties here, see the ApplicationProperties class
+# to have type-safe configuration, like in the JHipsterProperties above
+#
+# More documentation is available at:
+# https://jhipster.github.io/common-application-properties/
+# ===================================================================
+
+application:
+      noCheckUrl: /api/tlb-user/createTlbUser;/api/tlb-user-feedback/createTlbUserFeedback;/api/xxpay/pay_callback;/api/xxpay/bind_callback;
+                  /api/mobileValidate/sendCode;/api/tlb-rate/**;/api/generateVerifyCode;/api/mobileValidate/**;
+                  /api/tlb-mt-price/findLastPrice;/api/tlb-history-k/**;/api/upload;/api/uploadImage;/ueditorUpload;/api/wxpay/createOrder;/api/export/mobileUser;/api/wxpay/notifyUrl
+
+#登录控制
+loginControl:
+    #是否跳过登录验证码
+    skipVerify: false
+
+#短信配置
+shortMessage:
+    #token
+#    accountSid: ef87f987216818c93662b872de2840ab
+#    token: e8d5f869104c9666ea81c76f40c4af18
+#    appId: f32af84e74824d8b93844ffb3acc0c98
+    #runmao
+    accountSid: 9cc059e39069b3b3e65c22899e49b298
+    token: 5bb4f25e3d7a519c91fca8e07cc76ef0
+    appId: 28edc1ad815b4f57afd273b7e0a4737c
+    #失效时间（单位：min,适用于验证码短信）
+    expiryTime: 10
+    #短信模版集合
+    templates:
+        #模版类型
+        #类型: 模版id,模版参数数量
+        sendCode: 389757,2
+        strategyIn: 390480,2
+        strategyOut: 390475,2
+        strategyInReject: 395393,1 # ""串 一个参数
+        task: 397323,1  #跟单/解绑
+        applyUser: 397391,1 #开户审核
+        applyStrategy: 398220,1 #策略入驻
+        teach: 398223,1 #投教管理员
+        register: 136698,0
+
+#定时任务
+scheduled:
+    #检查用户到期
+    checkUserExpire:
+        #是否启用
+        enabled: false
+    #结算出入金
+    countFundInOrOutg:
+        #是否启用
+        enabled: true
+    #结算总手数和总收益
+    countLotsAndTotal:
+        #是否启用
+        enabled: true
+     #结算月收益
+    countMonthProfit:
+        #是否启用
+        enabled: true
+     #计算历史最大回撤率
+    countHistoryFundBack:
+        #是否启用
+        enabled: true
+    cleanDay:
+        #是否启用
+        enabled: true
+
+adminRoleId: 3
+
+gzCompanyUserId: 1266666
+
+mt4:
+    ip: mt4demo.shjhkj.com
+    port: 1995
+    login: 8090
+    password: tx123456
+
+serverConfig:
+  #上传服务器信息
+    host: 47.104.81.128
+    port: 22
+    username: root
+    password: Hty201808
+    systemType: linux
+
+fileManage:
+  base64Prefix: data:image/jpeg;base64,
+  #百度Ueditor图片上传路径
+  #uploadPath : /data/upload/
+  #活动管理背景图片上传路径
+  imagePath : /data/tomcat/tomcat-8080/webapps/image/
+  videoPath : /data/tomcat/tomcat-8080/webapps/video/
+  uploadPath : /data/tomcat/tomcat-8080/webapps/ueditor/
+#  #单品管理音频上传路径
+#  videoPath : /data/upload/image/
+#  #单品管理音频封面图片上传路径
+#  videoImagePath : /data/upload/image/
+#  #活动管理背景图片linux映射回显路径
+#  backgroundImageWebPath : http://geek.kayknow.com/image/
+  filePlayPath :  http://47.104.81.128:8080/video/
+  videoImageWebPath : http://47.104.81.128:8080/image/
+  ueditorWebPath : http://47.104.81.128:8080/ueditor/
+
+
+logging:
+  # config: classpath:logback-spring.xml
+  path: c:\log\apps\hpp
+  appName : hpp
+
+
+rate:
+  url: http://op.juhe.cn/onebox/exchange/currency?from=usd&to=cny&key=2f36f746cd5810dbb8225d9f5c3af59b
+
+xxpay:
+  appId: c6f4cbd99afd4f8db1f136edff129804
+  mchId: 20000013
+  reqKey: XDLhWnONcECAMoRR9gwaXk2KbtiTsPmRzRzMQ5XBfFL83JkT
+  repKey: wtmmVs2zg65zLlt72vPIWZIwBhdR2yEmJNKPiwBno5jjWwkk
+  baseUrl: http://47.75.36.94:3020/api
+  baseNotifyUrl: http://t332it.natappfree.cc/hpp
+  bindNotifyUrl: /api/xxpay/bind_callback
+  orderNotifyUrl: /api/xxpay/pay_callback
+
+
+WxPay:
+  appId: wx9d4abf65de68c380
+  mchId: 1515554881
+  notifyUrl:  http://end.hui1688.com.cn/hpp/api/wxpay/notifyUrl
+  #notifyUrl: http://wkaqgd.natappfree.cc/hpp/api/wxpay/notifyUrl
+  key: shanghaihuitianyiappsshanghaihui
+  #payURL: https://api.mch.weixin.qq.com/sandboxnew/pay/unifiedorder  #真实:https://api.mch.weixin.qq.com/pay/unifiedorder
+  payURL: https://api.mch.weixin.qq.com/pay/unifiedorder
+
+

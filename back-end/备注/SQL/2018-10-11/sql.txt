@@ -1,0 +1,15 @@
+ALTER TABLE `t_tlb_fund_apply`
+ADD COLUMN `c_bank_num`  varchar(50) NULL COMMENT '银行卡号' AFTER `i_cny_amount`,
+ADD COLUMN `c_remark_num`  varchar(30) NULL COMMENT '备注号' AFTER `c_bank_num`
+
+CREATE TABLE `t_receivables` (
+  `c_id` varchar(32) NOT NULL DEFAULT '',
+  `c_bank` varchar(50) DEFAULT NULL COMMENT '银行名称',
+  `c_name` varchar(50) DEFAULT NULL COMMENT '收款人姓名',
+  `c_bank_num` varchar(50) DEFAULT NULL,
+  `c_remark` varchar(20) DEFAULT NULL COMMENT '备注号码 ',
+  `d_create_time` datetime DEFAULT NULL,
+  `d_update_time` datetime DEFAULT NULL,
+  `c_flag` varchar(1) DEFAULT NULL COMMENT 'Y or N 控制上下线',
+  PRIMARY KEY (`c_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

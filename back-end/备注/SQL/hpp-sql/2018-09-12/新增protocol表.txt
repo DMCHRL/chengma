@@ -1,0 +1,8 @@
+CREATE TABLE `t_hpp_protocol` (
+  `c_id` varchar(32) NOT NULL DEFAULT '',
+  `c_context` text,
+  `d_create_at` datetime DEFAULT NULL,
+  `d_update_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`c_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

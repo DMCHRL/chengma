@@ -1,0 +1,11 @@
+运行环境必须为windows
+
+1.安装MSVBCRT.zip
+2.找到demo中的TestXXX.java
+3.修改其中的IP:port，用户，密码
+4.运行
+5.如果报错：no MTConnector64, 
+  说明运行系统为32位的，请索取32位demo包， 
+  如果是64位系统，请将MTConnector64.dll 和 mtmanapi64.dll放到C:\windows\system32下
+6.如果报错：Unsupported major.minor version 51.0
+  说明运行JDK为5或6，请安装jdk7+

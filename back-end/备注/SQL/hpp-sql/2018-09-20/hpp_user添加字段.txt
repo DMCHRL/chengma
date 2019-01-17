@@ -1,0 +1,3 @@
+ALTER TABLE `t_hpp_user`
+ADD COLUMN `c_second_type`  varchar(20) NULL AFTER `c_id_other`,
+ADD COLUMN `c_second_positive`  varchar(200) NULL AFTER `c_second_type`

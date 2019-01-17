@@ -1,0 +1,2 @@
+alter table t_tlb_user add COLUMN c_type varchar(30);
+alter table t_tlb_user MODIFY COLUMN c_status varchar(20);

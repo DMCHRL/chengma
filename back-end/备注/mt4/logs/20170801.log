@@ -1,0 +1,7 @@
+0	2017.08.01 17:19:26.590		MetaTrader 4 Manager API build 1090 initialized
+0	2017.08.01 17:19:29.915	185.96.244.67:443	Connect
+0	2017.08.01 17:19:30.347	185.96.244.67:443	'11': login (server build 1090)
+0	2017.08.01 17:19:31.276	185.96.244.67:443	'11': request 41 total users
+0	2017.08.01 17:19:31.288		Unload: manager 393A20 not released
+0	2017.08.01 17:19:31.388	185.96.244.67:443	'11': disconnect
+0	2017.08.01 17:19:31.388		Remove: manager 393A20

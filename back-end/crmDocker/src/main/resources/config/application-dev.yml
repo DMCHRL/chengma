@@ -1,0 +1,261 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+#
+# This configuration overrides the application.yml file.
+#
+# More information on profiles: https://jhipster.github.io/profiles/
+# More information on configuration properties: https://jhipster.github.io/common-application-properties/
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+spring:
+    jmx:
+        default-domain: crm
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: false # we use gulp + BrowserSync for livereload
+    jackson:
+        serialization.indent_output: true
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://192.168.1.139:3306/crm?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123
+#        url: jdbc:mysql://47.52.199.109:3306/crm?useUnicode=true&characterEncoding=utf8&useSSL=false
+#        username: dev
+#        password: dev123
+        hikari:
+            data-source-properties:
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database: MYSQL
+        show-sql: true
+        properties:
+            hibernate.id.new_generator_mappings: true
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: true
+#    datasource:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        url: jdbc:oracle:thin:@10.3.2.6:1521:orcl
+#        username: root
+#        password: root
+#    jpa:
+#        database-platform: org.hibernate.dialect.Oracle12cDialect
+#        database: ORACLE
+#        show-sql: true
+#        properties:
+#            hibernate.id.new_generator_mappings: true
+#            hibernate.cache.use_second_level_cache: false
+#            hibernate.cache.use_query_cache: false
+#            hibernate.generate_statistics: true
+    mail:
+        host: smtp.ym.163.com
+        port: 25
+        username: service@txasfx.com
+        password: abc123
+        properties:
+          mail:
+            smtp:
+              auth: true;
+              starttls:
+                enable: true;
+                required: true;
+        #host: smtp.qq.com
+        #username: 443099745@qq.com
+        #password: yypmcuvowbzybgci
+    messages:
+        cache-seconds: 1
+    thymeleaf:
+        cache: false
+
+liquibase:
+    contexts: dev
+    enabled: false
+
+# ===================================================================
+# To enable SSL, generate a certificate using:
+# keytool -genkey -alias devplatform -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
+#
+# You can also use Let's Encrypt:
+# https://maximilian-boehm.com/hp2121/Create-a-Java-Keystore-JKS-from-Let-s-Encrypt-Certificates.htm
+#
+# Then, modify the server.ssl properties so your "server" configuration looks like:
+#
+# server:
+#    port: 8443
+#    ssl:
+#        key-store: keystore.p12
+#        key-store-password: <your-password>
+#        keyStoreType: PKCS12
+#        keyAlias: devplatform
+# ===================================================================
+server:
+    port: 8080
+
+# ===================================================================
+# JHipster specific properties
+#
+# Full reference is available at: https://jhipster.github.io/common-application-properties/
+# ===================================================================
+jhipster:
+    http:
+        version: V_1_1 # To use HTTP/2 you will need SSL support (see above the "server.ssl" configuration)
+    # CORS is only enabled by default with the "dev" profile, so BrowserSync can access the API
+    cors:
+        allowed-origins: "*"
+        allowed-methods: GET, PUT, POST, DELETE, OPTIONS
+        allowed-headers: "*"
+        exposed-headers:
+        allow-credentials: true
+        max-age: 1800
+    security:
+        authentication:
+            jwt:
+                secret: my-secret-token-to-change-in-production
+                # Token is valid 24 hours
+                token-validity-in-seconds: 31536000
+                token-validity-in-seconds-for-remember-me: 2592000
+    mail: # specific JHipster mail property, for standard properties see MailProperties
+        from: service@txasfx.com
+        base-url: http://192.168.1.117:8001
+    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+        jmx.enabled: true
+        graphite: # Use the "graphite" Maven profile to have the Graphite dependencies
+            enabled: false
+            host: localhost
+            port: 2003
+            prefix: devplatform
+        prometheus: # Use the "prometheus" Maven profile to have the Prometheus dependencies
+            enabled: false
+            endpoint: /prometheusMetrics
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: false
+            report-frequency: 60 # in seconds
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: false
+            host: localhost
+            port: 5000
+            queue-size: 512
+
+# ===================================================================
+# Application specific properties
+# Add your own application properties here, see the ApplicationProperties class
+# to have type-safe configuration, like in the JHipsterProperties above
+#
+# More documentation is available at:
+# https://jhipster.github.io/common-application-properties/
+# ===================================================================
+
+application:
+      noCheckUrl: /api/tlb-user/createTlbUser;/api/tlb-user-feedback/createTlbUserFeedback;/api/xxpay/pay_callback;/api/xxpay/bind_callback;
+                  /api/mobileValidate/sendCode;/api/tlb-rate/**;/api/generateVerifyCode;/api/mobileValidate/**;
+                  /api/tlb-mt-price/findLastPrice;/api/tlb-history-k/**
+
+#登录控制
+loginControl:
+    #是否跳过登录验证码
+    skipVerify: false
+
+#短信配置
+shortMessage:
+    #token
+#    accountSid: ef87f987216818c93662b872de2840ab
+#    token: e8d5f869104c9666ea81c76f40c4af18
+#    appId: f32af84e74824d8b93844ffb3acc0c98
+    #runmao
+    accountSid: b167cc1cb3f2b50efd70095b90ed469c
+    token: d9076a7516e687c24c8c51a3953978b2
+    appId: 5b0077c7eac24b77b4d50b65df2d8bb4
+    #失效时间（单位：min,适用于验证码短信）
+    expiryTime: 10
+    #短信模版集合
+    templates:
+        #模版类型
+        #类型: 模版id,模版参数数量
+        sendCode: 345941,2
+        signUp: 115534,3
+        register: 136698,0
+
+#定时任务
+scheduled:
+    #检查用户到期
+    checkUserExpire:
+        #是否启用
+        enabled: false
+    #更新佣金
+    updateCommission:
+        #是否启用
+        cron: 0 0/1 * * * ?
+        enabled: true
+    #更新佣金
+    sendSymbolInfo:
+        #是否启用
+        cron: 0/1 * * * * ?
+        enabled: false
+
+adminRoleId: 3
+
+gzCompanyUserId: 3
+
+mt4:
+    ip: mt4demo.shjhkj.com
+    port: 1995
+    login: 8090
+    password: tx123456
+
+serverConfig:
+  #上传服务器信息
+    host: 111.231.251.151
+    port: 22
+    username: root
+    password: gbl310800
+    systemType: linux
+
+fileManage:
+  base64Prefix: data:image/jpeg;base64,
+  #百度Ueditor图片上传路径
+  uploadPath : /data/upload/
+  #活动管理背景图片上传路径
+  imagePath : /data/tomcat/tomcat-8080/webapps/image/
+#  #单品管理音频上传路径
+#  videoPath : /data/upload/image/
+#  #单品管理音频封面图片上传路径
+#  videoImagePath : /data/upload/image/
+#  #活动管理背景图片linux映射回显路径
+#  backgroundImageWebPath : http://geek.kayknow.com/image/
+#  filePlayPath : http://geek.kayknow.com/video/
+  videoImageWebPath : http://111.231.251.151:8080/image/
+
+
+logging:
+  # config: classpath:logback-spring.xml
+  path: c:\log\apps\crm
+  appName : crm
+
+
+rate:
+  url: http://op.juhe.cn/onebox/exchange/currency?from=usd&to=cny&key=2f36f746cd5810dbb8225d9f5c3af59b
+
+xxpay:
+  appId: c6f4cbd99afd4f8db1f136edff129804
+  mchId: 20000013
+  reqKey: XDLhWnONcECAMoRR9gwaXk2KbtiTsPmRzRzMQ5XBfFL83JkT
+  repKey: wtmmVs2zg65zLlt72vPIWZIwBhdR2yEmJNKPiwBno5jjWwkk
+  baseUrl: http://47.75.36.94:3020/api
+  baseNotifyUrl: http://t332it.natappfree.cc/crm
+  bindNotifyUrl: /api/xxpay/bind_callback
+  orderNotifyUrl: /api/xxpay/pay_callback
+

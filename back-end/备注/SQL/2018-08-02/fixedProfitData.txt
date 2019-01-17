@@ -1,0 +1,42 @@
+create table t_tlb_accountback20180802_2
+select a.* from t_tlb_account as a left join 
+( 
+	select a.c_account, sum(a.c_gain_amount) as amount
+	from t_tlb_trade a
+	where a.c_closed = 'Y'
+	group by a.c_account
+)b on a.c_account = b.c_account
+where 
+-- exists( select null from t_tlb_account_update20180731 as b where a.c_account =  b.c_account)and  
+a.i_profit != ifnull(b.amount,0);
+
+start TRANSACTION
+update t_tlb_account as a join 
+( 
+	select a.c_account, sum(a.c_gain_amount) as amount
+	from t_tlb_trade a
+	where a.c_closed = 'Y'
+	group by a.c_account
+)b on a.c_account = b.c_account
+set a.i_profit = b.amount, a.i_balance = a.i_balance - (a.i_profit - b.amount), a.i_free_margin = a.i_free_margin - (a.i_profit - b.amount)
+where 
+-- exists( select null from t_tlb_account_update20180731 as b where a.c_account =  b.c_account)and  
+a.i_profit != ifnull(b.amount,0);
+
+
+select b.amount, a.* from t_tlb_account as a left join 
+( 
+	select a.c_account, sum(a.c_gain_amount) as amount
+	from t_tlb_trade a
+	where a.c_closed = 'Y'
+	group by a.c_account
+)b on a.c_account = b.c_account
+where 
+-- exists( select null from t_tlb_account_update20180731 as b where a.c_account =  b.c_account)and  
+a.i_profit != ifnull(b.amount,0);
+
+select * from t_tlb_account a where 
+exists(select null from t_tlb_accountback20180802_2 as b where a.c_account = b.c_account)
+
+-- COMMIT
+rollback

@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test
+END
+TestSymbolInfoGet.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestSymbolInfoGet.java
+END
+TestTradeHistory.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestTradeHistory.java
+END
+TestUpdateUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestUpdateUser.java
+END
+TestServerTime.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestServerTime.java
+END
+TestTradeTransaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestTradeTransaction.java
+END
+TestTicksRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestTicksRequest.java
+END
+TestReportsRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestReportsRequest.java
+END
+TestGroupList.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestGroupList.java
+END
+TestUserNew.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestUserNew.java
+END
+TestUserRecordsRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestUserRecordsRequest.java
+END
+TestChartRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestChartRequest.java
+END
+TestTickInfoLast.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestTickInfoLast.java
+END
+TestUserList.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestUserList.java
+END
+TestMargin.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/test/TestMargin.java
+END

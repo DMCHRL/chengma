@@ -1,0 +1,7 @@
+//`t_mobile`ÐÂ¼Óc_overnight, i_overnight_fee ×Ö¶Î 
+ALTER TABLE `t_tlb_trade`
+ADD COLUMN `c_overnight` varchar(10) DEFAULT NULL;
+ALTER TABLE `t_tlb_trade`
+ADD COLUMN `i_overnight_fee` decimal(18,8) DEFAULT NULL;
+
+--- update t_tlb_trade set c_overnight = 'N', i_overnight_fee = 0 where c_closed = 'Y';

@@ -1,0 +1,46 @@
+package com.mt4.api.test;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import com.mt4.api.ConnectorAPI;
+import com.mt4.api.MT4;
+import com.mt4.api.bean.TradeRecord;
+
+public class TestTradeHistory {
+	public static void main(String[] args) {
+		ConnectorAPI mt4 = new MT4();
+		mt4.connect("mt4live.shjhkj.com:1996");
+		if(mt4.isConnected()){
+			System.out.println("connected");
+		}
+		
+		mt4.login(8097, "tx8097");
+
+		long from = mt4.serverTime()- 60 * 60 * 24 *80;
+		System.out.println("from="+from);
+		long to = mt4.serverTime() ;
+		
+		System.out.println("to="+to);
+		TradeRecord[] records =  mt4.getTradesUserHistory(1890017, from, to);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		for(TradeRecord record : records){
+			Calendar cal2 = Calendar.getInstance();
+			cal2.setTimeInMillis(record.getTimestamp()*1000);
+			Date date2 = cal2.getTime();
+			System.out.println(record.getOrder()+","+
+					record.getLogin()+","+
+					record.getSymbol()+","+
+					record.getCmd()+","+
+					record.getVolume()/100+","+
+					record.getClosePrice()+","+
+					sdf.format(date2)+","+
+					record.getStorage()+","+
+					record.getProfit());
+			
+		}
+		System.out.println("records="+records.length);
+	}
+}

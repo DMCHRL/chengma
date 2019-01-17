@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Java汇付宝银联WAP</title>
+    <script src="../static/jq.js">
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#bt1').click(function(){
+                $.ajax({
+                    url: 'http://localhost:8080/crm/api/union-pay-info/createOrder',
+                    async: false,
+                    dataType: 'json',
+                    contentType : "application/json",
+                    method: 'POST',
+                    data :  JSON.stringify({unionPayInfoDTO: null}),
+                    success: function(result) {
+                      //var jsobj = eval('(' + result + ')');
+                        //jsobj = jsobj.get("data");
+                      var jsobj = result.data;
+                        document.getElementsByName("merchantId").item([0]).value=jsobj.merchantId;
+                        document.getElementsByName("merchantOrderNo").item([0]).value=jsobj.merchantOrderNo;
+                        document.getElementsByName("merchantUserId").item([0]).value=jsobj.merchantUserId;
+                        document.getElementsByName("productCode").item([0]).value=jsobj.productCode;
+                        document.getElementsByName("payAmount").item([0]).value=jsobj.payAmount;
+                        document.getElementsByName("notifyUrl").item([0]).value=jsobj.notifyUrl;
+                        document.getElementsByName("callBackUrl").item([0]).value=jsobj.callBackUrl;
+                        document.getElementsByName("description").item([0]).value=jsobj.description;
+                        document.getElementsByName("sign").item([0]).value=jsobj.sign;
+                        document.getElementsByName("sign1").item([0]).value=jsobj.sign1;
+                    },
+
+                    error: function(xhr) {
+
+                        // 导致出错的原因较多，以后再研究
+                        alert('error:' + JSON.stringify(xhr));
+                    }
+                })
+            });
+        });
+        function formSubmit(){
+
+            document.getElementById("form").submit();
+        }
+    </script>
+</head>
+<body>
+
+<p>点击“更新数据”会去服务端获取数据,然后按下“提交表单”按钮提交表单，跳转支付页。</p>
+<form action="https://c.heepay.com/newOnlineBank/paymentUnion.do" method="post" id="form" accept-charset="utf-8" onsubmit="document.charset='utf-8';" >
+    <p><label>商户号：</label><input type="text" name="merchantId" class="name_w b_color" value=""></p>
+    <p><label>订单号：</label><input type="text" name="merchantOrderNo" class="name_w b_color" value=""></p>
+    <p><label>商户用户id：</label><input type="text" name="merchantUserId"  class="name_w b_color" value=""></p>
+    <p><label>产品编码：</label><input type="text" name="productCode" class="name_w b_color" value=""></p>
+    <p><label>金额(元)：</label><input type="text" name="payAmount" class="name_w b_color" value="" ></p>
+    <p><label>notifyUrl：</label><input type="text" name="notifyUrl" class="name_w b_color"  value=""></p>
+    <p><label>callBackUrl：</label><input type="text" name="callBackUrl" class="name_w b_color"  value=""></p>
+    <p><label>商品信息：</label><input type="text" name="description" class="name_w b_color" value=""></p>
+    <p><label>签名字符串：</label><input type="text" name="sign" class="name_w b_color" value=""></p>
+    <p style="color: red;">注：异步通知地址需要在汇付宝后台配置</p>
+    <p><input id="bt1" type="button" value="更新数据" /><br/></p>
+    <p><input type="button" onclick="formSubmit()" value="提交表单" /><br/></p>
+</form>
+
+<label>MD5之前的签名数据：</label>
+<textarea name="sign1" rows="6" cols="60">
+</textarea>
+</body>
+</html>

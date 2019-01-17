@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cmshop:war">
+    <output-path>$PROJECT_DIR$/classes/artifacts/cmshop_war</output-path>
+    <root id="archive" name="cmshop_war.war">
+      <element id="artifact" artifact-name="cmshop:war exploded" />
+    </root>
+  </artifact>
+</component>

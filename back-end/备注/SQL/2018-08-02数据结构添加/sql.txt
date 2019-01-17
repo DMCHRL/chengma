@@ -1,0 +1,11 @@
+//`t_mobile`新加c_text 字段 
+ALTER TABLE `t_mobile`
+ADD COLUMN `c_text`  text NULL AFTER `c_change_user`
+
+//`t_tlb_user_feedback`新加`c_create_at` 字段
+ALTER TABLE `t_tlb_user_feedback`
+ADD COLUMN `c_create_at`  datetime NULL AFTER `c_feedback_context`
+
+//`t_tlb_user`添加`d_create_at`  字段
+ALTER TABLE `t_tlb_user`
+ADD COLUMN `d_create_at`  datetime NULL AFTER `c_type`

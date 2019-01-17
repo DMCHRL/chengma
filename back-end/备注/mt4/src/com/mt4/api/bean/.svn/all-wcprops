@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean
+END
+ReportGroupRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/ReportGroupRequest.java
+END
+SymbolInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/SymbolInfo.java
+END
+TradeTransInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/TradeTransInfo.java
+END
+MarginLevel.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/MarginLevel.java
+END
+RateInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/RateInfo.java
+END
+TickRecord.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/TickRecord.java
+END
+TransType.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/TransType.java
+END
+EnumChartMode.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/EnumChartMode.java
+END
+ConGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/ConGroup.java
+END
+EnumChartPeriods.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/EnumChartPeriods.java
+END
+UserRecord.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/UserRecord.java
+END
+TradeRecord.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/TradeRecord.java
+END
+TranscCmd.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/mt4crm/!svn/ver/2/mt4/src/com/mt4/api/bean/TranscCmd.java
+END

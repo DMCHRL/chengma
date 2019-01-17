@@ -1,0 +1,17 @@
+package com.mt4.api.bean;
+
+public enum TranscCmd {
+	OP_BUY((short)0), OP_SELL((short)1), OP_BUY_LIMIT((short)2), OP_SELL_LIMIT((short)3), 
+	OP_BUY_STOP((short)4), OP_SELL_STOP((short)5), OP_BALANCE((short)6), OP_CREDIT((short)7);
+
+	private short value = 0;
+
+	private TranscCmd(short value) { // 必须是private的，否则编译错误
+		this.value = value;
+	}
+
+	public short value() {
+		return this.value;
+	}
+
+}

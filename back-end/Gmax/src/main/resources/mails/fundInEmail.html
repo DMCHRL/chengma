@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body {
+			padding: 30px 0;
+		}
+		.head_box p {
+			font-size: 14px;
+			color: #333;
+		}
+		.head_box p.indent {
+			text-indent: 2em;
+		}
+		.main {
+			margin: 30px 0;
+		}
+		.sec_box>p,
+		.row_box>span:first-of-type{
+			font-size: 14px;
+			font-weight: bold;
+		}
+		.table_box {
+			border: 1px solid #666;
+			width: 573px;
+		}
+		.row_box {
+			border-bottom: 1px solid #666;
+		}
+		.row_box:last-of-type {
+			border: none;
+		}
+		.row_box:before,
+		.row_box:after {
+			display: table;
+			content: " ";
+		}
+
+		.row_box:after {
+			clear: both;
+		}
+		.row_box>span {
+			float: left;
+			width: 50%;
+			line-height: 36px;
+			box-sizing: border-box;
+			padding: 0 10px;
+		}
+		.row_box>span:first-of-type{
+			border-right: 1px solid #666;
+		}
+		.foot_box span {
+			font-size: 14px;
+			color: #333;
+			font-weight: bold;
+			background-color: rgb(202, 240, 254);
+		}
+	</style>
+</head>
+<body>
+<div class="head_box">
+	<p>尊敬的客户，您好！</p>
+	<p class="indent">您申请的资金汇入已经到您的账户，您可以登录您的交易账户查看明细，也可以通过网站账户查看。</p>
+	<p>如有疑问请咨询客服 <a href="mailto:services@hkgmax.com">services@hkgmax.com</a>  ,感谢您的支持！</p>
+</div>
+<div class="main">
+	<div class="sec_box">
+		<p>网站账户信息</p>
+		<div class="table_box">
+			<div class="row_box">
+				<span> 账号</span>
+				<span th:text="${account.account}"></span>
+			</div>
+			<div class="row_box">
+				<span>申请金额</span>
+				<span th:text="${account.balance}">	</span>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div class="foot_box">
+	<p><span>请注意：</span></p>
+	<p><span>此邮件由系统自动发出，尚不接受回复.</span></p>
+	<p><span>如有疑问，请联系客服或回复邮件至 services@hkgmax.com</span></p>
+</div>
+</body>
+</html>

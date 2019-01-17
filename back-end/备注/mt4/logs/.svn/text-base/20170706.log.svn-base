@@ -1,0 +1,21 @@
+0	2017.07.06 18:52:31.240		MetaTrader 4 Manager API build 1090 initialized
+0	2017.07.06 18:52:31.552	185.96.244.67:443	Connect
+0	2017.07.06 18:52:31.974	185.96.244.67:443	'11': login (server build 1090)
+1	2017.07.06 18:52:32.613	185.96.244.67:443	'11': request reports (0 trades) (OK/None)
+0	2017.07.06 18:52:32.707		Unload: manager 353A10 not released
+0	2017.07.06 18:52:32.817	185.96.244.67:443	'11': disconnect
+0	2017.07.06 18:52:32.817		Remove: manager 353A10
+0	2017.07.06 18:52:39.136		MetaTrader 4 Manager API build 1090 initialized
+0	2017.07.06 18:52:39.464	185.96.244.67:443	Connect
+0	2017.07.06 18:52:39.885	185.96.244.67:443	'11': login (server build 1090)
+0	2017.07.06 18:52:40.509	185.96.244.67:443	'11': request reports (6 trades)
+0	2017.07.06 18:52:40.618		Unload: manager 452650 not released
+0	2017.07.06 18:52:40.728	185.96.244.67:443	'11': disconnect
+0	2017.07.06 18:52:40.728		Remove: manager 452650
+0	2017.07.06 18:53:49.911		MetaTrader 4 Manager API build 1090 initialized
+0	2017.07.06 18:53:50.239	185.96.244.67:443	Connect
+0	2017.07.06 18:53:50.660	185.96.244.67:443	'11': login (server build 1090)
+0	2017.07.06 18:53:51.269	185.96.244.67:443	'11': request reports (6 trades)
+0	2017.07.06 18:53:51.378		Unload: manager 422650 not released
+0	2017.07.06 18:53:51.488	185.96.244.67:443	'11': disconnect
+0	2017.07.06 18:53:51.488		Remove: manager 422650

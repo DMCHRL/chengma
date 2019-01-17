@@ -1,0 +1,5 @@
+ALTER TABLE `t_tlb_account`
+ADD COLUMN `c_see_password`  varchar(20) NULL COMMENT '¹ÛÄ¦ÃÜÂë' AFTER `c_ea_group`
+
+ALTER TABLE `t_tlb_account_control`
+ADD COLUMN `c_trade`  varchar(50) NULL COMMENT 'YES OR NO' AFTER `c_account`

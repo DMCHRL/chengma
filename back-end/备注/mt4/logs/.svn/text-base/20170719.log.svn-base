@@ -1,0 +1,53 @@
+0	2017.07.19 20:05:56.156		MetaTrader 4 Manager API build 1090 initialized
+0	2017.07.19 20:05:56.577	185.96.244.67:443	Connect
+0	2017.07.19 20:06:00.761	185.96.244.67:443	'11': login (server build 1090)
+0	2017.07.19 20:06:02.191	185.96.244.67:443	'11': request 38 total users
+0	2017.07.19 20:06:02.194		Unload: manager 3B39B0 not released
+0	2017.07.19 20:06:02.294	185.96.244.67:443	'11': disconnect
+0	2017.07.19 20:06:02.294		Remove: manager 3B39B0
+0	2017.07.19 20:06:41.662		MetaTrader 4 Manager API build 1090 initialized
+6	2017.07.19 20:06:46.685	185.96.244.67:443	Connect (No connection)
+6	2017.07.19 20:06:46.685	185.96.244.67:443	'11': login failed (No connection)
+6	2017.07.19 20:06:46.685	185.96.244.67:443	'11': request users (No connection)
+0	2017.07.19 20:06:46.685		Unload: manager 3B39B0 not released
+0	2017.07.19 20:06:46.685		Remove: manager 3B39B0
+0	2017.07.19 20:06:58.371		MetaTrader 4 Manager API build 1090 initialized
+6	2017.07.19 20:07:03.410	185.96.244.67:443	Connect (No connection)
+6	2017.07.19 20:07:03.410	185.96.244.67:443	'11': login failed (No connection)
+6	2017.07.19 20:07:03.410	185.96.244.67:443	'11': request users (No connection)
+0	2017.07.19 20:07:03.410		Unload: manager 2C39B0 not released
+0	2017.07.19 20:07:03.410		Remove: manager 2C39B0
+0	2017.07.19 20:07:17.546		MetaTrader 4 Manager API build 1090 initialized
+0	2017.07.19 20:07:17.889	185.96.244.67:443	Connect
+0	2017.07.19 20:07:18.341	185.96.244.67:443	'11': login (server build 1090)
+0	2017.07.19 20:07:19.652	185.96.244.67:443	'11': request 38 total users
+0	2017.07.19 20:07:19.667		Unload: manager 3F39B0 not released
+0	2017.07.19 20:07:19.778	185.96.244.67:443	'11': disconnect
+0	2017.07.19 20:07:19.778		Remove: manager 3F39B0
+0	2017.07.19 20:07:24.895		MetaTrader 4 Manager API build 1090 initialized
+0	2017.07.19 20:07:25.239	185.96.244.67:443	Connect
+0	2017.07.19 20:07:25.692	185.96.244.67:443	'11': login (server build 1090)
+0	2017.07.19 20:07:26.675	185.96.244.67:443	'11': request 38 total users
+0	2017.07.19 20:07:26.675		Unload: manager 2D39B0 not released
+0	2017.07.19 20:07:26.785	185.96.244.67:443	'11': disconnect
+0	2017.07.19 20:07:26.785		Remove: manager 2D39B0
+0	2017.07.19 20:07:47.596		MetaTrader 4 Manager API build 1090 initialized
+0	2017.07.19 20:07:47.955	185.96.244.67:443	Connect
+0	2017.07.19 20:07:48.392	185.96.244.67:443	'11': login (server build 1090)
+0	2017.07.19 20:07:49.390	185.96.244.67:443	'11': request 38 total users
+0	2017.07.19 20:07:49.390		Unload: manager 3E39B0 not released
+0	2017.07.19 20:07:49.501	185.96.244.67:443	'11': disconnect
+0	2017.07.19 20:07:49.501		Remove: manager 3E39B0
+0	2017.07.19 20:18:42.149		MetaTrader 4 Manager API build 1090 initialized
+0	2017.07.19 20:18:42.505	185.96.244.67:443	Connect
+0	2017.07.19 20:18:42.955	185.96.244.67:443	'11': login (server build 1090)
+2	2017.07.19 20:18:43.692	185.96.244.67:443	'11': new user record (Common error)
+0	2017.07.19 20:18:43.695		Unload: manager 4139B0 not released
+0	2017.07.19 20:18:43.796	185.96.244.67:443	'11': disconnect
+0	2017.07.19 20:18:43.796		Remove: manager 4139B0
+0	2017.07.19 20:19:10.549		MetaTrader 4 Manager API build 1090 initialized
+6	2017.07.19 20:19:15.574	185.96.244.67:443	Connect (No connection)
+6	2017.07.19 20:19:15.580	185.96.244.67:443	'11': login failed (No connection)
+6	2017.07.19 20:19:15.580	185.96.244.67:443	'11': request groups (No connection)
+0	2017.07.19 20:19:15.585		Unload: manager 273A00 not released
+0	2017.07.19 20:19:15.585		Remove: manager 273A00

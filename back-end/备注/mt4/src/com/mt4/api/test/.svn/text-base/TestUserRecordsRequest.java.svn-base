@@ -1,0 +1,24 @@
+package com.mt4.api.test;
+
+import com.mt4.api.ConnectorAPI;
+import com.mt4.api.MT4;
+import com.mt4.api.bean.UserRecord;
+
+public class TestUserRecordsRequest {
+	public static void main(String[] args) {
+		ConnectorAPI mt4 = new MT4();
+		mt4.connect("mt4live.shjhkj.com:1996");
+		if(mt4.isConnected()){
+			System.out.println("connected");
+		}
+		
+		mt4.login(8097, "tx8097");
+	
+		int[] logins = {1890002};
+		UserRecord[]  users =  mt4.userRecordsRequest(logins);
+		
+		UserRecord user=users[0];
+		
+		System.out.println(user.getPassword());
+	}
+}
