@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>資金內轉申請</title>
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/flexible.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+		<link rel="stylesheet" href="../css/neizhuan.css" />
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">資金內轉申請</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="sec_tab clearfix">
+				<p class="pull-left active"><span>套利寶轉MT4</span></p>
+				<p class="pull-right"><span>MT4轉套利寶</span></p>
+			</div>
+			<div class="sec_1 sec_3">
+				 <ul class="mui-table-view one"> 
+			        <li class="mui-table-view-cell mui-collapse">
+			            <a class="mui-navigate-right" href="#"><span>转出账户</span> <span class="zhanghu"></span></a>
+			            <!--<div class="mui-collapse-content">
+			                
+			            </div>-->
+			        </li>
+			        <li class="inputjin">
+			        	<span>金額</span>
+			            <input id="jine1" type="number" placeholder="账户可转出$"/>
+			        </li>
+			        <li class="mui-table-view-cell mui-collapse">
+			            <a class="mui-navigate-right" href="#"><span>转入账户</span> <span class="zhanghu"></span></a>
+			            <!--<div class="mui-collapse-content">
+			                
+			            </div>-->
+			        </li>
+			    </ul>
+				<div class="btn_box">
+					<span onclick="commitone()">確認轉出</span>
+				</div>
+			</div>
+			<div class="sec_1 sec_4">
+				 <ul class="mui-table-view one"> 
+			        <li class="mui-table-view-cell mui-collapse">
+			            <a class="mui-navigate-right" href="#"><span>转出账户</span> <span class="zhanghu"></span></a>
+			            <!--<div class="mui-collapse-content">
+			               
+			            </div>-->
+			        </li>
+			        <li class="inputjin">
+			        	<span>金額</span>
+			            <input id="jine2" type="number" placeholder="请输入MT4账户可用金额"/>
+			        </li>
+			        <li class="mui-table-view-cell mui-collapse">
+			            <a class="mui-navigate-right" href="#"><span>转入账户</span> <span class="zhanghu"></span></a>
+			            <!--<div class="mui-collapse-content">
+			                
+			            </div>-->
+			        </li>
+			    </ul>
+				<div class="btn_box">
+					<span onclick="committwo()">確認轉入</span>
+				</div>
+			</div>
+			<div class="sec_2">
+				<p><i>*</i><span>温馨提示</span>：您将不能够转出多于您的“可用预付款”金额。您交易账户中的“可用预付款”金额可被视为您未平仓交易的净值减去已用预付款。 所有的转账只能在您个人名下并且拥有的账户间进行。</p>
+			</div>
+		</div>
+
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(function () {
+				$('.sec_tab p').click(function () {
+					var _index = $(this).index();
+					
+					if (_index == 0) {
+						$('.sec_3').fadeIn()
+						$('.sec_4').hide()
+					}else {
+						$('.sec_4').fadeIn()
+						$('.sec_3').hide()
+					}
+					
+					$(this).addClass('active').siblings().removeClass('active');
+				});
+				baozhengjin ();//計算可轉出金額
+				$('.zhanghu').text(localStorage.getItem('username'));
+				
+			});
+			function baozhengjin() {
+				//k线首页的持仓状况 计算保证金
+				var current = 0;
+				var cc_count = 0;
+				$.ajax({
+					type: 'GET',
+					url: host+'/jeecg/ryBbbOrderdetailJsonController.do?datagrid&field=id,buserId.account,symbol,openprice,time,closeprice,closetime,lots,type,result,isReal,rorderid,rprice,rstopwin,rstoplost,rtime,remark&buserId.id=' + id + '&result=-1&isReal=1',
+					dataType: 'jsonp',
+					success: function(data) {
+						//							console.log(data)
+						if(data['rows'].length != 0) {
+							var data = data['rows'];
+							var s = "";
+							for(var i = 0; i < data.length; i++) {
+								cc_count += parseFloat(data[i]['lots']);
+							}
+						}
+						show_select(cc_count);
+					},
+					error: function(xhr, type) {
+						//alert('Ajax error!111')
+					}
+				})
+
+				//选择手数
+				function show_select(cc_count) {
+					$.ajax({
+						type: 'GET',
+						url: host+'/jeecg/ryBbbAccountJsonController.do?datagrid&field=nick,id,headurl,time,lastip,lasttime,emaril,inputmoney,outmoney,margin,cardid,customerId.name&id=' + id,
+						dataType: 'jsonp',
+						success: function(data) {
+//							console.log(data)
+							var data = data['rows'][0];
+							current = parseFloat(data['margin']);
+							var canuse = parseFloat(current.toFixed(2)) - parseFloat(cc_count * 10000);
+							$('#jine1').attr('placeholder','账户可转出$'+canuse.toFixed(2));
+//							$('#canuse').text(canuse.toFixed(2));
+//							$('#currentmoney').text(current.toFixed(2));
+//							$('#useing_canuse').text((parseFloat(cc_count * 10000)).toFixed(2))
+						},
+						error: function(xhr, type) {
+							//alert('Ajax error!')
+						}
+					})
+				}
+			};
+			function commitone() {
+				var money = $('#jine1').val();
+//				console.log(money)
+				if (money == '') {
+					mui.toast('請輸入金額!', {
+						duration: 'short',
+						type: 'div'
+					});
+					return;
+				}
+				$.ajax({
+					type: 'GET',
+					url: host+'/jeecg/ryBbbOutJsonController.do?doAdd&accountId.id='+id+'&money=' + money ,
+					dataType: 'jsonp',
+					success: function(data) {
+//						console.log(data)
+						if(data['msg'] == 'out not') {
+							//				  		alert('账户不存在')
+							mui.toast('提交成功，等待審核', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else if(data['msg'] == 'money not') {
+							//				  		alert('非交易时段')
+							mui.toast('金額不足', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else if(data['msg'] == 'fail') {
+							//				  		alert('非法交易手数')
+							mui.toast('系統異常', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else if(data['msg'] == 'success') {
+							//				  		alert('非法交易类型')
+							mui.toast('提交成功，等待審核', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else {
+							mui.toast('系統異常', {
+								duration: 'long',
+								type: 'div'
+							});
+						}
+					},
+					error: function(xhr, type) {
+						//alert('Ajax error!')
+					}
+				})
+			};
+			function committwo() {
+				var money = $('#jine2').val();
+//				console.log(money)
+				if (money == '') {
+					mui.toast('請輸入金額!', {
+						duration: 'short',
+						type: 'div'
+					});
+					return;
+				}
+				$.ajax({
+					type: 'GET',
+					url: host+'/jeecg/ryBbbMtoutJsonController.do?doAdd&accountId.id='+id+'&money=' + money ,
+					dataType: 'jsonp',
+					success: function(data) {
+//						console.log(data)
+						if(data['msg'] == 'out not') {
+							//				  		alert('账户不存在')
+							mui.toast('提交成功，等待審核', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else if(data['msg'] == 'money not') {
+							//				  		alert('非交易时段')
+							mui.toast('金額不足', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else if(data['msg'] == 'fail') {
+							//				  		alert('非法交易手数')
+							mui.toast('系統異常', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else if(data['msg'] == 'success') {
+							//				  		alert('非法交易类型')
+							mui.toast('提交成功，等待審核', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else {
+							mui.toast('系統異常', {
+								duration: 'long',
+								type: 'div'
+							});
+						}
+					},
+					error: function(xhr, type) {
+						//alert('Ajax error!')
+					}
+				})
+			}
+		</script>
+	</body>
+
+</html>

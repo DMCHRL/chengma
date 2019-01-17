@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>提現申請</title>
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/flexible.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+		<link rel="stylesheet" href="../css/chujin.css" />
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">提現申請</h1>
+		</header>
+
+		<div class="mui-content">
+			<!--<div class="sec_tab clearfix">
+				<p class="pull-left active"><span>套利寶轉MT4</span></p>
+				<p class="pull-right"><span>MT4轉套利寶</span></p>
+			</div>-->
+			<div class="sec_1">
+				<ul> 
+			        <li class="clearfix">
+			            <span class="pull-left">提現账户</span>
+			            <span class="pull-right zhanghu"></span>
+			        </li>
+			        <li class="clearfix">
+			        	<span class="pull-left">提現金額</span>
+			            <input class="pull-right" id="jine1" type="number" placeholder="账户最多可转出$"/>
+			        </li>
+			        <li class="clearfix">
+			        	<span class="pull-left">提現銀行卡</span>
+			        	<span class="pull-right yinhangka">暫無銀行卡</span>
+			        </li>
+			    </ul>
+			    <div class="sec_trip">
+			    	<p>申請審核成功后1-3個工作日到賬</p>
+			    </div>
+				<div class="btn_box">
+					<span onclick="commitone()">確認提現</span>
+				</div>
+			</div>
+			
+			<div class="sec_2">
+				<p><i>*</i><span>溫馨提示</span>：您將不能夠轉出多於您的“可用預付款”金額。您交易賬戶中的“可用預付款”金額可被視為您未平倉交易的淨值減去已用預付款。所有的轉賬只能在您個人名下並且擁有的賬戶間進行。 </p>
+			</div>
+		</div>
+
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/md5.min.js" ></script>
+		<script>
+			var isreal = '2';
+			var canuse = 0;
+			
+			function baozhengjin() {
+				//k线首页的持仓状况 计算保证金
+				var current = 0;
+				var cc_count = 0;
+				$.ajax({
+					type: 'GET',
+					url: host+'/jeecg/ryBbbOrderdetailJsonController.do?datagrid&field=id,buserId.account,symbol,openprice,time,closeprice,closetime,lots,type,result,isReal,rorderid,rprice,rstopwin,rstoplost,rtime,remark&buserId.id=' + id + '&result=-1&isReal=1',
+					dataType: 'jsonp',
+					success: function(data) {
+						//console.log(data)
+						if(data['rows'].length != 0) {
+							var data = data['rows'];
+							var s = "";
+							for(var i = 0; i < data.length; i++) {
+								cc_count += parseFloat(data[i]['lots']);
+							}
+						}
+						show_select(cc_count);
+					},
+					error: function(xhr, type) {
+						//alert('Ajax error!111')
+					}
+				})
+				//选择手数
+				function show_select(cc_count) {
+					$.ajax({
+						type: 'GET',
+						url: host+'/jeecg/ryBbbAccountJsonController.do?datagrid&field=nick,id,headurl,time,lastip,lasttime,emaril,inputmoney,outmoney,margin,cardid,customerId.name&id=' + id,
+						dataType: 'jsonp',
+						success: function(data) {
+//							console.log(data)
+							var data = data['rows'][0];
+							current = parseFloat(data['margin']);
+							canuse = current - cc_count * 10000;
+							$('#jine1').attr('placeholder','账户可用金额$'+canuse.toFixed(2));
+//							$('#canuse').text(canuse.toFixed(2));
+//							$('#currentmoney').text(current.toFixed(2));
+//							$('#useing_canuse').text((parseFloat(cc_count * 10000)).toFixed(2))
+						},
+						error: function(xhr, type) {
+							//alert('Ajax error!')
+						}
+					})
+				}
+			};
+			
+			function getUserMessage () {
+				$.ajax({
+						type: 'GET',
+						url: host+'/jeecg/ryBbbAccountJsonController.do?datagrid&field=id,headurl,time,lastip,lasttime,emaril,inputmoney,outmoney,margin,cardid,remark,customerId.name,isreal&id='+ id,
+						dataType: 'jsonp',
+						aynsc: true,
+						success: function(data) {
+//							console.log(data)
+							
+							isreal = data['rows'][0].isreal;
+							
+//							var remark = data['rows'][0].remark;
+							var remark = 6217003210011491798;
+							
+							
+							if (remark == '') return;
+							remark = remark.replace(/\s+/g,"");
+							remark = remark.substr(0,4)+' '+ remark.substr(4,4)+ ' ' +remark.substr(8,4)+ ' '+remark.substr(12,4)+' '+ remark.substr(remark.length-3,3);
+							
+							$('.yinhangka').text(remark)
+							console.log(remark)
+						},
+						error: function(xhr, type) {
+							//alert('Ajax error!')
+						}
+					})
+			}
+			
+			function requestChujin (money) {
+				$.ajax({
+					type: 'GET',
+					url: host+'/jeecg/ryBbbOutJsonController.do?doAdd&accountId.id='+id+'&money=' + money ,
+					dataType: 'jsonp',
+					success: function(data) {
+//						console.log(data)
+						if(data['msg'] == 'out not') {
+							//				  		alert('账户不存在')
+							mui.toast('提交成功，等待審核', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else if(data['msg'] == 'money not') {
+							//				  		alert('非交易时段')
+							mui.toast('金額不足', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else if(data['msg'] == 'fail') {
+							//				  		alert('非法交易手数')
+							mui.toast('系統異常', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else if(data['msg'] == 'success') {
+							//				  		alert('非法交易类型')
+							mui.toast('提交成功，等待審核', {
+								duration: 'long',
+								type: 'div'
+							});
+						} else {
+							mui.toast('系統異常', {
+								duration: 'long',
+								type: 'div'
+							});
+						}
+					},
+					error: function(xhr, type) {
+						//alert('Ajax error!')
+					}
+				})
+			}
+			
+			function commitone() {
+				var money = $('#jine1').val();
+//				console.log(money)
+				if (money == '') {
+					mui.toast('請輸入金額!', {
+						duration: 'short',
+						type: 'div'
+					});
+					return;
+				}
+				if (isreal == '2' ) {
+					if (money < 100) {
+						mui.toast('最低提現金額100!', {
+							duration: 'short',
+							type: 'div'
+						});
+						return;
+					}
+				}
+				if (money > canuse) {
+					mui.toast('提現金額超出可用金额!', {
+						duration: 'short',
+						type: 'div'
+					});
+					return;
+				}
+				if ($('.yinhangka').text() == '暫無銀行卡') {
+					mui.toast('暫無銀行卡，請聯繫客服!', {
+						duration: 'short',
+						type: 'div'
+					});
+					return;
+				}
+				
+				mui.prompt('請輸入密碼','','',['確定','取消'],function(e) { 
+					if(e.index == 0) {
+						var pass = document.querySelector('.mui-popup-input input').value;
+						loginAccount(pass,money);
+					}
+				},'div');
+				document.querySelector('.mui-popup-input input').type='password';
+				document.querySelector('.mui-popup-button-bold').style.fontWeight="normal";
+				
+			};
+			
+			function loginAccount(pass,money) {
+				var username = account;
+				var userpass = pass;
+				var token = md5('account='+username);
+				
+				$.get(host+'/jeecg/ryBbbAccountJsonController.do?login&account='+username+'&password='+userpass+'&token='+token,function (data,status,xhr) {
+					
+//					console.log(data)
+					if (data['msg'] == 'success') {
+						requestChujin (money);
+					}else {
+						mui.toast('密碼錯誤', {
+							duration: 'short',
+							type: 'div'
+						});
+						return;
+					}
+					
+				},'jsonp')
+			}
+			
+			$('.sec_tab p').click(function () {
+				var _index = $(this).index();
+					
+				if (_index == 0) {
+					$('.sec_3').fadeIn()
+					$('.sec_4').hide()
+				}else {
+					$('.sec_4').fadeIn()
+					$('.sec_3').hide()
+				}
+					
+				$(this).addClass('active').siblings().removeClass('active');
+			});
+			
+			$(function () {
+				if (id) {
+					getUserMessage ();//獲取銀行卡號
+				    baozhengjin ();//計算可轉提現額
+				}
+				$('.zhanghu').text(account);
+				
+			});
+		</script>
+		
+	</body>
+
+</html>

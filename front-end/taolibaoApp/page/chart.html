@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>交易</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no, email=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="套利宝SE">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+		<link rel="stylesheet" href="../css/mui.min.css"/>
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="./chart/chart.css" />
+		<script type="text/javascript" src="../js/flexible.js"></script>
+		
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+			<h1 class="mui-title">交易</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="mui-slider">
+			  <div class="mui-slider-group">
+			  	<!--第二个内容区-->
+			    <div class="mui-slider-item">
+			       	<div class="sec_1 item2">
+			       		<div class="item2_btn">
+			       			<button id="dateShowBtn"><span id="btn_text">全部</span> <i class="mui-icon mui-icon-arrowdown"></i></button>
+			       			<input type="text" id="dateSelectorTwo" style="display: none;">
+			       		</div>
+			       		<div id="line_main" style="height: 172px;">
+			       			
+			       		</div>
+			       	</div>
+			    </div>
+			    <!--第一个内容区容器-->
+			    <div class="mui-slider-item mui-active">
+			      	<div class="sec_1 item1">
+						<p>總收益</p>
+						<h3 class="ziti">USD<span id="shouyi" class="ziti">00.00</span></h3>
+						<!--<p>暫無收益！</p>-->
+						<div class="clearfix sec_shuju">
+							<div class="pull-left">
+								<p class="ziti">賬戶餘額</p>
+								<span class="ziti" id="currentmoney">00.00</span>
+							</div>
+							<div class="pull-left">
+								<p class="ziti">已用保證金</p>
+								<span class="ziti" id="useing_canuse">00.00</span>
+							</div>
+							<div class="pull-left">
+								<p class="ziti">可用保證金</p>
+								<span class="ziti" id="canuse">00.00</span>
+							</div>
+						</div>
+					</div>
+			    </div>
+			    
+			    <!--第三个内容区-->
+			    <div class="mui-slider-item">
+			       	<div class="sec_1 item3">
+			       		<div id="pie_main" style="height: 172px;">
+			       			
+			       		</div>
+			       	</div>
+			    </div>
+			    
+			  </div>
+			</div>
+			<!--轮播指示点-->
+			<div class="slider_dot">
+				<span></span>
+				<span class="active"></span>
+				<span></span>
+			</div>
+			<div class="sec_2">
+				<div class="sec2_title">
+					<span class="show_popover">市場執行</span>
+					<i class="mui-icon mui-icon-arrowdown"></i>
+					<span id="btn_sym" class="show_popover">歐元兌美元</span>
+					<div id="_popover" class="_mui_popover">
+						<ul>
+					    	<li id="cell_eurusd"><span>EURUSD</span></li>
+					    	<li id="cell_xauusd"><span>XAUUSD</span></li>
+					    </ul>
+					</div>
+				</div>
+				
+				<div class="around price_box">
+					<span class="ziti" id="sellprice">--</span>
+					<div class="img_box">
+						<img src="../img/t_1_02.png" alt="" />
+					</div>
+					<span class="ziti" id="buyprice">--</span>
+				</div>
+				<div class="bet btn_box">
+					<div class="commit" id="sell_btn">
+						<img src="../img/t_1_03.png" alt="" />
+						<span>賣出</span>
+						<span class="sanjiao down"></span>
+					</div>
+					<div class="commit" id="buy_btn">
+						<img src="../img/t_1_04.png" alt="" />
+						<span>買入</span>
+						<span class="sanjiao"></span>
+					</div>
+				</div>
+			</div>
+			<div class="sec_3">
+				<div class="titling">
+					<img src="../img/t_1_11.png" />
+					<span>持倉信息</span>
+				</div>
+				<ul class="listbody">
+					
+				</ul>
+				<!--加载动画-->
+				<div id="loading1">
+			        <div class="demo1"></div>
+			        <div class="demo1"></div>
+			        <div class="demo1"></div>
+			        <div class="demo1"></div>
+			        <div class="demo1"></div>
+			    </div>
+				<div class="trip">
+					<!--<p>暫無持倉</p>-->
+					<img src="../img/t_1_12.png" />
+				</div>
+			</div>
+		</div>
+		
+		<!--下单弹窗-->
+		<div class="weui-mask" id="trade_box">
+			<div class="weui-dialog">
+				<h4 id="sym_text">歐元兌美元</h4>
+				<input type="number" name="" id="lot_input" value="0.1" placeholder="请输入手数，最小值为0.1" oninput="if(value.length>3){value=value.slice(0,3)}"/>
+				<div class="use_box">
+					<span>常用：</span>
+					<button onclick="setLots(0.1)">0.1</button>
+					<button onclick="setLots(0.5)">0.5</button>
+					<button onclick="setLots(1)">1</button>
+					<button onclick="setLots(5)">5</button>
+				</div>
+				<div class="dialog_btn_box">
+					<button id="cancel_btn">取消</button>
+					<button class="comit_btn" id="commit_btn">確定</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<ul class="around">
+				<li>
+					<a href="../index.html">
+						<img src="../img/tab_02.png" />
+						<p>圖表</p>
+					</a>
+				</li>
+				<li class="active">
+					<a href="./chart.html">
+						<img src="../img/tab_11.png" />
+						<p>交易</p>
+					</a>
+				</li>
+				<li>
+					<a href="./record.html">
+						<img src="../img/tab_03.png" />
+						<p>歷史</p>
+					</a>
+				</li>
+				<li>
+					<a href="./mine.html">
+						<img src="../img/tab_04.png" />
+						<p>我的</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="Mdate/iScroll.js"></script>
+		<script type="text/javascript" src="Mdate/Mdate2.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="./chart/echarts.common.min.js" ></script>
+		<script type="text/javascript" src="./chart/trade_chart.js"></script>
+		<script type="text/javascript" src="./chart/chart.js"></script>
+	</body>
+
+</html>

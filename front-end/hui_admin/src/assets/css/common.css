@@ -1,0 +1,213 @@
+@charset "UTF-8";
+/*css 初始化 */
+	html,body,ul,li,ol,	dl,	dd,	dt,	p,h1,h2,h3,	h4,	h5,	h6,img,span {
+		margin: 0;
+		padding: 0;
+		font-family: "微软雅黑";
+	}
+	
+	fieldset,
+	img,
+	input,
+	button {
+		border: none;
+		padding: 0;
+		margin: 0;
+		outline-style: none;
+	}
+	
+	ul,
+	ol {
+		list-style: none;
+	}
+	
+	input {
+		padding: 0;
+		margin: 0;
+		font-family: "微软雅黑";
+	}
+	
+	select,
+	input {
+		vertical-align: middle;
+	}
+	
+	select,
+	input,
+	textarea {
+		font-size: 12px;
+		margin: 0;
+	}
+	
+	textarea {
+		resize: none;
+		outline: none;
+	}
+	
+	img {
+		border: 0;
+		vertical-align: middle;
+	}
+	
+	body {
+		font-family: "微软雅黑";
+		color: #666;
+		background-color: #ececec;
+	}
+	
+	i,
+	em,
+	b {
+		font-weight: normal;
+		font-style: normal;
+	}
+	
+	label {
+		font-style: normal;
+		font-weight: normal;
+		margin: 0;
+		padding: 0;
+	}
+	
+	a {
+		color: #685c56;
+		text-decoration: none;
+	}
+	
+	a:visited {
+		color: #685c56;
+		text-decoration: none;
+	}
+	
+	a:hover {
+		color: #685c56;
+		text-decoration: none;
+	}
+	
+	a:active {
+		color: #685c56;
+		text-decoration: none;
+	}
+	input, button, select, textarea {
+		outline: none;
+		/*-webkit-appearance: none;*/
+		border-radius: 0;
+	}
+	button {
+		cursor: pointer;
+	}
+	.pointer {
+		cursor: pointer;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	
+	.pr0 {
+		padding-right: 0;
+	}
+	
+	.uppercase {
+		text-transform: uppercase;
+	}
+	
+	.img_box img {
+		width: 100%;
+	}
+	
+	@media only screen and (max-width: 640px) {
+		.xs_hide {
+			display: none;
+		}
+	}
+	
+	
+	/*饿了吗分页*/
+	.el-pagination.is-background .btn-next,
+	.el-pagination.is-background .btn-prev,
+	.el-pagination.is-background .el-pager li {
+		color: #fff !important;
+		border-radius: 0 !important;
+		background-color: #4493f4 !important;
+	}
+	
+	.el-pagination.is-background .el-pager li:not(.disabled).active {
+		background-color: #fff !important;
+		color: #4493f4 !important;
+	}
+	
+	.el-pagination {
+		margin: 0 -20px;
+		background-color: #fff;
+		text-align: right;
+		padding-top: 20px !important;
+	}
+	/*分页end*/
+	
+	.headlist span {
+		font-size: 14px;
+		color: #fff;
+		text-align: center;
+	}
+	
+	.top_content p,
+	.top_content span {
+		color: #fff;
+	}
+	
+.myback {
+	background: -webkit-linear-gradient(left, #e3132b, #f2825b);
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #e3132b, #f2825b);
+	/* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #e3132b, #f2825b);
+	/* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #e3132b, #f2825b);
+	/* 标准的语法（必须放在最后） */
+}
+.myback2 {
+	background: -webkit-linear-gradient(top, #e3132b, #f2825b);
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(bottom, #e3132b, #f2825b);
+	/* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(bottom, #e3132b, #f2825b);
+	/* Firefox 3.6 - 15 */
+	background: linear-gradient(to bottom, #e3132b, #f2825b);
+	/* 标准的语法（必须放在最后） */
+}
+
+.loginback {
+	background-image: url("http://cat58.com/hui/img/login.png");
+}
+
+
+.uplond_box {
+	width: 250px;
+	min-height: 100px;
+	line-height: 130px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	text-align: center;
+	overflow: hidden;
+	cursor: pointer;
+}
+.uplond_box img.main_img {
+	width: 100%;
+}
+
+.uplond_box .icon_box {
+	line-height: 100px;
+}
+
+.uplond_box .icon_box img {
+	width: 30px;
+	height: 30px;
+}
+
+.uplond_box .img_box img {
+	width: 100%;
+	height: auto;
+}

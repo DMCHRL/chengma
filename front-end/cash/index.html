@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Gmax-在线支付</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	<body>
+		<header class="head_section">
+			<div class="container-fluid">
+				<div class="clearfix">
+					<div class="pull-left back_btn">
+						<a href="javascript :history.back(-1)"><</a>
+					</div>
+					<div class="pull-left headname">
+						<img src="img/gmax.png"/>
+						<span>在线支付</span>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="main_section">
+			<div class="sec_box sec_1">
+				<div class="container">
+					<p class="titling">银联支付 &nbsp;&nbsp;&nbsp;<img src="img/timg.jpg"/></p>
+					<div class="con_box">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="item_box clearfix">
+									<span class="pull-left">充值账户</span>
+									<input class="pull-left" type="text" name="" id="zhanghu" value="" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="item_box clearfix">
+									<span class="pull-left">账户名称</span>
+									<input class="pull-left" type="text" name="" id="username" value="" />
+								</div>
+							</div>
+							
+						</div>
+						<div class="row">
+							
+							<div class="col-md-6">
+								<div class="item_box clearfix">
+									<span class="pull-left">支付方式</span>
+									<select name="pay_way" onchange="payChange($(this))">
+										<option value="fastPay">快捷支付</option>
+						            	<option value="gatewayPay">网关支付</option>
+						           </select>
+								</div>
+								
+							</div>
+						</div>
+						<div class="row wangguan">
+							<div class="col-md-6">
+								<div class="item_box clearfix">
+									<span class="pull-left">银行卡号</span>
+									<input type="number" name="" id="cardnum" value="" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="item_box clearfix">
+									<span class="pull-left">开户行</span>
+									<select name="bank_id">
+						            	<option value="104100000004">中国银行</option>
+						            	<option value="102100099996">工商银行</option>
+						            	<option value="309391000011">兴业银行</option>
+						            	<option value="301290000007">交通银行</option>
+						            	<option value="302100011000">中信银行</option>
+						            	<option value="310290000013">浦发银行</option>
+						            	<option value="306581000003">广发银行</option>
+						            	<option value="325290000012">上海银行</option>
+						            	<option value="307584007998">平安银行</option>
+						           </select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="item_box clearfix">
+									<span class="pull-left">充值金额（美金）</span>
+									<input type="number" name="" id="jineUSD" value="" oninput="changeMoney(value)" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="item_box clearfix">
+									<span class="pull-left">实际充值（人民币）</span>
+									<input type="number" name="" id="amount" value="" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="comit_btn">
+						<button onclick="confirmPayment($(this))" id="confirm_btn">确认支付</button>
+						<button onclick="checkOrder()" id="check_btn" style="display: none;">支付完成请点击</button>
+					</div>
+				</div>
+			</div>
+			<div class="sec_box sec_2">
+				<div class="container">
+					<p class="titling">扫码支付&nbsp;&nbsp;<img src="img/ru_01.png"/> <img src="img/ru_02.png"/></p>
+					<div class="con_box">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="item_box clearfix">
+									<span class="pull-left">充值账户</span>
+									<input class="pull-left" type="text" name="" id="zhanghu1" value="" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="item_box clearfix">
+									<span class="pull-left">账户名称</span>
+									<input type="text" name="" id="username1" value="" />
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="item_box clearfix">
+									<span class="pull-left">充值金额（美金）</span>
+									<input type="number" name="" id="" value="" oninput="changeMoney1(value)"/>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="item_box clearfix">
+									<span class="pull-left">实际充值（人民币）</span>
+									<input type="number" name="" id="amount1" value="" />
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="code_box">
+									<img src="img/qr.png"/>
+									<p>支付宝/微信通用二维码</p>
+									<span>支付充值完成联系客服QQ:2352406183</span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="sec_3">
+										<h4>充值说明</h4>
+										<p>預計自充值起3個工作日內到賬。 </p>
+										<p>充值完成自動將人民幣轉換成美金充值到賬戶內。 </p>
+										<p>支付寶或微信必須是賬戶本人。 </p>
+										<p>掃碼支付方式為長按保存二維碼，在微信或支付寶內掃一掃即可支付，完成後點擊【充值完成】</p>
+										<p>如需要協助，請撥打我們客服熱線4008393522或在線客服 QQ:2352406183。 </p>
+										<p>您也可以選擇使用Gmax（http://office.gmaxhk.cn/cash）進行賬號充值。 </p>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--<div class="comit_btn">
+						<button>完成点击</button>
+					</div>-->
+				</div>
+			</div>
+			
+		</div>
+		
+		<footer class="foot_section">
+			<p>©2019 Gmax</p>
+		</footer>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/until.js" ></script>
+		<script type="text/javascript">
+			var mchOrderNo = '';
+			var orderid = '';
+			
+			var cNum = 1;
+			var timer = '';
+			
+			function payChange (el) {
+//				console.log(el.val());
+				var value = el.val();
+				if (value == "gatewayPay") {
+					$(".wangguan").hide();
+				}else {
+					$(".wangguan").show();
+				}
+			}
+			
+			function checkOrder () {//查询订单
+				$("#check_btn").attr("disabled","disabled");
+				$("#check_btn").text("查询中...("+cNum+")");
+				
+				cNum = cNum + 1;
+				
+				var datas = {
+					"payOrderId": orderid,
+					"mchOrderNo": mchOrderNo
+//					"payOrderId": "P01201806261150064790007",
+//					"mchOrderNo": "1529985006351"
+				}
+//				console.log(datas)
+				superPost("/devbase/api/xxpay/queryOrder",datas, function (res) {
+					
+					console.log(res)
+//					return;
+					if (res.data.retCode == 'SUCCESS' && res.data.status != "1") {
+						clearTimeout(timer);
+						window.location.href = "success.html";
+					}else {
+						if (cNum < 4) {
+							timer = setTimeout("checkOrder()",20000);
+						}else {
+							window.location.href = "failure.html";
+						}
+						
+					}
+				})
+			}
+			
+			function sendCode (smscode) {//确认支付，发送验证码
+				
+				var datas = {
+					"payOrderId": orderid, 
+					"smscode": smscode
+				}
+				//console.log(datas)
+				superPost("/devbase/api/xxpay/pay_confirm",datas, function (res) {
+//					console.log(res)
+					if (res.data.code == '0000') {
+						setTimeout(function () {
+							checkOrder();
+						},2000)
+//						mui.toast(res.data.msg, {
+//							duration: 'long',
+//							type: 'div'
+//						});
+					}else {
+						alert(res.data.msg)
+					}
+				})
+				
+			}
+			
+			function confirmPayment (el) {
+				
+				var amount = Number($('#amount').val())*100;//人民币
+				var cardnum = $('#cardnum').val();//卡号
+				var usd = $('#jineUSD').val();//美元
+				var bankId = $("select[name = 'bank_id']").val();//开户行
+				var pay_way = $("select[name = 'pay_way']").val();//支付方法
+				
+				var account = $('#zhanghu').val();//账户号
+				
+				if (account == "") {
+					alert("请输入账户号");
+					return;
+				}
+				if (pay_way == "fastPay") {
+					if (cardnum == "") {
+						alert("请输入银行卡号");
+						return;
+					}
+				}
+				if (amount == 0) {
+					alert("请输入金额");
+					return;
+				}
+				
+				el.attr('disabled','true');
+				el.text('支付中...');
+				
+				var datas = {
+					"amount": amount, 
+					"payType": pay_way, 
+					"body": userName+" , "+usd+" , "+account,
+					"currency": "cny",
+					"banksn": cardnum, 
+					"bankId": bankId
+				}
+				
+				superPost("/devbase/api/xxpay/createOrder",datas, function (res) {
+//					console.log(res)
+//					return;
+					if (res.data.retCode == "SUCCESS") {
+						
+						mchOrderNo = res.data.mchOrderNo;
+						orderid = res.data.payOrderId;
+						
+						if (pay_way == "gatewayPay") {
+							$("#check_btn").show();
+							$("#confirm_btn").hide();
+							window.open(res.data.payUrl);
+//							setTimeout(function () {
+//								var r=confirm("支付成功？");//window.confirm("Press a button");  
+//								if (r==true) {  
+//								  alert("You pressed OK!");
+//								}
+//							},2000)
+							
+						}else {
+							if (res.data.code == '0000') {
+								
+								var prompt_name=prompt("请输入验证码","");
+							    if (prompt_name!=null && prompt_name!="") {
+							        sendCode(prompt_name);
+							    }
+							}else {
+								alert(res.data.msg)
+								el.removeAttr('disabled');
+								el.text('确认支付');
+								$("#check_btn").hide();
+								return;
+							}
+						}
+						
+					}else {
+						alert(res.data.msg)
+						return;
+					}
+					
+				})
+				
+			}
+			
+			var rmb = 0;//人民币金额
+			var rate = 0;//美元兑人民币汇率
+			function changeMoney (mon) {
+				
+				rmb = (parseFloat(mon)*parseFloat(rate)).toFixed(2);
+				
+				$('#amount').val(rmb)
+			};
+			function changeMoney1 (mon) {
+				
+				rmb = (parseFloat(mon)*parseFloat(rate)).toFixed(2);
+				
+				$('#amount1').val(rmb)
+			};
+			
+			function getHuiLv () {
+				
+				$.ajax({
+					type:"get",
+					url: host+"/devbase/api/tlb-rate/realTimeRate",
+//					headers:"Access-Control-Allow-Origin",
+					success: function (res) {
+						if (res.statusCode == "0000") {
+							data = JSON.parse(res.data);
+//							console.log(data)
+							let result = parseFloat(data.result[0].result);
+							rate = result*0.02 + result;
+						}
+					}
+				});
+			}
+			$(function () {
+				
+				getHuiLv();
+				
+				if (userAccount) {
+					$('#zhanghu').val(userAccount)
+					$('#zhanghu1').val(userAccount)
+				}
+				if (userName) {
+					$("#username").val(userName)
+					$("#username1").val(userName)
+				}
+			})
+			
+		</script>
+	</body>
+</html>

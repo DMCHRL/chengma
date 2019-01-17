@@ -1,0 +1,181 @@
+@charset "UTF-8";
+/*css 初始化 */
+	html,
+	body,
+	ul,
+	li,
+	ol,
+	dl,
+	dd,
+	dt,
+	p,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	form,
+	fieldset,
+	legend,
+	img,
+	span {
+		margin: 0;
+		padding: 0;
+		font-family: "微软雅黑";
+	}
+	
+	fieldset,
+	img,
+	input,
+	button {
+		border: none;
+		padding: 0;
+		margin: 0;
+		outline-style: none;
+	}
+	
+	ul,
+	ol {
+		list-style: none;
+	}
+	
+	input {
+		padding: 0;
+		margin: 0;
+		font-family: "微软雅黑";
+	}
+	
+	select,
+	input {
+		vertical-align: middle;
+	}
+	
+	select,
+	input,
+	textarea {
+		font-size: 12px;
+		margin: 0;
+	}
+	
+	textarea {
+		resize: none;
+		outline: none;
+	}
+	
+	img {
+		border: 0;
+		vertical-align: middle;
+	}
+	html {
+        height: 100%;
+    }
+	body {
+		font-family: "微软雅黑";
+		color: #666;
+		background-color: #ececec;
+        height: 100%;
+	}
+	
+	i,
+	em,
+	b {
+		font-weight: normal;
+		font-style: normal;
+	}
+	
+	label {
+		font-style: normal;
+		font-weight: normal;
+		margin: 0;
+		padding: 0;
+	}
+	
+	a {
+		color: #685c56;
+		text-decoration: none;
+	}
+	
+	a:visited {
+		color: #685c56;
+		text-decoration: none;
+	}
+	
+	a:hover {
+		color: #685c56;
+		text-decoration: none;
+	}
+	
+	a:active {
+		color: #685c56;
+		text-decoration: none;
+	}
+	input, button, select, textarea {
+		outline: none;
+		/*-webkit-appearance: none;*/
+		border-radius: 0;
+	}
+	button {
+		cursor: pointer;
+	}
+	.pointer {
+		cursor: pointer;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	
+	.pr0 {
+		padding-right: 0;
+	}
+	
+	.uppercase {
+		text-transform: uppercase;
+	}
+	
+	.img_box img {
+		width: 100%;
+	}
+	
+	@media only screen and (max-width: 640px) {
+		.xs_hide {
+			display: none;
+		}
+	}
+	
+	
+	/*饿了吗分页*/
+	.el-pagination.is-background .btn-next,
+	.el-pagination.is-background .btn-prev,
+	.el-pagination.is-background .el-pager li {
+		color: #fff !important;
+		border-radius: 0 !important;
+		background-color: #085ba0 !important;
+	}
+	
+	.el-pagination.is-background .el-pager li:not(.disabled).active {
+		background-color: #fff !important;
+		color: #085ba0 !important;
+	}
+	
+	.el-pagination {
+		margin: 0 -20px;
+		background-color: #fff;
+		text-align: right;
+		padding-top: 20px !important;
+	}
+	/*分页end*/
+	
+	.headlist span {
+		font-size: 14px;
+		color: #fff;
+		text-align: center;
+	}
+	
+	.top_content p,
+	.top_content span {
+		color: #fff;
+	}

@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>登錄账户</title>
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no, email=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="套利宝SE">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/flexible.js"></script>
+		<link rel="stylesheet" href="../css/BindingAccount.css" />
+		
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">登錄</h1>
+		</header>
+
+		<div class="mui-content">
+			
+			<div class="sec_1">
+				<div class="logo_box clearfix">
+					<div class="img_box pull-left">
+						<img src="../img/account_1.png"/>
+					</div>
+					<div class="pull-left">
+						<p>Txas-Live</p>
+						<p>TianxiangIntICompany</p>
+					</div>
+				</div>
+				<ul> 
+			        <li class="clearfix">
+			            <span class="pull-left">交易账户</span>
+			            <input class="pull-right" id="accountNum" type="number" placeholder="請輸入賬戶號" />
+			        </li>
+			        <li class="clearfix">
+			        	<span class="pull-left">賬戶密碼</span>
+			            <input class="pull-right" id="accountPass" type="password" placeholder="請輸入賬戶密碼"/>
+			        </li>
+			        <li class="clearfix">
+			        	<span class="pull-left">保存密碼</span>
+			            <div class="right_box pull-right">
+			            	<div id="mySwitch" class="mui-switch mui-switch-mini mui-switch-blue mui-active">
+							  <div class="mui-switch-handle"></div>
+							</div>
+			            </div>
+			        </li>
+			   </ul>
+				<div class="btn_box">
+					<button id="bind_btn">登錄</button>
+				</div>
+			</div>
+		</div>
+
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/md5.min.js" ></script>
+		<script>
+			
+			var userObj = getUser();
+			
+			var isActive = true;
+			
+			document.getElementById("mySwitch").addEventListener("toggle",function(event){
+			  if(event.detail.isActive){
+			    isActive = true;
+			  }else{
+			    isActive = false;
+			  }
+			})
+			
+			function savePassword () {
+				var accNum = $('#accountNum').val();
+				var accPass = $('#accountPass').val();
+				
+				localStorage.setItem('bind_acc',accNum)
+				localStorage.setItem('bind_pass',accPass)
+			}
+			
+			function getPassword () {
+				var accNum = localStorage.getItem('bind_acc');
+				var accPass = localStorage.getItem('bind_pass');
+				
+				if (accNum) {
+					$('#accountNum').val(accNum);
+				}
+				if (accPass) {
+					$('#accountPass').val(accPass);
+				}
+				
+			}
+			
+			$("#bind_btn").click(function () {
+				var bind_btn = $(this);
+				
+				var accNum = $('#accountNum').val();
+				var accPass = $('#accountPass').val();
+				
+				if (accNum == '') {
+					mui.toast('請輸入賬戶號', {
+						duration: 'short',
+						type: 'div'
+					});
+					return;
+				}
+				if (accPass == '') {
+					mui.toast('請輸入賬戶密码', {
+						duration: 'short',
+						type: 'div'
+					});
+					return;
+				}
+				bind_btn.attr('disabled','true');//不可点
+				var datas = {
+					"account": accNum,
+					"accountPassword": accPass,
+					"userId": userObj.id
+				}
+				superPost("/api/tlb-account-control/setTlbAccountControl",datas,function (res) {
+//					console.log(res)
+					bind_btn.removeAttr('disabled');//可点
+					
+					if (res.statusCode == "0000") {
+						mui.toast('登錄成功', {
+							duration: 'short',
+							type: 'div'
+						});
+						
+						if (isActive) {
+							savePassword();
+						}
+						
+						localStorage.setItem('accStr',JSON.stringify(res.data))
+						setLocalList(res.data)
+						
+						setTimeout(function () {
+				  			window.location.href = "./mine.html";
+				  		},500)
+						
+					}else {
+						mui.toast(res.msgCode, {
+							duration: 'short',
+							type: 'div'
+						});
+						return;
+					}
+				})
+			})
+			
+			$(function () {
+				getPassword()
+			});
+		</script>
+		
+	</body>
+
+</html>

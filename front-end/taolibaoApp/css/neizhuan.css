@@ -1,0 +1,78 @@
+.sec_tab {
+	background-color: #fff;
+	margin-bottom: 0.16rem;
+}
+.sec_tab p{
+	width: 50%;
+	text-align: center;
+}
+.sec_tab p span {
+	display: inline-block;
+	line-height: 1rem;
+	font-size: 0.3933rem;
+	color: #666;
+	border-bottom: 2px solid #fff;
+}
+.sec_tab p.active span{
+	color: #3269ff;
+	border-bottom: 2px solid #3269ff;
+}
+.sec_1 {
+	background-color: #fff;
+	margin-bottom: 0.2rem;
+}
+.inputjin {
+	padding: 0.4rem 1rem;
+	border-bottom: 1px solid #ededed;
+	border-top: 1px solid #ededed;
+}
+.inputjin input {
+	margin: 0;
+	width: 60%;
+	border: 0;
+}
+.mui-table-view-cell>a:not(.mui-btn){
+	padding: 0.4rem 0.4666rem;
+}
+.mui-table-view-cell.mui-collapse .mui-collapse-content{
+	padding: 22px 52px;
+}
+.mui-table-view-cell:after {
+	content: none;
+}
+.mui-navigate-right span {
+	font-size: 0.32rem;
+	color: #666;
+	margin-right: 0.4rem;
+}
+.btn_box {
+	padding-top: 2.2666rem ;
+	padding-bottom: 0.6rem;
+	text-align: center;
+}
+.btn_box span {
+	display: inline-block;
+	line-height: 0.88rem;
+	width: 80%;
+	font-size: 0.4rem;
+	color: #fff;
+	background-color: #3269ff;
+}
+
+.sec_2 {
+	background-color: #fff;
+	padding: 0.2666rem;
+}
+.sec_2 p {
+	color: #acabab;
+	font-size: 0.2933rem;
+}
+.sec_2 i {
+	color: #ff0000;
+}
+.sec_2 span {
+	color: #666666;
+}
+.sec_4 {
+	display: none;
+}

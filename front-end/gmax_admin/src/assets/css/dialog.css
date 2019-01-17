@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+/*弹窗*/
+
+.dialog_title {
+	text-align: center;
+	font-size: 22px;
+	color: #6562b6;
+	margin-bottom: 20px;
+	/* margin-top: -20px; */
+}
+
+.dialog_box .input_box {
+	margin-bottom: 10px;
+}
+
+.dialog_box .input_box span {
+	display: inline-block;
+	width: 30%;
+	text-align: right;
+	padding-right: 10px;
+	color: #000;
+}
+
+.dialog_box .input_box span.import:before {
+	content: '*  ';
+	color: #F14B3B;
+}
+
+.dialog_box .input_box input,
+.dialog_box .input_box select {
+	border: 1px solid #ccc;
+	width: 50%;
+	padding: 5px 10px;
+	border-radius: 5px;
+	height: 30px;
+}
+
+.dialog_box .input_box p {
+	cursor: pointer;
+	text-align: center;
+	font-size: 14px;
+	color: #F14B3B;
+}
+
+.dialog_footer {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.dialog_footer button {
+	font-size: 16px;
+	background-color: #6562b6;
+	border-radius: 20px;
+	padding: 3px 30px;
+	color: #fff;
+}
+
+.dialog_box .input_box div input,
+.dialog_box .input_box div textarea{
+	width: 250px;
+}
+.dialog_box .input_box div textarea{
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	border-radius: 5px;
+	overflow-y: overlay;
+	height: 150px;
+}
+
+/*弹窗end*/

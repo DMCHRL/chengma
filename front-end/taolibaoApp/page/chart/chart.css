@@ -1,0 +1,355 @@
+.sec_1 {
+	position: relative;
+	background-color: #fff;
+	margin: 0.3466rem;
+	text-align: center;
+	border-radius: 0.15rem;
+	overflow: hidden;
+	margin-bottom: 0.2rem;
+}
+.sec_1.item1 {
+	background-image: url(../../img/t_1_01.png);
+	background-size: 100% 100%;
+	box-shadow: 1px 3px 3px 2px #7d9ad1;
+	height: 180px;
+}
+.sec_1.item2,
+.sec_1.item3 {
+	box-sizing: border-box;
+	padding: 4px;
+	box-shadow: 1px 3px 3px 2px #d1d1d1;
+}
+
+.item2_btn {
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	z-index: 99;
+}
+.item2_btn button {
+	font-size: 0.24rem;
+	color: #666;
+	background-color: #e4edf6;
+	border-radius: 0.2rem;
+	padding: 0.08rem 0;
+	width: 2rem;
+	text-align: center;
+}
+.item2_btn .mui-icon {
+	font-size: 14px;
+}
+
+.sec_1 h3 {
+	color: #fff;
+	font-size: 0.6666rem;
+	padding-bottom: 0.8266rem;
+}
+.sec_1 h3 span {
+	margin-left: 0.2666rem;
+}
+.sec_1>p {
+	font-size: 0.48rem;
+	color: #fff;
+	padding: 0.4rem 0;
+}
+.sec_1 .sec_shuju {
+	background-color: rgba(0,0,0,.1);
+	padding-top: 0.24rem;
+	padding-bottom: 0.24rem;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.sec_1 .pull-left {
+	width: 33.33%;
+	text-align: center;
+	padding-left: 0.2666rem;
+	border-left: 1px solid #fff;
+}
+.sec_1 .pull-left:first-of-type {
+	border: 0;
+}
+.sec_1 .pull-left p {
+	color: #fefefe;
+	font-size: 0.293rem;
+	margin-bottom: 0.2rem;
+}
+
+.sec_1 .pull-left span {
+	font-size: 0.5333rem;
+	color: #fff;
+}
+
+.slider_dot {
+	text-align: center;
+}
+.slider_dot span {
+	display: inline-block;
+	width: 0.2666rem;
+	height: 0.2666rem;
+	background-color: #fff;
+	border-radius: 0.133rem;
+	margin: 0 0.05rem;
+}
+.slider_dot span.active {
+	width: 0.5rem;
+	background-color: #007AFF;
+}
+
+
+.sec_2 {
+	margin-bottom: 0.2666rem;
+	background-color: #fff;
+	text-align: center;
+}
+.sec_2 .sec2_title {
+	text-align: center;
+	position: relative;
+	padding: 0.3666rem 0;
+}
+
+.sec_2 .sec2_title span {
+	font-size: 0.4rem;
+	color: #606060;
+	padding-top: 0.2266rem;
+	padding-bottom: 0.6rem;
+}
+.sec_2 .sec2_title i {
+	font-size: 0.4rem;
+}
+.sec_2 .img_box img {
+	width: 0.4533rem;
+	height: 0.4rem;
+}
+.sec_2 .price_box {
+	padding-bottom: 0.4rem;
+}
+.sec_2 .price_box span {
+	font-size: 0.6733rem;
+	color: #f45940;
+	width: 40%;
+}
+.sec_2 .price_box span:last-of-type {
+	color: #3269ff;
+}
+.sec_2 .btn_box .commit {
+	background-color: #f45940;
+	width: 49.7%;
+	height: 1.0666rem;
+}
+.sec_2 .btn_box .commit:last-of-type {
+	background-color: #3269ff;
+}
+.sec_2 .btn_box .commit span:first-of-type{
+	font-size: 0.4266rem;
+	color: #fff;
+	line-height: 1.0666rem;
+	padding: 0 0.1333rem;
+}
+.sec_2 .btn_box .commit img{
+	width: 0.4666rem;
+	height: 0.4666rem;
+	position: relative;
+	bottom: 0.08rem;
+}
+
+.sec_3 {
+	background-color: #fff;
+}
+
+.sec_3 .titling {
+	padding: 0.293rem;
+	border-bottom: 0.013rem solid #ededed;
+}
+
+.sec_3 .titling img {
+	width: 0.4rem;
+	height: 0.36rem;
+	margin-right: 0.2rem;
+}
+
+.sec_3 .titling span {
+	font-size: 0.3733rem;
+	color: #333;
+}
+
+.sec_3 .listhead {
+	padding: 0.24rem 0;
+	border-bottom: 0.013rem solid #ededed;
+}
+
+.sec_3 .listhead span {
+	font-size: 0.32rem;
+	color: #a7a7a7;
+	text-align: center;
+	width: 20%;
+}
+
+.sec_3 .listhead span:nth-child(3) {
+	text-align: right;
+	padding-left: 0.2666rem;
+}
+
+.sec_3 .listhead span:last-of-type {
+	text-align: right;
+	padding-right: 0.2666rem;
+}
+
+.sec_3 .listbody li {
+	border-bottom: 0.013rem solid #ededed;
+}
+.sec_3 .listbody li:nth-last-child(2n){
+	background-color: #f8f8f8;
+}
+.sec_3 .listbody ._top_box {
+	padding: 0.24rem 0.4rem;
+}
+.sec_3 .listbody ._top_box img {
+	width: 0.6333rem;
+	height: 0.6333rem;
+	margin-right: 0.1866rem;
+}
+.sec_3 .listbody ._top_box>span {
+	font-size: 0.5rem;
+	color: #f45940;
+	text-transform: lowercase;
+}
+
+.sec_3 .listbody ._top_box.buy>span {
+	color: #3269ff;
+}
+.sec_3 .listbody ._top_box>span.symbol{
+	color: #606060;
+	margin-right: 0.8666rem;
+	font-size: 0.4rem;
+	/*font-weight: bold;*/
+	text-transform: uppercase;
+	/*margin-top: 0.04rem;*/
+}
+
+.sec_3 .listbody .down_box {
+	padding: 0.2rem;
+	display: none;
+	/*background-color: #F3F3F3;*/
+	/*border-bottom: 0.013rem solid #ededed;*/
+}
+
+.sec_3 .listbody .down_box p {
+	font-size: 0.32rem;
+	color: #bababa;
+}
+
+.sec_3 .listbody .down_box p>span {
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	box-sizing: border-box;
+	padding: 0 0.22rem;
+	width: 41%;
+}
+
+.sec_3 .listbody .down_box p>span:nth-child(1) {
+	width: 59%;
+	padding-left: 0.27rem;
+}
+
+.sec_3 .listbody .down_box p span span {
+	color: #666;
+}
+
+/*下单弹窗*/
+.weui-mask {
+	display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.4);
+}
+.weui-dialog {
+    position: fixed;
+    display: table;
+    z-index: 5000;
+    width: 80%;
+    max-width: 300px;
+    top: 44%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0 0.2666rem;
+}
+.weui-dialog h4 {
+	font-size: 0.45rem;
+	line-height: 1rem;
+	color: #666;
+	font-weight: normal;
+}
+.weui-dialog input {
+	font-size: 0.4rem;
+	color: #666;
+	height: 33px;
+}
+.use_box {
+	text-align: left;
+}
+.use_box span,
+.use_box button {
+	font-size: 0.4rem;
+	color: #666;
+}
+.use_box button {
+	margin-right: 0.2rem;
+	padding: 0 0.2666rem;
+	line-height: 0.6rem;
+	border: 1px solid rgba(0,0,0,.2);
+}
+
+.dialog_btn_box {
+	padding: 0.4rem 0;
+}
+.dialog_btn_box button {
+	font-size: 0.4rem;
+	color: #555;
+	border: 1px solid rgba(0,0,0,.2);
+	padding: 5px 0.8rem;
+	border-radius: 0.5333rem;
+}
+.dialog_btn_box button.comit_btn {
+	color: #fff;
+	border-color: rgba(0,0,0,.2);
+	background-color: #007AFF;
+	margin-left: 0.6666rem;
+}
+
+._mui_popover {
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 90%;
+	z-index: 9;
+	width: 120px;
+	margin-left: -60px;
+	background-color: #fff;
+	border: 1px solid #ededed;
+	box-shadow: 0px 0px 3px #ededed;
+	padding: 0.1rem ;
+	border-radius: 5px;
+}
+._mui_popover li {
+	line-height: 0.9rem;
+	font-size: 0.4rem;
+	border-bottom: 1px solid #f4f4f4;
+}
+._mui_popover li:last-of-type {
+	border: none;
+}
+._mui_popover li span {
+	font-size: 0.4rem;
+}

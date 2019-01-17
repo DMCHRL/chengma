@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>充值申請</title>
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/flexible.js"></script>
+		<link rel="stylesheet" href="../css/rujin.css" />
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">充值申請</h1>
+		</header>
+
+		<div class="mui-content">
+			<ul class="sec_tab clearfix">
+				<li class="pull-left active" onclick="tabSelect(1)"><span>快捷支付</span></li>
+				<li class="pull-right"  onclick="tabSelect(2)"><span>掃碼支付</span></li>
+			</ul>
+			<div class="ru_sec_1 ru_sec">
+				<div class="nobank_section">
+					<!--<p>抱歉，暂无银行卡</p>-->
+					<a href="Addcard.html">+綁定銀行卡</a>
+				</div>
+				<div class="habank_section">
+					<ul>
+						<li class="clearfix">
+				            <span class="pull-left">充值賬戶</span>
+				            <span class="pull-right zhanghu"></span>
+				        </li>
+				        <li class="clearfix">
+				            <span class="pull-left">开户行</span>
+				            <select name="bank_id">
+				            	<option value="104100000004">中国银行</option>
+				            	<option value="102100099996">工商银行</option>
+				            	<option value="309391000011">兴业银行</option>
+				            	<option value="301290000007">交通银行</option>
+				            	<option value="302100011000">中信银行</option>
+				            	<option value="310290000013">浦发银行</option>
+				            	<option value="306581000003">广发银行</option>
+				            	<option value="325290000012">上海银行</option>
+				            	<option value="307584007998">平安银行</option>
+				            </select>
+				        </li>
+				        <li class="clearfix">
+				        	<span class="pull-left">银行卡号</span>
+				            <input type="number" name="" id="cardnum" value="" />
+				        </li>
+				        <li class="clearfix">
+				        	<span class="pull-left">充值金額（美金）</span>
+				            <input class="pull-right" id="jineUSD"  oninput="changeMoney(this.value);" onchange="changeMoney3(this.value)" type="number" placeholder=""/>
+				        </li>
+				        <li class="clearfix">
+				        	<span class="pull-left">實際充值（人民幣）</span>
+				            <span class="pull-right rmb_chong"></span>
+				        </li>
+				    </ul>
+				    <div class="btn_box">
+				    	<button id="btn_1" onclick="goToPay($(this))">確認支付</button>
+				    </div>
+				</div>
+			</div>
+			<div class="ru_sec_2 ru_sec">
+				<ul> 
+			        <li class="clearfix">
+			            <span class="pull-left">充值賬戶</span>
+			            <span class="pull-right zhanghu"></span>
+			        </li>
+			        <li class="clearfix">
+			            <span class="pull-left">賬戶名稱</span>
+			            <span class="pull-right name"></span>
+			        </li>
+			        <li class="clearfix">
+			        	<span class="pull-left">充值金額（美金）</span>
+			            <input class="pull-right" id="jine12"  oninput="changeMoney(this.value);" onchange="changeMoney3(this.value)" type="number" placeholder=""/>
+			        </li>
+			        <li class="clearfix">
+			        	<span class="pull-left">實際充值（人民幣）</span>
+				        <span class="pull-right rmb_chong"></span>
+			        </li>
+			        <li class="clearfix">
+			            <span class="pull-left">支持支付方式</span>
+			            <span class="pull-right">
+			            	<img src="../img/ru_01.png"/>
+			            	<img src="../img/ru_02.png"/>
+			            </span>
+			        </li>
+			    </ul>
+			    
+			    <div class="code_box">
+			    	<h4>支付寶/微信通用二維碼</h4>
+			    	<img src="http://tlb.txasfx.com/img/souma_1.png"/>
+			    	<p>應支付金额（人民币）<span class="rmb_chong">0.00</span>元</p>
+			    </div>
+				<div class="btn_box">
+					<button onclick="commit($(this))">充值完成</button>
+				</div>
+			</div>
+			
+			<div class="ru_sec_trip">
+				<h5>充值說明</h5>
+				<p>預計自充值起3個工作日內到賬。 </p>
+				<p>充值完成自動將人民幣轉換成美金充值到賬戶內。 </p>
+				<p>支付寶或微信必須是賬戶本人。 </p>
+				<p>掃碼支付方式為長按保存二維碼，在微信或支付寶內掃一掃即可支付，完成後點擊【充值完成】</p>
+				<p>如需要協助，請撥打我們客服熱線4008393522或在線客服</p>
+				<p>QQ3259502569。 </p>
+				<p>您也可以選擇使用Txasfx（www.txasfx.com）進行賬號充值。 </p>
+			</div>
+		</div>
+
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/md5.min.js" ></script>
+		<script>
+			
+			var rmb = 0;//人民币金额
+			var rate = 0;//美元兑人民币汇率
+			var mchOrderNo = '';
+			var orderid = '';
+			
+			function commit (el) {//扫码支付
+				
+				var mon = $('#jine12').val();
+				if (mon == '') {
+					mui.toast('请输入金额', {
+						duration: 'long',
+						type: 'div'
+					});
+					return;
+				}
+				el.attr('disabled',true);
+				$.ajax({
+					type: 'GET',
+					url: host+'/jeecg/ryBbbMtoutJsonController.do?doAdd&accountId.id='+id+'&money='+mon,
+					dataType: 'jsonp',
+					aynsc: true,
+					success: function(data) {
+//						console.log(data)
+						el.removeAttr('disabled');
+						if (data['msg'] == 'success') {
+							mui.toast('提交成功，等待处理', {
+								duration: 'long',
+								type: 'div'
+							});
+						}else {
+							mui.toast('正在处理中...', {
+								duration: 'long',
+								type: 'div'
+							});
+						}
+						
+					},
+					error: function(xhr, type) {
+						//alert('Ajax error!')
+					}
+				})
+			}
+			var cNum = 0;
+			var timer = '';
+			function checkOrder () {//查询订单
+				
+				cNum = cNum + 1;
+				
+				var datas = {
+					"payOrderId": orderid,
+					"mchOrderNo": mchOrderNo
+//					"payOrderId": "P01201806261150064790007",
+//					"mchOrderNo": "1529985006351"
+				}
+				
+				superPost("/devbase/api/xxpay/queryOrder",datas, function (res) {
+					
+//					console.log(res)
+					
+					if (res.data.status == '1') {
+						if (cNum <= 4) {
+							timer = setTimeout("checkOrder()",15000);
+						}
+						
+					}else {
+						mui.toast('支付成功', {
+							duration: 'long',
+							type: 'div'
+						});
+						clearTimeout(timer);
+						$("#btn_1").text("确认支付")
+						return;
+					}
+				})
+			}
+			
+			function sendCode (orderid,smscode) {//确认支付，发送验证码
+				
+				var datas = {
+					"payOrderId": orderid, 
+					"smscode": smscode
+				}
+				
+				superPost("/devbase/api/xxpay/pay_confirm",datas, function (res) {
+//					console.log(res)
+					if (res.data.code == '0000') {
+						setTimeout(function () {
+							checkOrder();
+						},2000)
+//						mui.toast(res.data.msg, {
+//							duration: 'long',
+//							type: 'div'
+//						});
+					}else {
+						mui.toast(res.data.msg, {
+							duration: 'long',
+							type: 'div'
+						});
+					}
+				})
+				
+			}
+			
+			
+			function goToPay (obj) {//快捷支付，发起
+				
+				var amount = parseFloat(rmb)*100; //人民币
+				var cardnum = $('#cardnum').val();
+				var usd = $('#jineUSD').val();
+				var account = $('.zhanghu').text();
+				var bankId = $("select[name = 'bank_id']").val();
+				
+				if (cardnum == "") {
+					mui.toast("请输入银行卡号", {
+						duration: 'long',
+						type: 'div'
+					});
+					return;
+				}
+				if (amount == 0) {
+					mui.toast("请输入金额", {
+						duration: 'long',
+						type: 'div'
+					});
+					return;
+				}
+				
+				obj.attr('disabled','true');
+				obj.text('支付中...请勿关闭页面');
+				
+				var datas = {
+					"amount": amount, 
+					"payType": "fastPay", 
+					"body": nickname+" , "+usd+" , "+account, 
+					"currency": "cny",
+					"banksn": cardnum, 
+					"bankId": bankId
+				}
+				
+				superPost("/devbase/api/xxpay/createOrder",datas, function (res) {
+//					console.log(res)
+					if (res.data.code == "0000") {
+						mchOrderNo = res.data.mchOrderNo;
+						orderid = res.data.payOrderId;
+						mui.prompt('輸入短信验证码', '', '', ['取消', '確認'], function(e) {
+							if(e.index == 1) {
+		//						console.log(1)
+								sendCode(orderid,e.value);
+							}
+						}, 'div');
+						$('.mui-popup-button').removeClass("mui-popup-button-bold");
+					}else {
+						mui.toast(res.data.msg, {
+							duration: 'long',
+							type: 'div'
+						});
+						obj.removeAttr('disabled');
+						obj.text('確認支付');
+					}
+				})
+			}
+			
+			function tabSelect (index) {
+				$('.sec_tab li').eq(index-1).addClass('active').siblings().removeClass('active');
+				if (index == 1) {
+					$('.ru_sec_1').show();
+					$('.ru_sec_2').hide();
+				}else {
+					$('.ru_sec_1').hide();
+					$('.ru_sec_2').show();
+				}
+			}
+			
+			function changeMoney (mon) {//计算人民币
+//				console.log(mon)
+//				console.log(rate)
+				if (mon == '') {
+					$('.rmb_chong').text('')
+					return;
+				}
+				rmb = (parseFloat(mon)*parseFloat(rate)).toFixed(2);
+				$('.rmb_chong').text(rmb)
+			};
+			function changeMoney3 (mon) {
+//				console.log(mon)
+				if (mon < 1000) {
+//					mui.toast('不得低於1000美金', {
+//						duration: 'short',
+//						type: 'div'
+//					});
+				}
+			};
+			function getHuiLv () {
+
+				$.ajax({
+					type:"get",
+					url: host1+"/devbase/api/tlb-rate/realTimeRate",
+//					headers:"Access-Control-Allow-Origin",
+					success: function (res) {
+						if (res.statusCode == "0000") {
+							data = JSON.parse(res.data);
+//							console.log(data)
+							if (data.resultcode != "112") {
+								let result = parseFloat(data.result[0].result);
+								rate = result*0.02 + result;
+							}
+						}
+					}
+				});
+				
+			}
+			
+			$(function () {
+				isLogin()
+				if (id) {
+					getHuiLv();
+					
+					$('.zhanghu').text(account);
+					$('.name').text(nickname);
+				}
+			});
+		</script>
+		
+	</body>
+
+</html>

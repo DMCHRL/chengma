@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+body {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.page_box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.body_box {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-top: 75px;
+    padding-bottom: 50px;
+}
+.box_pt150 {
+    padding-top: 150px;
+}
+.box_pb0 {
+  padding-bottom: 0;
+}
+
+.banner_box img {
+	width: 100%;
+}
+
+.bottom_btn {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	/* height: 50px; */
+	text-align: center;
+}
+.bottom_btn button {
+	display: block;
+	width: 100%;
+	background-color: transparent;
+	line-height: 50px;
+	font-size: 0.3466rem;
+	color: #fff;
+}
+.bottom_btn button:active {
+	background-color: #be6058;
+}
+
+.no_header {
+    margin-top: -65px;
+}
+.no_footer {
+    margin-bottom: -50px;
+}
+
+.trip_box {
+	padding: 0.6666rem 0;
+	text-align: center;
+}
+.trip_box p {
+	color: #999;
+	font-size: 0.35rem;
+    line-height: 40px;
+}
+p.trip_p {
+    text-align: center;
+    line-height: 50px;
+    font-size: 0.3rem;
+    color: #999;
+}
+
+
+.art_body{
+    padding: 10px;
+  }
+.art_body p>img {
+	width: 100% !important;
+	height: auto !important;
+}
+.art_body p span>img {
+	width: 100% !important;
+	height: auto !important;
+}
+.img_box {
+    display: flex;
+    align-items: center;
+}
+.img_box img {
+	width: 100%;
+    border-radius: 10px;
+}
+
+/* 阴影 */
+.box_shadow {
+    border-radius: 2px;
+    -moz-box-shadow: 0px 0px 5px #999; /* 老的 Firefox */
+    box-shadow: 0px 0px 5px #999;
+}
+
+.con_box {
+    background-color: #f8f9fd;
+    min-height: 100%;
+}
+
+/* 平行四边形标签 */
+.id_tab {
+    line-height: 0.48rem;
+    width: 1.8rem;
+    height: 0.48rem;
+    position: relative;
+    top: 2px;
+  }
+  .id_tab::before { 
+    content: ''; /* To generate the box */ 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    z-index: 1; 
+    transform: skew(-30deg);
+    background-color: #ea9908;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px #a8a7a7;
+  }
+  
+  .id_tab span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    font-size: 0.293rem;
+    z-index: 2;
+    text-align: center;
+  }

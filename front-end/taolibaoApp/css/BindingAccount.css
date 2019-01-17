@@ -1,0 +1,83 @@
+
+html {
+	height: 100%;
+	width: 100%;
+	background-color: #fff;
+}
+
+.mui-switch {
+	width: 42px;
+	height: 22px;
+}
+.mui-switch .mui-switch-handle {
+	width: 24px;
+	height: 24px;
+	top: -3px;
+}
+
+.mui-content {
+	padding-bottom: 0;
+}
+.sec_1 {
+	background-color: #fff;
+	margin-bottom: 0.2rem;
+}
+.sec_1 li {
+	padding: 0 0.4rem;
+	line-height: 1.2rem;
+	border-bottom: 1px solid #ededed;
+}
+.sec_1 li:first-of-type {
+	border-top: 1px solid #ededed;
+}
+.sec_1 li:hover {
+	background-color: #f1f1f1;
+}
+.sec_1 li span.pull-left {
+	width: 30%;
+	text-align: left;
+	box-sizing: border-box;
+}
+
+.sec_1 li  input {
+	margin: 0;
+	width: 65%;
+	border: 0;
+	padding: 0;
+	height: 1.2rem;
+	text-align: right;
+}
+.right_box {
+	margin-top: 0.34rem;
+}
+.sec_1 li:hover input{
+	background-color: #f1f1f1;
+}
+
+.logo_box {
+	padding: 0.4666rem 0.6666rem;
+}
+.logo_box img {
+	width: 1rem;
+	margin-right: .5rem;
+}
+.logo_box p {
+	font-size: 0.35rem;
+	color: #666;
+	line-height: .55rem;
+}
+
+.btn_box {
+	position: fixed;
+	bottom: .6rem;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+.btn_box button {
+	line-height: 1rem;
+	width: 80%;
+	font-size: 0.4rem;
+	color: #fff;
+	background-color: #3269ff;
+}

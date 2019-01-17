@@ -1,0 +1,224 @@
+.head_section {
+	background-color: #085ba0;
+	line-height: 55px;
+	height: 55px;
+	overflow: hidden;
+}
+.back_btn {
+	display: none;
+}
+.back_btn a {
+	font-size: 20px;
+	color: #fff;
+	font-family: "宋体";
+}
+.headname {
+	text-align: center;
+	overflow: hidden;
+}
+
+.headname span {
+	font-size: 16px;
+	color: #fff;
+	white-space: nowrap;
+}
+
+.headname img {
+	width: 100px;
+}
+
+.foot_section {
+	text-align: center;
+	background-color: #f1f1f1;
+}
+
+.foot_section p {
+	font-size: 14px;
+	color: #999999;
+	line-height: 38px;
+}
+@media only screen and (min-width: 100px) and (max-width: 640px) {
+	.head_section {
+		line-height: 50px;
+		height: 70px;
+		padding-top: 20px;
+	}
+	.back_btn {
+		display: block;
+	}
+	.headname {
+		width: 90%;
+		text-align: center;
+		
+	}
+	.headname img {
+		width: 70px;
+	}
+	
+	.foot_section p {
+		font-size: 12px;
+		line-height: 26px;
+	}
+}
+
+.sec_box {
+	margin: 20px 0;
+}
+
+.titling {
+	padding-left: 10px;
+	font-size: 18px;
+	line-height: 40px;
+	border-bottom: 2px solid #085ba0;
+	margin-bottom: 20px;
+}
+
+.titling img {
+	width: 90px;
+}
+.con_box {
+	padding-top: 12px;
+}
+.item_box {
+	margin-bottom: 20px;
+}
+
+.item_box span {
+	width: 30%;
+	line-height: 30px;
+	color: #666666;
+	font-size: 14px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.item_box input,
+.item_box select {
+	width: 50%;
+	height: 30px;
+	border: 1px solid #999999;
+	padding: 0 5px;
+	font-size: 14px;
+}
+
+.comit_btn {
+	text-align: center;
+	padding: 40px 0;
+}
+
+.comit_btn button {
+	background-color: #085ba0;
+	color: #fff;
+	font-size: 14px;
+	border-radius: 20px;
+	padding: 7px 50px;
+}
+
+.code_box {
+	padding: 20px 0;
+	text-align: center;
+}
+
+.code_box img {
+	width: 27%;
+}
+
+.code_box p {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+
+.sec_3 {
+	padding: 20px 0;
+}
+
+.sec_3 h4 {
+	font-size: 16px;
+	color: #666;
+	margin-bottom: 10px;
+}
+
+.sec_3 p {
+	line-height: 25px;
+	color: #999;
+	font-size: 14px;
+}
+@media only screen and (min-width: 100px) and (max-width: 640px) {
+	.sec_box {
+		margin: 10px 0;
+	}
+	.titling {
+		padding-left: 5px;
+		font-size: 14px;
+		line-height: 30px;
+		margin-bottom: 10px;
+	}
+	.titling img {
+		width: 60px;
+	}
+	.item_box {
+		position: relative;
+		margin-bottom: 10px;
+	}
+	.item_box span {
+		width: 36%;
+		line-height: 30px;
+		font-size: 12px;
+		margin-right: 2%;
+	}
+	.item_box input,
+	.item_box select {
+		width: 50%;
+		height: 30px;
+		font-size: 12px;
+	}
+	.comit_btn {
+		text-align: center;
+		padding: 40px 0;
+		position: relative;
+	}
+	.comit_btn button {
+		font-size: 14px;
+		padding: 5px 40px;
+	}
+	
+	.code_box {
+		padding: 20px 0;
+		text-align: center;
+	}
+	
+	.code_box img {
+		width: 32%;
+	}
+	
+	.code_box p {
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.code_box span {
+		font-size: 12px;
+	}
+
+
+	.sec_3 {
+		padding: 10px 0;
+	}
+	
+	.sec_3 h4 {
+		font-size: 14px;
+		margin-bottom: 10px;
+	}
+	
+	.sec_3 p {
+		line-height: 20px;
+		font-size: 12px;
+	}
+}
+
+#check_btn {
+	background-color: transparent;
+	border: 1px solid #19183E;
+	color: #19183E;
+	padding: 4px 20px;
+}

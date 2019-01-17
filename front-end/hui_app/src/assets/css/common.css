@@ -1,0 +1,375 @@
+@charset "UTF-8";
+
+/*css 初始化 */
+
+html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img,span {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+
+fieldset,img,input,button {
+	border: none;
+	padding: 0;
+	margin: 0;
+	outline-style: none;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+input {
+	padding: 0;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+
+select,
+input {
+	vertical-align: middle;
+}
+
+select,
+input,
+textarea {
+	font-size: 12px;
+	margin: 0;
+}
+
+textarea {
+	resize: none;
+	outline: none;
+}
+
+img {
+	border: 0;
+	vertical-align: middle;
+}
+
+i,
+em,
+b {
+	font-weight: normal;
+	font-style: normal;
+}
+
+label {
+	font-style: normal;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #685c56;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #685c56;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #685c56;
+	text-decoration: none;
+}
+
+a:active {
+	color: #685c56;
+	text-decoration: none;
+}
+
+input,
+button,
+select,
+textarea {
+	outline: none;
+	/*-webkit-appearance: none;*/
+	border-radius: 0;
+}
+button:active {
+	background-color: #FAFAFA;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+    overflow-x: hidden;
+	background-color: #f5f5f5;
+}
+body {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+div {
+	box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: " ";
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+.pull-left {
+	float: left !important;
+}
+
+.flex_row {
+	display: flex;
+	flex-direction: row;
+}
+
+.flex_col {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex_wrap {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.flex_nowrap {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.flex_bet {
+	display: flex;
+	justify-content: space-between;
+}
+
+.flex_around {
+	display: flex;
+	justify-content: space-around;
+}
+
+.flex_center {
+	display: flex;
+	justify-content: center;
+}
+
+.flex_align_center {
+	display: flex;
+	align-items: center;
+}
+
+.flex_one {
+	flex: 1;
+}
+
+.myback {
+	background: -webkit-linear-gradient(left, #f3917f, #e41032);
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #f3917f, #e41032);
+	/* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #f3917f, #e41032);
+	/* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #f3917f, #e41032);
+	/* 标准的语法（必须放在最后） */
+}
+.myback2 {
+	background: -webkit-linear-gradient(bottom, #f3917f, #e41032);
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(top, #f3917f, #e41032);
+	/* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(top, #f3917f, #e41032);
+	/* Firefox 3.6 - 15 */
+	background: linear-gradient(to bottom, #f3917f, #e41032);
+	/* 标准的语法（必须放在最后） */
+}
+
+/*认证*/
+.backimg0 {
+	background-image: url(http://www.hui1688.com.cn/img/2_03.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+	background-size: 8%;
+}
+
+/*个人中心*/
+.backimg1 {
+	background-image: url(http://www.hui1688.com.cn/img/mine_back_1.png);
+	background-repeat: no-repeat;
+}
+
+/*当前*/
+.backimg2 {
+	background-image: url(http://www.hui1688.com.cn/img/i_03.png);
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-size: 20%;
+}
+/*付费*/
+.backimg3 {
+	background-image: url(http://www.hui1688.com.cn/img/i_02.png);
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-size: 10%;
+}
+
+/*交易师考证*/
+.backimg4 {
+	background-image: url(http://www.hui1688.com.cn/img/7_01.png);
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-size: 100%;
+}
+/*汇商详情*/
+.backimg5 {
+	background-image: url(http://www.hui1688.com.cn/img/3_2_01.png);
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-size: 100%;
+}
+/*积分钱包*/
+.backimg6 {
+	background-image: url(http://www.hui1688.com.cn/img/jifen_01.png);
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-size: 100%;
+}
+
+
+.radio_groud span.active {
+	background-image: url(http://www.hui1688.com.cn/img/ron.png);
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
+
+.arrow_right{
+	position: relative;
+    width: 30px;
+    height: 30px;
+    /*top: -5px;
+    left: -5px;*/
+}
+.arrow_right:after{
+	content: "";
+    position: absolute;
+    width: 0.2933rem;
+    height: 0.2933rem;
+    border: 1px solid #999;
+    border-width: 1px 0 0 1px;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    top: 8px;
+    left: 7px;
+}
+.arrow_left{
+	position: relative;
+     width: 30px;
+    height: 30px;
+    /*top: -5px;
+    left: -5px;*/
+}
+.arrow_left:after{
+	content: "";
+    position: absolute;
+    width: 0.2933rem;
+    height: 0.2933rem;
+    border: 1px solid #999;
+    border-width: 1px 0 0 1px;
+    -webkit-transform: rotate(315deg);
+    transform: rotate(315deg);
+    top: 8px;
+    left: 7px;
+}
+
+.content_box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.hui_content {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-top: 75px;
+    padding-bottom: 50px;
+}
+
+.banner_box img {
+	width: 100%;
+}
+
+.bottom_btn {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	/* height: 50px; */
+	text-align: center;
+}
+.bottom_btn button {
+	display: block;
+	width: 100%;
+	background-color: transparent;
+	line-height: 50px;
+	font-size: 0.3466rem;
+	color: #fff;
+}
+.bottom_btn button:active {
+	background-color: #be6058;
+}
+
+.no_header {
+    margin-top: -65px;
+}
+.no_footer {
+    margin-bottom: -50px;
+}
+
+.trip_box {
+	padding: 0.6666rem 0;
+	text-align: center;
+}
+.trip_box p {
+	color: #999;
+	font-size: 0.35rem;
+    line-height: 40px;
+}
+p.trip_p {
+    text-align: center;
+    line-height: 50px;
+    font-size: 0.3rem;
+    color: #999;
+}
+
+
+/*新闻详情*/
+.art_body p>img {
+	width: 100% !important;
+	height: auto !important;
+}
+.art_body p span>img {
+	width: 100% !important;
+	height: auto !important;
+}
+.img_box {
+    display: flex;
+    align-items: center;
+}
+.img_box img {
+	width: 100%;
+    border-radius: 10px;
+}
+

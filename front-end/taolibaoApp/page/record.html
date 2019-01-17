@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>交易記錄</title>
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no, email=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="套利宝SE">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/common.css" rel="stylesheet" />
+		<link href="./record/record.css" rel="stylesheet" />
+		
+		<script type="text/javascript" src="../js/flexible.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+			<h1 class="mui-title">交易記錄</h1>
+			<!--<a id="dateSelectorOne" class="mui-icon mui-icon-right-nav mui-pull-right"><img src="../img/record_01.png"/></a>-->
+		</header>
+		<div class="mui-content">
+			<div class="rili">
+				<span class="active">日</span>
+				<span>周</span>
+				<span>月</span>
+				<div id="ziding">
+					<img src="http://tlb.txasfx.com/img/record_02.png" />
+				</div>
+			</div>
+			<div class="zidingyi">
+				<div class="timebtn">
+					<span id="startbtn">start</span>
+					<input type="text" disabled name="" id="dateSelectorOne" value="2017-01-01" placeholder="请选择" />
+				</div>
+				<div class="timebtn">
+					<span id="endbtn">end</span>
+					<input type="text" disabled name="" id="dateSelectorTwo" value="" placeholder="请选择" />
+				</div>
+				<!--<span id="zhidingyibutton">確定</span>-->
+			</div>
+			<div class="table_body">
+				<ul class="listbody">
+
+				</ul>
+				<!--加载动画-->
+				<div id="loading1">
+					<div class="demo1"></div>
+					<div class="demo1"></div>
+					<div class="demo1"></div>
+					<div class="demo1"></div>
+					<div class="demo1"></div>
+				</div>
+				<div class="trip">
+					<!--<span>暫無數據</span>-->
+					<img src="../img/t_1_12.png" />
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer">
+			<ul class="around">
+				<li>
+					<a href="../index.html">
+						<img src="../img/tab_02.png" />
+						<p>圖表</p>
+					</a>
+				</li>
+				<li>
+					<a href="./chart.html">
+						<img src="../img/tab_01.png" />
+						<p>交易</p>
+					</a>
+				</li>
+				<li class="active">
+					<a href="./record.html">
+						<img src="../img/tab_13.png" />
+						<p>歷史</p>
+					</a>
+				</li>
+				<li>
+					<a href="./mine.html">
+						<img src="../img/tab_04.png" />
+						<p>我的</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="Mdate/iScroll.js"></script>
+		<script type="text/javascript" src="Mdate/Mdate.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		
+		<script type="text/javascript" src="./record/record.js"></script>
+	</body>
+
+</html>

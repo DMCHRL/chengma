@@ -1,0 +1,421 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>申請交易賬戶</title>
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no, email=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="套利宝SE">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/Application.css" />
+		<script type="text/javascript" src="../js/flexible.js"></script>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">申請交易賬戶</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="sec_tab sec_top">
+				<ul class="clearfix">
+					<li class="pull-left">
+						<span class="active">選擇交易商</span>
+					</li>
+				</ul>
+				<select name="trader">
+					<option value="1">TxasFX</option>
+				</select>
+			</div>
+			<div class="sec_tab">
+				<ul class="clearfix">
+					<li class="pull-left">
+						<span class="active">基本信息</span>
+					</li>
+					<li class="pull-left">
+						<span>身份證明</span>
+					</li>
+					<li class="pull-left">
+						<span>財務信息</span>
+					</li>
+				</ul>
+			</div>
+			<div class="sec_box sec_1">
+				<ul class="clearfix">
+					<li class="clearfix">
+						<span class="pull-left import">姓名</span>
+						<input class="pull-right" type="text" name="" id="name1" value="" placeholder="請輸入您的姓名"/>
+						<span class="trips name">姓名不能為空</span>
+					</li>
+					<li class="clearfix">
+						<span class="pull-left import">手機號</span>
+						<input class="pull-right" type="number" name="" id="phone1" value="" placeholder="請輸入您的手機號碼"/>
+						<span class="trips phone">手機號碼不能為空</span>
+					</li>
+					<li class="clearfix">
+						<span class="pull-left import">郵箱</span>
+						<input class="pull-right" type="text" name="" id="email" value="" placeholder="請輸入您的郵箱"/>
+						<span class="trips email">郵箱不能為空</span>
+					</li>
+					<li class="clearfix">
+						<span class="pull-left import">推薦碼</span>
+						<input class="pull-right" type="text" name="" id="tuicode" value="" placeholder="請輸入推薦碼"/>
+						<span class="trips tuicode">推荐码不能為空</span>
+					</li>
+				</ul>
+				<div class="sec_btn">
+					<button type="button" class="mui-btn mui-btn-primary" onclick="nextOne()">下一步</button>
+				</div>
+			</div>
+			<div class="sec_box sec_2">
+				<ul class="clearfix">
+					<li class="clearfix">
+						<span class="pull-left import">證件類型</span>
+						<select name="type" id="cardtype" class="pull-left">
+							<option value="身份證">身份證</option>
+							<option value="駕駛證">駕駛證</option>
+						</select>
+					</li>
+					<li class="clearfix">
+						<span class="pull-left import">證件編號</span>
+						<input class="pull-right" type="text" name="" id="cardnum" value="" placeholder="請輸入您的證件編號"/>
+						<span class="trips cardnum">證件編號不能為空</span>
+					</li>
+					<li class="clearfix">
+						<span class="pull-left import">證件正面</span>
+						<label class="pull-left">
+							<div class="upload_btn_1">
+								<input type="file" onchange="onFileChange1()" accept="image/*"  name="img_1" value="" style="display: none;" />
+								<img src="../img/acc_1.png"/>
+							</div>
+							<div class="img_box img_box_1">
+								<img id="img_1" src=""/>
+							</div>
+						</label>
+						<span class="trips aptitude">正面不能為空</span>
+					</li>
+					<li class="clearfix">
+						<span class="pull-left import">證件反面</span>
+						<label class="pull-left">
+							<div class="upload_btn_2">
+								<input type="file" onchange="onFileChange2()" accept="image/*"  name="img_2" value="" style="display: none;" />
+								<img src="../img/acc_1.png"/>
+							</div>
+							<div class="img_box img_box_2">
+								<img id="img_2" src=""/>
+							</div>
+						</label>
+						<img id="img_fierce" src=""/>
+						<span class="trips fierce">反面不能為空</span>
+					</li>
+				</ul>
+				<p class="trip_box">*上傳證明需無反光、四角無遮擋、信息清晰</p>
+				<div class="sec_btn">
+					<button type="button" class="mui-btn mui-btn-primary" onclick="nextTwo()">下一步</button>
+				</div>
+			</div>
+			<div class="sec_box sec_3">
+				<ul class="clearfix">
+					<li class="clearfix">
+						<span class="pull-left import">銀行卡號</span>
+						<input class="pull-right" type="text" name="" id="banknum" value="" placeholder="請輸入銀行卡號"/>
+						<span class="trips banknum">銀行卡不能為空</span>
+					</li>
+					<li class="clearfix">
+						<span class="pull-left import">開戶行</span>
+						<input class="pull-right" type="text" name="" id="bank" value="" placeholder="請輸入開戶行"/>
+						<span class="trips bank">開戶行不能為空</span>
+					</li>
+					<li class="clearfix">
+						<span class="pull-left import">開戶支行</span>
+						<input class="pull-right" type="text" name="" id="bank1" value="" placeholder="請輸入開戶支行"/>
+						<span class="trips bank1">開戶支行不能為空</span>
+					</li>
+					<li class="clearfix">
+						<span class="pull-left import">銀行卡正面</span>
+						<label class="pull-left">
+							<div class="upload_btn_3">
+								<input type="file" onchange="onFileChange3()" accept="image/*"  name="img_3" value="" style="display: none;" />
+								<img src="../img/acc_1.png"/>
+							</div>
+							<div class="img_box img_box_3">
+								<img id="img_3" src=""/>
+							</div>
+						</label>
+						<span class="trips bankphoto">正面不能為空</span>
+					</li>
+				</ul>
+				<p class="trip_box">*上傳證明需無反光、四角無遮擋、信息清晰</p>
+				<!--<div class="agreement_box">
+					<input type="checkbox" name="agreement" id="agreement" value="" checked="checked" />
+					<a href="Terms.html">《用户协议》</a>
+					<span class="trips agreement">请同意用户协议</span>
+				</div>-->
+				<div class="sec_btn">
+					<button type="button" class="mui-btn mui-btn-primary" onclick="commit($(this))">提交</button>
+				</div>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script type="text/javascript">
+			
+			var name = '';
+			var phone1 = '';
+			var email = '';
+			var tuicode = '';
+			
+			var cardtype = '';
+			var cardnum = '';
+			var img1 = '';
+			var img2 = '';
+			
+			var banknum = '';
+			var bank = '';
+			var bank1 = '';
+			var img3 = '';
+//			$('input[name="img_1"]').fileupload({
+//		        dataType: 'json',
+//		        done: function (e, data) {
+//		            $.each(data.result.files, function (index, file) {
+//		                console.log(file)
+//		            });
+//		        }
+//		    });
+			function dataURLtoFile(dataurl, filename) {//将base64转换为文件
+			    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+			    bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+			    while(n--){
+			        u8arr[n] = bstr.charCodeAt(n);
+			    }
+			    return new File([u8arr], filename, {type:mime});
+			}
+			function onFileChange1() {
+				var files = $('input[name="img_1"]').prop('files')[0];
+//				$.upload({
+//	                method: "post",
+//	                url: host+'/devbase/api/uploadFile',
+//	                data: {},
+//	                file: files
+//	            }).success(function(d) {
+//	            	console.log(d)
+//	            })
+				photoCompress(files, {
+					quality: 0.5
+				}, function(base64Codes) {
+//					console.log(base64Codes)
+//					var file1 = dataURLtoFile(base64Codes,"test")
+//					console.log(file1)
+//					return;
+					$('.upload_btn_1').hide();
+					$('.img_box_1').show();
+					img1 = base64Codes;
+					$('#img_1').attr('src',base64Codes);
+					$('.trips').hide();
+				});
+			};
+			function onFileChange2() {
+				var files = $('input[name="img_2"]').prop('files')[0];
+
+				photoCompress(files, {
+					quality: 0.5
+				}, function(base64Codes) {
+//					console.log(base64Codes)
+//					return;
+					$('.upload_btn_2').hide();
+					$('.img_box_2').show();
+					img2 = base64Codes;
+					$('#img_2').attr('src',base64Codes);
+					$('.trips').hide();
+				});
+			};
+			function onFileChange3() {
+				var files = $('input[name="img_3"]').prop('files')[0];
+
+				photoCompress(files, {
+					quality: 0.5
+				}, function(base64Codes) {
+//					console.log(base64Codes)
+//					return;
+					$('.upload_btn_3').hide();
+					$('.img_box_3').show();
+					img3 = base64Codes;
+					$('#img_3').attr('src',base64Codes);
+					$('.trips').hide();
+				});
+			};
+			$("#agreement").click(function () {
+				if (this.checked) {
+					$('.trips.agreement').hide();
+				}else {
+					$('.trips.agreement').show();
+				}
+			})
+			function commit(e) {
+				
+				banknum = $('#banknum').val();
+				bank = $('#bank').val();
+				bank1 = $('#bank1').val();
+//				var agreement = document.getElementById("agreement").checked;
+				
+				if (banknum == '') {
+					$('.trips.banknum').show()
+					return;
+				}
+				if (bank == '') {
+					$('.trips.bank').show()
+					return;
+				}
+				if (bank1 == '') {
+					$('.trips.bank1').show()
+					return;
+				}
+				if (img3 == '') {
+					$('.trips.bankphoto').show()
+					return;
+				}
+//				if (!agreement) {
+//					$('.trips.agreement').show()
+//					return;
+//				}
+				
+
+				e.attr('disabled','true')
+				e.text('上传中...请勿关闭页面')
+				
+				var datas =  {
+		            "username": name,
+		            "phone": phone1,
+		            "email": email,
+		            "address": '',
+		            "recommendation": tuicode,
+		            
+		            "idType": cardtype,
+		            "idNumber": cardnum,
+		            "idPositive": img1,
+		            "idOther": img2,
+		            
+		            "cardNumber": banknum,
+		            "openingBank": bank,
+		            "branch": bank1,
+		            "cardPositive": img3,
+		            
+		            "cardOther": null,
+		            "state": null,
+		            "spare1": null,
+		            "spare2": null
+		       }
+//				return;
+				superPost('/api/tlb-user/createTlbUser',datas,function (re) {
+//					console.log(re)
+					if (re.statusCode == '0000') {
+						e.text('上传成功，跳转中...');
+						mui.toast('提交成功，请耐心等待审核与通知', {
+							duration: 'long',
+							type: 'div'
+						});
+						setTimeout(function () {
+							window.history.go(-1);
+						},2000)
+					}else {
+						mui.toast('提交出错，请稍后再试', {
+							duration: 'long',
+							type: 'div'
+						});
+						e.removeAttr('disabled')
+						e.text('提交');
+					}
+				})
+
+				
+			};
+//			tab点击
+//			$('.sec_tab li span').click(function () {
+//				$(this).addClass('active').parent('li').siblings().children('span').removeClass('active');
+//				var index = $(this).parent('li').index();
+//				$('.sec_box').hide();
+//				$('.sec_box').eq(index).show();
+//			});
+			//下一步
+			function goNext (n) {
+				$('.sec_tab li').eq(n).children('span').removeClass('active');
+				$('.sec_tab li').eq(n+1).children('span').addClass('active');
+				$('.sec_box').eq(n-1).hide();
+				$('.sec_box').eq(n).show();
+			}
+			$('input').focus(function () {
+				$('.trips').hide();
+			})
+			function nextOne () {
+				name = $('#name1').val();
+				phone1 = $('#phone1').val();
+				email = $('#email').val();
+				tuicode = $('#tuicode').val();
+				
+				if (name == '') {
+					$('.trips.name').show()
+					return;
+				}
+				if (phone1 == '') {
+					$('.trips.phone').show()
+					return;
+				}
+				if (email == '') {
+					$('.trips.email').show()
+					return;
+				}
+				if (tuicode == '') {
+					$('.trips.tuicode').show()
+					return;
+				}
+				
+				goNext (1)
+				
+			}
+			function nextTwo () {
+				
+				cardtype = $('#cardtype').val();
+				cardnum = $('#cardnum').val();
+				
+				
+				if (cardnum == '') {
+					$('.trips.cardnum').show()
+					return;
+				}
+				if (img1 == '') {
+					$('.trips.aptitude').show()
+					return;
+				}
+				if (img2 == '') {
+					$('.trips.fierce').show()
+					return;
+				}
+				
+//				$('.sec_tab li').eq(2).children('span').removeClass('active');
+//				$('.sec_tab li').eq(3).children('span').addClass('active');
+//				$('.sec_box').eq(1).hide();
+//				$('.sec_box').eq(2).show();
+				goNext(2)
+			}
+
+			$(function() {
+//				isLogin();
+
+				var phone = localStorage.getItem("user_phone");
+				$("#phone1").val(phone)
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>用戶反饋</title>
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no, email=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="套利宝SE">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/flexible.js"></script>
+		<style>
+			.mui-content {
+				/*padding: 0.2666rem;*/
+			}
+			.sec_1 {
+				padding: 0.2666rem 0;
+			}
+			.sec_3 {
+				background-color: rgba(50,155,255,.5);
+				border-radius: 0.05rem;
+				padding: 0.2333rem;
+				margin: 0.2666rem 0;
+				margin-bottom: 0;
+			}
+			.sec_3 .pull-left{
+				width: 90%;
+			}
+			.sec_3 p {
+				font-size: 0.3rem;
+				color: #fff;
+			}
+			.sec_3 .pull-right {
+				width: 5%;
+				/*margin-top: 0.2333rem;*/
+				color: #ff8e33;
+			}
+			.sec_2 {
+				position: relative;
+			}
+			.sec_2 textarea {
+				height: 4.5rem;
+				border: none;
+			}
+			.sec_2 span.size {
+				position: absolute;
+				right: 10px;
+				bottom: 10px;
+				color: #999;
+			}
+			.sec_btn {
+				text-align: center;
+			}
+			.sec_btn button {
+				width: 80%;
+				margin-top: 0.6666rem;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">用戶反饋</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="sec_3 clearfix">
+				<p class="pull-left">
+					為了更快解決您的問題，請在發生問題時或再次遇到問題時，立即提交反饋。
+				</p>
+				<div class="pull-right" onclick="hideSec3()">
+					<span class="mui-icon mui-icon-closeempty"></span>
+				</div>
+			</div>
+			<div class="sec_1">
+				<ul class="mui-table-view mui-table-view-radio">
+					<li class="mui-table-view-cell mui-selected" id="tab1">
+						<a class="mui-navigate-right">遇到問題</a>
+					</li>
+					<li class="mui-table-view-cell" id="tab2">
+						<a class="mui-navigate-right">新功能建議</a>
+					</li>
+				</ul>
+			</div>
+			<div class="sec_2">
+				<textarea class="text_area" maxlength="75" name="texts" rows="" cols="" placeholder="請詳細描述您遇到的問題" oninput="textareaChange(this)"></textarea>
+				<span class="size"><i id="fontLength">0</i>/75</span>
+			</div>
+			<div class="sec_btn">
+				<button type="button" class="mui-btn mui-btn-primary" onclick="commit($(this))">提交</button>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script type="text/javascript">
+			
+			var accObj = getAccount();
+			var qtype = "遇到問題";
+			
+			function hideSec3 () {
+				$('.sec_3').slideUp();
+			}
+			
+			function commit(e) {
+				var textareas = $('.text_area').val();
+				if(textareas == '') {
+					mui.toast('請輸入問題內容', {
+						duration: 'short',
+						type: 'div'
+					});
+					return;
+				}
+				var phone = localStorage.getItem("user_phone") ;
+				e.attr('disabled','true')
+				var datas = {
+					"userName": accObj.accountName,  //用户名
+					"tlbAccount": accObj.account, 
+					"phone": phone, // 用户电话
+					"feedbackType": qtype, // 反馈类型 suggest： 建议 error ： 报错
+					"feedbackContext": textareas  // 反馈信息
+				}
+				
+				superPost('/api//tlb-user-feedback/createTlbUserFeedback',datas,function (re) {
+//					console.log(re)
+					if (re.statusCode == '0000') {
+						mui.toast('提交成功', {
+							duration: 'long',
+							type: 'div'
+						});
+						setTimeout(function () {
+							window.history.go(-1);
+						},2000)
+					}
+				})
+				
+			};
+			
+			function textareaChange (e) {
+				$('#fontLength').text(e.value.length);
+			}
+
+			$(function() {
+
+				var list = document.querySelector('.mui-table-view.mui-table-view-radio');
+				list.addEventListener('selected',function(e){
+//						console.log(e.detail.el.innerText)
+					if (e.detail.el.id == "tab2") {
+						$('.text_area').attr('placeholder','有您的建議我們會成長的更好')
+					}else {
+						$('.text_area').attr('placeholder','請詳細描述您遇到的問題')
+					}
+					qtype = e.detail.el.innerText;
+				});
+			});
+		</script>
+	</body>
+
+</html>

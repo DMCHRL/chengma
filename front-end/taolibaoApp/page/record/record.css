@@ -1,0 +1,167 @@
+html {
+	background-color: #fff;
+}
+.mui-content {
+	background-color: #fff;
+}
+.rili {
+	background-color: #fff;
+	display: flex;
+	display: -webkit-flex;
+	justify-content: center;
+	height: 1.15rem;
+	align-items: center;
+	position: relative;
+	border-bottom: 0.1rem solid #ededed;
+}
+
+.rili span {
+	font-size: 0.333rem;
+	color: #8F8F94;
+	padding: 0 0.533rem;
+	border-bottom: 0.08rem solid #fff;
+	line-height: 0.92rem;
+}
+
+.rili span.active {
+	color: #3269ff;
+	border-bottom: 0.08rem solid #3269ff;
+}
+
+.rili img {
+	width: 0.5rem;
+	height: 0.5rem;
+	position: relative;
+	top: -2px;
+}
+
+#ziding {
+	/*position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #3395ff;*/
+	display: inline-block;
+	padding: 0 0.4rem;
+	line-height: 0.92rem;
+}
+
+.zidingyi {
+	display: none;
+	text-align: center;
+	padding: 0.266rem 0.133rem;
+}
+
+.zidingyi .timebtn {
+	position: relative;
+	display: inline-block;
+	width: 2.0666rem;
+	margin: 0 0.1333rem ;
+}
+
+.zidingyi .timebtn span {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	opacity: 0;
+	z-index: 9;
+}
+
+.zidingyi .timebtn input {
+	margin: 0;
+	padding: 0;
+	border-radius: 0.4rem;
+	height: 0.7rem;
+	text-align: center;
+}
+
+.zidingyi #zhidingyibutton {
+	background-color: #3395ff;
+	color: #fff;
+	padding: 0.166rem 0.533rem;
+	border-radius: 0.266rem;
+	position: relative;
+	top: 0.05rem;
+}
+
+.table_body {
+	height: 100%;
+}
+.listbody li {
+	background-color: #fff;
+	border-bottom: 1px solid #ededed;
+}
+.listbody ._top_box {
+	padding: 0.3rem 0.4rem;
+}
+.listbody ._top_box img {
+	width: 0.6333rem;
+	height: 0.6333rem;
+	margin-right: 0.1866rem;
+}
+.listbody ._top_box>span {
+	font-size: 0.5rem;
+	color: #f45940;
+	text-transform: lowercase;
+}
+
+.listbody ._top_box.buy>span {
+	color: #3269ff;
+}
+.listbody ._top_box>span.symbol{
+	color: #606060;
+	margin-right: 0.8666rem;
+	font-size: 0.4rem;
+	line-height: 0.6333rem;
+	text-transform: uppercase;
+}
+.listbody ._top_box>span.jiesuan{
+	font-size: 0.32rem;
+}
+.listbody ._top_box>span.jiesuan span:first-of-type{
+	color: #666;
+}
+.listbody ._top_box>span.jiesuan span:last-of-type{
+	font-size: 0.58rem;
+	display: inline-block;
+	width: 2rem;
+	text-align: right;
+	line-height: 0.6333rem;
+}
+.listbody ._top_box>span.jiesuan span.jie{
+	width: 1.5rem;
+}
+
+
+.listbody .down_box {
+	padding: 0.2rem;
+	display: none;
+	/*background-color: #F3F3F3;*/
+	/*border-bottom: 0.013rem solid #ededed;*/
+}
+
+.listbody .down_box p {
+	font-size: 0.32rem;
+	color: #bababa;
+}
+
+.listbody .down_box p>span {
+	display: flex;
+	justify-content: space-between;
+	box-sizing: border-box;
+	padding: 0 0.22rem;
+	width: 41%;
+}
+
+.listbody .down_box p>span:nth-child(1) {
+	width: 59%;
+	padding-left: 0.27rem;
+}
+
+.listbody .down_box p span span {
+	color: #666;
+}
+.trip {
+	background-color: #fff;
+}

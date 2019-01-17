@@ -1,0 +1,105 @@
+.sec_account {
+	background-color: #fff;
+	border-radius: 0.08rem;
+	box-shadow: 0 0 0.05rem 0.1rem #ddd;
+	margin: 0.2rem;
+	padding: 0.3rem;
+	text-align: center;
+}
+
+.icon_box img {
+	width: 1rem;
+}
+
+.mui-content>p {
+	color: #666;
+	font-size: 0.35rem;
+	line-height: 1.2rem;
+	padding: 0 0.1333rem;
+}
+
+.mui-content>.mui-table-view:first-child {
+	margin-top: 0;
+}
+
+/* .mime_list li img {
+	float: left;
+	width: 0.8rem;
+	margin-right: 0.6666rem;
+} */
+
+.mime_list li {
+	position: relative;
+	height: 1.8rem;
+	box-sizing: border-box;
+}
+.mime_list img {
+	width: 1.1rem;
+	margin-right: 0.266rem;
+}
+.text_box {
+}
+.text_box h4 {
+	font-size: 0.3666rem;
+	font-weight: normal;
+	color: #666;
+	margin: 0.133rem 0;
+}
+
+.text_box span {
+	margin-left: 0.4rem;
+	color: #999;
+}
+
+.text_box p {
+	font-size: 0.2666rem;
+	color: #666;
+}
+
+.link_box {
+	text-align: center;
+	padding: 0.4rem 0;
+}
+
+.link_box a {
+	font-size: 0.4rem;
+	color: #0062CC;
+	padding: 0 0.2666rem;
+}
+
+.dangqian {
+	color: #999;
+	border: 0.0266rem solid #999;
+	font-size: 0.2666rem;
+	margin-right: 0.666rem;
+	margin-top: 0.1333rem;
+	padding: 0 0.1333rem;
+}
+
+.jie_btn {
+	background-color: #007AFF;
+	padding: 0.1533rem 0.2666rem;
+	color: #fff;
+	margin-top: 0.2rem;
+}
+
+.jiechu_btn {
+	display: none;
+	position: absolute;
+	width: 2.5rem;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background-color: #F45940;
+	color: #fff;
+	font-size: 0.4rem;
+	line-height: 1.8rem;
+	text-align: center;
+	z-index: 999;
+}
+
+.jiechu_btn:active {
+	background-color: #F1F1F1;
+	color: #666;
+}
+

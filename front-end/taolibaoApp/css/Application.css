@@ -1,0 +1,118 @@
+html {
+	background-color: #fff;
+}
+
+.mui-content {
+	background-color: #fff;
+	padding-bottom: 0;
+}
+
+.sec_tab {
+	margin-bottom: 0.1333rem;
+}
+
+.sec_tab li {
+	width: 33.33%;
+	line-height: 0.8533rem;
+	text-align: center;
+}
+
+.sec_tab li span {
+	font-size: 0.3466rem;
+	color: #666;
+	display: inline-block;
+	border-bottom: 2px solid #fff;
+}
+
+.sec_tab li span.active {
+	border-bottom: 2px solid #3269ff;
+}
+
+.sec_box li {
+	background-color: #fff;
+	border-bottom: 1px solid #ededed;
+	line-height: 1.0666rem;
+	position: relative;
+}
+
+.sec_box li span {
+	width: 25%;
+	text-align: right;
+}
+
+span.trips {
+	font-size: 0.3rem;
+	color: #F45940;
+	position: absolute;
+	right: 0.4rem;
+	display: none;
+}
+
+.sec_box li input,
+.sec_box li select {
+	width: 75%;
+	border: none;
+	margin: 0;
+}
+
+.sec_box li label {
+	margin: 0.2rem 0.4rem;
+	width: 4rem;
+	line-height: 2.0666rem;
+	border: 2px dotted #E2E2E2;
+	border-radius: 0.1333rem;
+	text-align: center;
+	overflow: hidden;
+}
+.sec_box li label img {
+	width: 14%;
+}
+.sec_box li .img_box{
+	display: none;
+}
+.sec_box li .img_box img {
+	width: 100%;
+}
+
+.trips,
+.trip_box{
+	font-size: 0.2666rem;
+	color: #ff0000;
+	text-align: center;
+}
+
+.sec_btn {
+	text-align: center;
+	margin: 1rem 0;
+}
+
+.sec_btn button {
+	width: 80%;
+	border-radius: 0;
+	background-color: #3269ff;
+}
+
+.sec_2,
+.sec_3 {
+	display: none;
+}
+
+.sec_top {
+	border-bottom: 0.1333rem solid #ededed;
+}
+
+.sec_top select {
+	padding-left: 0.9rem;
+	color: #999;
+}
+
+.import:before {
+	content: '*';
+	color: #F45940;
+	font-size: 0.3rem;
+	margin-right: 0.1333rem;
+}
+.agreement_box {
+	margin-top: 0.2666rem;
+	text-align: center;
+}

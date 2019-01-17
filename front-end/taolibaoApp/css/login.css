@@ -1,0 +1,147 @@
+::-webkit-input-placeholder {
+	/* WebKit browsers */
+	color: #fff;
+}
+
+:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #fff;
+}
+
+::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #fff;
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10+ */
+	color: #fff;
+}
+
+html,
+body {
+	width: 100%;
+	/*height: 100%;*/
+	margin: 0px;
+	padding: 0px;
+	background-color: #34b9ff;
+}
+
+.mui-content {
+	position: relative;
+	background-image: url(../img/logo_01.jpg);
+	background-size: 100% 100%;
+	margin: 0;
+	padding: 0;
+	height: 500px;
+}
+
+.logo {
+	text-align: center;
+	padding-top: 20%;
+	padding-bottom: 18%;
+}
+
+.logo img {
+	width: 3.466rem;
+}
+
+.input_group {
+	padding: 0 0.4rem;
+}
+.input_row {
+	border: 1px solid #fff;
+	border-radius: 0.8rem;
+	line-height: 1.1733rem;
+	background-color: rgba(153,203,255,.5);
+	margin-bottom: 0.4rem;
+}
+.input_row2 {
+	width: 60%;
+}
+
+.input_row img {
+	width: 0.48rem;
+}
+.input_row label {
+	width: 1.2rem;
+	text-align: center;
+}
+.input_row input {
+	width: 80%;
+	margin: 0;
+	height: 1.1733rem;
+	background-color: transparent;
+	border: none;
+	color: #fff;
+}
+.input_row2 input {
+	width: 70%;
+}
+.btn_yan {
+	width: 40%;
+	text-align: right;
+}
+.btn_yan button {
+	width: 90%;
+	line-height: 1.2rem;
+	background-color: #fff;
+	border-radius:0.8rem ;
+	font-size: 0.3466rem;
+	color: #34bbff;
+}
+
+.button_row {
+	border-radius: 0.666rem;
+	background-color: rgba(255, 255, 255, 1);
+	overflow: hidden;
+	padding-top: 0;
+}
+
+.button_row .mui-btn {
+	color: #34bbff;
+	font-size: 0.48rem;
+	width: 100%;
+	height: 1.1733rem;
+	text-align: center;
+	border: 0;
+}
+
+.forget-link {
+	text-align: center;
+	padding: 0.4rem 0;
+}
+
+.forget-link a {
+	color: #fff;
+	font-size: 0.346rem;
+}
+
+.forget-link a:last-of-type {
+	color: #f1f1f1;
+	margin-left: 0.2666rem;
+}
+
+.copy-right {
+	position: absolute;
+	bottom: 0.4666rem;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
+.copy-right p {
+	color: #FFF;
+	font-size: 0.293rem;
+	margin-bottom: 0;
+}
+
+.change_lang {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+}
+
+.change_lang img {
+	width: 0.8rem;
+}

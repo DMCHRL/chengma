@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>消息通知</title>
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<meta name="format-detection" content="telephone=no, email=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="套利宝SE">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/flexible.js"></script>
+		<style type="text/css">
+			.mui-table-view-cell.mui-collapse.mui-active{
+				margin-top: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">消息通知</h1>
+		</header>
+		<div class="mui-content">
+			<ul id="table_box" class="_table-view"> 
+				
+			</ul>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			var userObj = getUser();
+			// console.log(userObj)
+			
+			function setDom (arr) {
+				var parent = $('#table_box');
+				var liStr = "";
+				
+				for (var i=0;i<arr.length;i++) {
+					
+					var noStr = "";
+					var childarr = arr[i].arr;
+					for (var j=0;j<childarr.length;j++) {
+						noStr += "		<li class='mui-table-view-cell'>"
+						noStr += "			<div class='pull-left'>"
+						noStr += "				<h4>"+ childarr[j].type +"</h4>"
+						noStr += "				<p>"+ childarr[j].context +"</p>"
+						noStr += "			</div>"
+						noStr += "			<div class='pull-right'>"
+						noStr += "				<span>"+ childarr[j].sendTime.slice(10) +"</span>"
+						noStr += "			</div>"
+						noStr += "		</li>"
+					}
+					
+					liStr += "<li class='_table-view-cell'>"
+					liStr += "	<p>"+ arr[i].day +"</p>"
+					liStr += "	<ul class='mui-table-view'>"
+					liStr += noStr
+					liStr += "	</ul>"
+					liStr += "</li>"
+				}
+						
+				parent.append($(liStr))
+			}
+			
+			function quchong(arr) {
+				var len = arr.length;
+				arr.sort();
+				for(var i = len - 1; i > 0; i--) {
+					if(arr[i] == arr[i - 1]) {
+						arr.splice(i, 1);
+					}
+				}
+				return arr;
+			}
+			
+			function reloadArray (arr) {
+				let timeArr = [];
+				arr.forEach((item) => {
+					timeArr.push(item.sendTime.slice(0, 10))
+				})
+				timeArr = quchong(timeArr);
+
+				let list = [];
+				timeArr.forEach(it => {
+					let res = {};
+					res.day = it;
+					res.arr = arr.filter((item) => {
+						return item.sendTime.slice(0, 10) == it;
+					})
+					list.push(res);
+				})
+
+				list = list.reverse();
+				console.log(list)
+				
+				setDom(list);
+			}
+			
+			function initPage () {
+				superGet("/api/notice-sign/read/"+userObj.mobile, function (res) {
+					// console.log(res)
+					reloadArray(res.data.list)
+				})
+			}
+			$(function () {
+				initPage();
+			}) 
+		</script>
+		
+	</body>
+
+</html>

@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+/*弹窗*/
+
+.dialog_title {
+	text-align: center;
+	font-size: 22px;
+	color: #6562b6;
+	margin-bottom: 20px;
+	margin-top: -20px;
+}
+
+.dialog_box .input_box {
+	margin-bottom: 10px;
+}
+
+.dialog_box .input_box span {
+	float: left;
+	width: 30%;
+	line-height: 30px;
+	text-align: right;
+	padding-right: 10px;
+	color: #000;
+}
+
+.dialog_box .input_box span.import:before {
+	content: '*  ';
+	color: #F14B3B;
+}
+
+.dialog_box .input_box input,
+.dialog_box .input_box select,
+.dialog_box .input_box textarea {
+	border: 1px solid #ccc;
+	width: 50%;
+	padding: 5px 10px;
+	border-radius: 5px;
+	height: 30px;
+}
+.dialog_box .input_box textarea {
+	height: auto;
+}
+
+.dialog_box .input_box p {
+	cursor: pointer;
+	text-align: center;
+	font-size: 14px;
+	color: #F14B3B;
+}
+
+.dialog_footer {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.dialog_footer button {
+	font-size: 16px;
+	background-color: #F14B3B;
+	border-radius: 20px;
+	padding: 1px 30px;
+	color: #fff;
+	border: 1px solid #F14B3B;
+}
+
+/*弹窗end*/

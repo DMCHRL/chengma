@@ -1,0 +1,121 @@
+.mui-content {
+	padding-bottom: 0;
+}
+.sec_tab {
+	background-color: #fff;
+	margin-bottom: 0.2rem;
+}
+.sec_tab li {
+	width: 50%;
+	text-align: center;
+}
+.sec_tab li span{
+	display: inline-block;
+	line-height: 1.1rem;
+	border-bottom: 2px solid #fff;
+}
+.sec_tab li.active span{
+	color: #0062CC;
+	border-bottom: 2px solid #0062CC;
+}
+.ru_sec {
+	background-color: #fff;
+	margin-bottom: 0.2rem;
+}
+.ru_sec li {
+	line-height: 1.2rem;
+	border-bottom: 1px solid #ededed;
+}
+.ru_sec li:hover {
+	background-color: #f1f1f1;
+}
+.ru_sec li span.pull-left {
+	width: 35%;
+	text-align: right;
+	box-sizing: border-box;
+	padding-right: 0.2666rem;
+}
+.ru_sec li span.pull-right {
+	width: 65%;
+	text-align: left;
+}
+.ru_sec li input,
+.ru_sec li select {
+	margin: 0;
+	width: 65%;
+	border: 0;
+	padding: 0;
+	height: 1.2rem;
+	background-color: transparent;
+}
+.ru_sec li:hover input{
+	background-color: #f1f1f1;
+}
+.btn_box {
+	padding-top: 1rem ;
+	padding-bottom: 0.6rem;
+	text-align: center;
+}
+.btn_box button {
+	line-height: 0.88rem;
+	width: 80%;
+	font-size: 0.4rem;
+	color: #fff;
+	background-color: #3269ff;
+}
+.ru_sec_2 {
+	display: none;
+}
+.ru_sec_2 li img {
+	width: 1.6rem;
+	margin-right: 0.2666rem;
+}
+.code_box {
+	text-align: center;
+	padding-top: 0.6666rem;
+}
+.code_box h4 {
+	font-size: 0.3466rem;
+	color: #666;
+}
+.code_box p {
+	font-size: 0.2933rem;
+	color: #ababab;
+}
+.code_box p span {
+	color: #ff4a4a;
+}
+.code_box img {
+	width: 40%;
+	margin: 0.2333rem 0;
+}
+.ru_sec_trip {
+	background-color: #fff;
+	padding: 0.2666rem;
+}
+.ru_sec_trip p {
+	color: #acabab;
+	font-size: 0.2933rem;
+}
+.ru_sec_trip h5 {
+	font-size: 0.3466rem;
+	color: #666;
+	margin-bottom: 0.4rem;
+}
+.ru_sec_trip p:nth-child(5) {
+	margin-bottom: 0.2666rem;
+}
+.nobank_section {
+	background-color: #fff;
+	padding: 0.1rem 0.3rem;
+	text-align: right;
+}
+.nobank_section p {
+	color: #999;
+	font-size: 0.4rem;
+	margin-bottom: 0.2666rem;
+}
+.nobank_section a {
+	color: #007AFF;
+	font-size: 0.3rem;
+}

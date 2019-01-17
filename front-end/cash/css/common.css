@@ -1,0 +1,73 @@
+/*css 初始化 */
+html, body, ul, li, ol, dl, dd, dt, p, 
+h1, h2, h3, h4, h5, h6, form, fieldset, legend, img ,span { margin:0; padding:0; font-family: "微软雅黑";}
+fieldset, img,input,button { border:none; padding:0;margin:0;outline-style:none; }
+ul, ol { list-style:none;}
+li{list-style: none;}
+input { padding: 0; margin: 0; font-family: "微软雅黑";}
+select, input { vertical-align:middle;}
+select, input, textarea { font-size:12px; margin:0; }
+textarea { resize:none; outline:none;}
+img {border:0; vertical-align:middle; }
+body { font-family: "微软雅黑";color:#666; background:#fff;}
+i,em,b{font-weight: normal;font-style: normal;}
+label{font-style: normal; font-weight: normal;margin: 0;padding: 0;}
+a {color:#685c56; text-decoration:none;}
+a:visited {color:#685c56; text-decoration:none;} 
+a:hover {color:#685c56;text-decoration:none;} 
+a:active {color:#685c56;text-decoration:none;} 
+
+
+.trip {
+	text-align: center;
+	padding: 0.4rem 0;
+	background-color: #ededed;
+}
+.trip p{
+	font-size: 0.2666rem;
+	color: #999;
+}
+.trip img {
+	width: 50%; 
+	margin: 0.2666rem 0;
+}
+
+
+/*三角形*/
+.sanjiao {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-width: 0.2rem;
+	border-style: solid;
+	border-color:  transparent transparent #fff transparent;
+	
+}
+.sanjiao.down {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-width: 0.2rem;
+	border-style: solid;
+	border-color: #fff transparent transparent transparent;
+	position: relative;
+	top: 0.15rem;
+}
+
+.triangle {
+	display: inline-block;
+	width: 0; 
+	height: 0; 
+	border-bottom: 14px solid #18b9ff; 
+	border-left: 14px solid transparent; 
+	margin-right: 5px;
+} 
+.square {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	background-color: #18b9ff;
+	margin-right: 5px;
+	position: relative;
+	top: -4px;
+}

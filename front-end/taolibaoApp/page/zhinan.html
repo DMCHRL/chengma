@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新手指南</title>
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no, email=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="套利宝SE">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/flexible.js"></script>
+		<style type="text/css">
+			img {
+				width: 100%;
+			}
+			
+			.mui-content {
+				padding-bottom: 0;
+			}
+			
+			.sec_video {
+				width: 100%;
+				text-align: center;
+			}
+			
+			.sec_video video {
+				display: none;
+				width: 100%;
+			}
+			.sec_video img {
+				margin-bottom: 0.2rem;
+				width: 100%;
+			}
+			.sec_text {
+				background-color: #3269ff;
+				padding: 0.6rem 0.4rem;
+			}
+			
+			.sec_text h3 {
+				font-size: 0.45rem;
+				color: #fff;
+				font-weight: normal;
+				margin-bottom: 0.3rem;
+			}
+			
+			.sec_text p {
+				font-size: 0.32rem;
+				color: #fff;
+			}
+			
+			.sec_foot {
+				line-height: 1.4rem;
+				background-color: #3269FF;
+				color: #fff;
+				font-size: 0.3rem;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">新手指南</h1>
+		</header>
+		<div class="mui-content">
+			<div class="sec_video">
+				<img  id="img_1" src="../img/zhi_001.jpg"/>
+				<video controls="controls" id="cideoPlay1">
+					<source src="http://tlb.txasfx.com/video/tlb_1.mp4" type="video/mp4"></source>
+					<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+						<param name="movie" value="myvideo.swf" />
+						<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+					</object> 当前浏览器不支持 video直接播放，点击这里下载视频：
+					<a href="https://mp.weixin.qq.com/s/Vv2yCyttDJqF4PuduDaU4Q">下载视频</a>
+				</video>
+			</div>
+			<!--<div class="sec_text">
+				<h3>TxasFx資產組合產品說明</h3>
+				<p>產品標的：EURUSD即歐元兌美元</p>
+				<p>交易槓桿：10倍</p>
+				<p>交易規則：最小單筆交易0.1手 最大單筆交易5手</p>
+				<p>盈虧計算：方向判斷正確(600点-700点基準點)系統自動平倉盈利50美金/標準手，方向判斷錯誤(400点-500点基準點)系統自動平倉虧損0-5美金/標準手。</p>
+			</div>-->
+			<ul>
+				<li>
+					<img src="http://tlb.txasfx.com/img/cn_zhinan_3.jpg" />
+				</li>
+			</ul>
+			<p class="sec_foot">如使用有困難，請及時聯繫在線客服幫你解決</p>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript">
+			var video1 = document.getElementById("cideoPlay1");
+			var img1 = document.getElementById("img_1");
+
+			img1.onclick=function(){
+			    if(video1.paused){
+			        video1.play();
+			        $('.sec_video video').show();
+			        $(this).hide();
+			    }
+			}
+		</script>
+	</body>
+
+</html>

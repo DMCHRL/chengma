@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>個人中心</title>
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no, email=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="套利宝SE">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/flexible.js"></script>
+		<link rel="stylesheet" type="text/css" href="./mine/mine.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+			<h1 class="mui-title">個人中心</h1>
+		</header>
+		<div class="mui-content">
+			<div class="sec_1">
+				<div class="clearfix sec_1_btn">
+					<div class="img_box pull-left">
+						<img id="headimg" src="../img/m_01.png" />
+					</div>
+					<div class="text_box pull-left">
+						<p><span id="nickname">暫無賬戶</span></p>
+						<p>
+							<span class="account_num"></span>
+							<span class="account_num_index"></span>
+							<!--<span id="shenfen">切換賬戶</span>-->
+						</p>
+					</div>
+					<div class="btn_box pull-left">
+						<span class="mui-icon mui-icon-arrowright"></span>
+					</div>
+				</div>
+				<div class="xiao_box">
+					<img src="../img/t_m_02.png" />
+				</div>
+			</div>
+			<ul class="mui-table-view mime_list">
+				<li class="mui-table-view-cell">
+					<a href="./notice.html" class="mui-navigate-right">
+						<span class="mui-badge mui-badge-danger">45</span>
+						<img src="../img/m_2_9.png" />
+						<div class="text_box bet">
+							<span>消息通知</span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="#popover" class="mui-navigate-right">
+						<img src="../img/m_2_4.png" />
+						<div class="text_box bet">
+							<span>账戶管理</span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="zhinan.html" class="mui-navigate-right">
+						<img src="../img/m_2_5.png" />
+						<div class="text_box bet">
+							<span>新手指南</span>
+						</div>
+					</a>
+				</li>
+				<!--<li class="mui-table-view-cell no_account">
+					<a href="javascript:linkToPage(4);" class="mui-navigate-right">
+						<img src="../img/m_2_1.png"/>
+						<div class="text_box bet">
+							<span>充值申請</span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell no_account">
+					<a href="javascript:linkToPage(1);" class="mui-navigate-right">
+						<img src="../img/m_2_8.png"/>
+						<div class="text_box bet">
+							<span>提現申請</span>
+						</div>
+					</a>
+				</li>-->
+				<li class="mui-table-view-cell">
+					<a href="#popover2" class="mui-navigate-right">
+						<img src="../img/m_2_2.png" />
+						<div class="text_box bet">
+							<span>修改密碼</span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="feedback.html" class="mui-navigate-right">
+						<img src="../img/m_2_3.png" />
+						<div class="text_box bet">
+							<span>用戶反饋</span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="javascript:checkIsNew(true);" class="mui-navigate-right">
+						<img src="../img/m_2_6.png" />
+						<div class="text_box bet">
+							<span>檢查版本</span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="javascript:;" class="mui-navigate-right">
+						<img src="../img/m_2_10.png" />
+						<div class="text_box bet">
+							<span>对冲套利</span>
+						</div>
+					</a>
+					<div class="mui-switch mui-switch-blue mui-active" id="mySwitch">
+					  <div class="mui-switch-handle"></div>
+					</div>
+				</li>
+				
+				<li class="mui-table-view-cell logout-v2">
+					<a class="mui-navigate-right">
+						<img src="../img/m_2_7.png" />
+						<div class="text_box bet">
+							<span>退出</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+			
+			<!--账户管理弹窗-->
+			<div id="popover" class="mui-popover mypopover mui-popover1">
+				<div id="close" class="close"></div>
+				
+				<div class="btn_item">
+					<!--<a href="Application.html">申請交易賬戶</a>-->
+					<a href="BindingAccount.html">增加交易賬戶</a>
+					<!--<a href="javascript:toApplication();">申請交易賬戶</a>-->
+				</div>
+			</div>
+			
+			<!--修改密码弹窗-->
+			<div id="popover2" class="mui-popover mypopover mui-popover2">
+				<div id="close2" class="close"></div>
+				<div class="p_input_item clearfix">
+					<span class="pull-left">舊密碼：</span>
+					<input class="pull-right" type="password" name="jiumima" id="jiumima" value="" />
+				</div>
+				<div class="p_input_item clearfix">
+					<span class="pull-left">新密碼：</span>
+					<input class="pull-right" type="password" name="xinmima" id="xinmima" value="" />
+				</div>
+				<div class="p_input_item clearfix">
+					<span class="pull-left">再次輸入：</span>
+					<input class="pull-right" type="password" name="xinmima2" id="xinmima2" value="" />
+				</div>
+				<!--<p class="p_text">
+					<a href="http://tw.txasfx.com/forgetPwd">忘記密碼</a>
+				</p>-->
+				<div class="p_button">
+					<button onclick="commitmima($(this))">確認</button>
+					<!--<button id="close3">取消</button>-->
+				</div>
+			</div>
+			
+			<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
+			    <!-- 可选择菜单 -->
+			    <ul class="mui-table-view">
+			      <li class="mui-table-view-cell">
+			        <a href="mqqwpa://im/chat?chat_type=wpa&uin=2352406183&version=1&src_type=web&web_src=oicqzone.com" >客服QQ ：2352406183 </a>
+			      </li>
+			      <li class="mui-table-view-cell">
+			        <a href="tel:4008939522">客服電話 ：4008939522</a>
+			      </li>
+			    </ul>
+			    <!-- 取消菜单 -->
+			    <ul class="mui-table-view">
+			      <li class="mui-table-view-cell">
+			        <a href="#sheet1"><b>取消</b></a>
+			      </li>
+			    </ul>
+			</div>
+		</div>
+		<div class="footer">
+			<ul class="around">
+				<li>
+					<a href="../index.html">
+						<img src="../img/tab_02.png" />
+						<p>圖表</p>
+					</a>
+				</li>
+				<li>
+					<a href="./chart.html">
+						<img src="../img/tab_01.png" />
+						<p>交易</p>
+					</a>
+				</li>
+				<li>
+					<a href="./record.html">
+						<img src="../img/tab_03.png" />
+						<p>歷史</p>
+					</a>
+				</li>
+				<li class="active">
+					<a href="./mine.html">
+						<img src="../img/tab_14.png" />
+						<p>我的</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<!--<script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>-->
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="mine/mine.js"></script>
+	</body>
+
+</html>

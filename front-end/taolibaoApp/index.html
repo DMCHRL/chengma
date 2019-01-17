@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>套利寶</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no, email=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="套利宝SE">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		
+		<link rel="shortcut icon" href="./img/logo.png" type="image/x-icon"/>
+		<link rel="stylesheet" href="css/mui.min.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="./page/index/index.css" />
+		
+		<script>
+//			plus.navigator.closeSplashscreen()//关闭启动页
+			
+			if(!localStorage.getItem('isLogin')) {
+				window.location.href = "./page/login.html";
+			}
+		</script>
+		<script type="text/javascript" src="js/flexible.js" ></script>
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav">
+		    <!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+		    <h1 class="mui-title">套利寶</h1>
+		</header>
+		
+		<div class="mui-content">
+			<div class="sec_1 bet _center" id="btn_sym">
+				<div class="left_box">
+					<div id="sym_box">
+						<span>欧元兑美元</span>
+						<span>EURUSD</span>
+					</div>
+					
+					<p class="down ziti" id="buynow">
+						--
+					</p>
+				</div>
+				<div class="right_box around">
+					<div class="item_box">
+						<span>最高價格</span>
+						<p class="up ziti" id="highprice">--</p>
+					</div>
+					<div class="item_box">
+						<span>最低價格</span>
+						<p class="down ziti" id="lowpirce">--</p>
+					</div>
+					<div class="item_box">
+						<span>開盤價格</span>
+						<p class="kai ziti" id="openprice">--</p>
+					</div>
+				</div>
+				<div class="btn_box">
+					<span class="mui-icon mui-icon-arrowright"></span>
+				</div>
+			</div>
+			<div class="sec_tab clearfix">
+				<div class="item_tab active pull-left">30M</div>
+				<div class="item_tab pull-left">1H</div>
+				<div class="item_tab pull-left">1D</div>
+				<div class="icon_box pull-right">
+					<a href="page/chart.html">+</a>
+					
+				</div>
+			</div>
+			
+			<!--k线图dom-->
+		    <div class="sec_k">
+		    	<div id="main" style="height: 400px;"></div>
+		    	
+		    </div>
+		    
+		</div>
+		
+		<div class="footer">
+			<ul class="around">
+				<li class="active">
+					<a href="./index.html">
+						<img src="img/tab_12.png"/>
+					    <p>圖表</p>
+					</a>
+				</li>
+				<li>
+					<a href="./page/chart.html">
+						<img src="img/tab_01.png"/>
+					    <p>交易</p>
+					</a>
+				</li>
+				<li>
+					<a href="./page/record.html">
+						<img src="img/tab_03.png"/>
+					    <p>歷史</p>
+					</a>
+				</li>
+				<li>
+					<a href="./page/mine.html">
+						<img src="img/tab_04.png"/>
+					    <p>我的</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		
+		<script type="text/javascript" src="./page/index/echarts.min.js" ></script>
+		<script type="text/javascript" src="./page/index/index_echarts.js" ></script>
+		<script type="text/javascript" src="./page/index/index.js"></script>
+	</body>
+
+</html>

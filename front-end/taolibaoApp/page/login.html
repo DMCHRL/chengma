@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>登錄</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no, email=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="套利宝SE">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		
+		<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon"/>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/login.css"/>
+		<script type="text/javascript" src="../js/flexible.js" ></script>
+	</head>
+
+	<body >
+		
+		<div class="mui-content">
+			<!--<div class="change_lang">
+				<a href="en/login.html"><img src="../img/en.png"/></a>
+			</div>-->
+			<div class="logo">
+				<img src="../img/logo.png" alt="" />
+			</div>
+			<div class="input_group">
+			    <div class="input_row clearfix">
+			        <label class="pull-left">
+			        	<img src="../img/login_11.png"/>
+			        </label>
+			        <input type="text" class="pull-left mui-input-clear" placeholder="請輸入交易賬號" id="phone" value="">
+			    </div>
+			    <div class="input_row clearfix">
+			        <label class="pull-left">
+			        	<img src="../img/login_12.png"/>
+			        </label>
+			        <input type="password" class="pull-left mui-input-clear" placeholder="請輸入交易密碼" id="yanzhen" value="">
+			    </div>
+			    <!--<div class="clearfix">
+			        <div class="pull-left input_row input_row2 clearfix">
+			        	<label class="pull-left">
+				        	<img src="../img/login_12.png"/>
+				        </label>
+				        <input type="text" class="pull-left" placeholder="請輸入驗證碼" id="yanzhen" value="">
+			        </div>
+			        <div class="pull-right btn_yan">
+			        	<button id="code_btn" >獲取驗證碼</button>
+			        </div>
+			    </div>-->
+			    <div class="button_row">
+			        <button id="login_btn" type="button" data-loading-icon="mui-spinner mui-spinner-custom" class="mui-btn">登錄</button>
+			    </div>
+			</div>
+			<!--<div class="forget-link">
+		    	<input type="checkbox" name="agree" id="agree" value="" checked="checked" />
+		    	<a href="Terms.html">《用戶條款》</a>
+		    </div>-->
+			<div class="copy-right">
+				<p>版權所有© 香港潤貓科技</p>
+				<p>Copyright © HK RCAT TECHNOLOGY</p>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../js/md5.min.js" ></script>
+		<script type="text/javascript" src="../js/common.js" ></script>
+		<script>
+			var downNum = 60;
+			function codeDownCount (el) {
+				if (downNum <= 0) {
+					el.text("獲取驗證碼");
+					el.removeAttr("disabled");
+					downNum = 60;
+				}else {
+					el.text(downNum+"s后重新獲取");
+					downNum--;
+					setTimeout(function () {
+						codeDownCount(el);
+					},1000)
+				}
+			}
+			
+			//獲取驗證碼
+			$("#code_btn").click(function () {
+				var btn = $(this);
+				
+				var phone = $('#phone').val();
+				
+			    if (phone == '') {
+					mui.toast('手機號不能為空',{ duration:'long', type:'div' });
+					return;
+				};
+				if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(phone)) {
+					mui.toast('手機號不正確',{ duration:'long', type:'div' });
+					return;
+				};
+				btn.attr('disabled','true');
+				
+				var datas = {"mobileNum": phone}
+				
+				superPost("/api/mobileValidate/sendCode",datas,function (res) {
+//					console.log(res)
+					if (res.statusCode == "0000") {
+						codeDownCount(btn);
+						mui.toast("驗證碼發送成功",{ duration:'long', type:'div' });
+					}else {
+						mui.toast("驗證碼發送失敗",{ duration:'long', type:'div' });
+						btn.removeAttr("disabled");
+					}
+				})
+				
+				
+			}) ;
+			//点击登錄事件
+			$('#login_btn').click(function () {
+				var btn = $(this);
+				
+			    var phone = $('#phone').val();
+			    var yanzhen = $('#yanzhen').val();
+			    var agree = $("#agree").prop("checked");
+			    
+				if (phone == '') {
+					mui.toast('交易賬號不能為空',{ duration:'long', type:'div' });
+					return;
+				};
+//				if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(phone)) {
+//					mui.toast('手機號不正確',{ duration:'long', type:'div' });
+//					return;
+//				};
+				if (yanzhen == '') {
+					mui.toast('交易密码不能為空',{ duration:'long', type:'div' });
+					return;
+				};
+//				if (!agree) {
+//					mui.toast('請同意用戶條款',{ duration:'long', type:'div' });
+//					return;
+//				};
+				
+				btn.attr('disabled',true);
+				btn.text("登錄中...");
+				
+				var datas = {
+					"username":phone,
+    				"password":yanzhen
+//					"mobileNum": phone, 
+//					"validateCode": yanzhen
+				};
+				
+				superPost("/api/tlb-account/verification",datas,function (res) {
+//					console.log(res)
+					if (res.statusCode == "0000") {
+						
+//						localStorage.setItem("user_phone",phone)
+						
+				  		if (res.data) {
+				  			
+				  			tokenSet(res.data.id_token);
+				  			
+				  			localStorage.setItem("userStr",JSON.stringify(res.data.user));
+				  			localStorage.setItem("accStr", JSON.stringify(res.data.tlbAccount));
+				  			localStorage.setItem("isLogin",true);
+				  			
+				  			setLocalList(res.data.tlbAccount);
+//				  			getUserAccount(phone);
+				  		
+				  			mui.toast('登錄成功',{ duration:'long', type:'div' });
+							setTimeout(function () {
+					  			window.location.href = '../index.html';
+					  		},300)
+				  		}
+				  		
+					}else {
+				  		btn.removeAttr('disabled');
+				  		btn.text("登錄");
+				  		mui.toast(res.msgCode,{ duration:'long', type:'div' });
+				  		return;
+				  	}
+				})
+//				
+			});
+			
+			//獲取個人賬戶列表
+			function getUserAccount (accountNum) {
+				superGet("/api/user/loadMyAccount",function(res) {
+//					console.log(res)
+					if (res.statusCode == "0000") {
+						var list  = res.data;
+						if (list.length > 0) {
+							
+							for (var i=0;i<list.length;i++) {
+								if (list[i].account == accountNum) {
+									localStorage.setItem("accStr",JSON.stringify(list[i]));
+								}
+							}
+// 							list.forEach( item => {
+// 								if (item.account == accountNum) {
+// 									localStorage.setItem("accStr",JSON.stringify(item));
+// 								}
+// 							})
+							
+//							localStorage.setItem("accStr",JSON.stringify(res.data[0]));
+						}
+
+						mui.toast('登錄成功',{ duration:'long', type:'div' });
+						
+						setTimeout(function () {
+				  			window.location.href = '../index.html';
+				  		},500)
+						
+					}else {
+						console.log("获取数据失败")
+					}
+				})
+			}
+			
+			function setBodyHeight () {
+				var wh = document.documentElement.clientHeight || document.body.clientHeight;
+				$('.mui-content').height(wh);
+			}
+			
+			$(function () {
+				//判断是否登录
+//				if (localStorage.getItem('isLogin')) {
+//					mui.toast('已登錄',{ duration:'long', type:'div' });
+//			  		setTimeout(function () {
+//			  			window.location.href = "../index.html";
+//			  		},1000)
+//				}
+				
+				setBodyHeight();//設置頁面高度
+			
+			})
+			
+			
+		</script>
+	</body>
+
+</html>
