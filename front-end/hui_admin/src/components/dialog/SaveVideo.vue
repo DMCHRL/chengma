@@ -2,7 +2,7 @@
 	<!--添加银行卡弹窗-->
 	<el-dialog custom-class="ibs_dialog" width="30%" :show-close="false" :visible="show" append-to-body>
 		<h3 slot="title" class="dialog_title">视频详情</h3>
-		
+
 		<div class="input_box clearfix">
 			<div class="pull-left left_box">
 				<span class="import">序号：</span>
@@ -35,7 +35,7 @@
 				<input type="text" placeholder="请输入URL" v-model="videoMess.videoUrl" />
 			</div>
 		</div>-->
-		
+
 		<div class="uplond_box clearfix">
 			<div class="pull-left left_box">
 				<span class="import">视频封面</span>
@@ -52,7 +52,7 @@
 				</label>
 			</div>
 		</div>
-		<div class="input_box clearfix">
+	<!--	<div class="input_box clearfix">
 			<div class="pull-left left_box">
 				<span class="import">视频资费</span>
 			</div>
@@ -60,7 +60,7 @@
 				<el-radio v-model="radioValue" label="1">收费</el-radio>
   				<el-radio v-model="radioValue" label="2">免费</el-radio>
 			</div>
-		</div>
+		</div>-->
 		<div class="input_box clearfix" v-if="radioValue == '1'">
 			<div class="pull-left left_box">
 				<span class="import">视频价格</span>
@@ -150,7 +150,7 @@
 //					console.log(res)
 					_this.commitDisabled = false;
 					_this.commitText = "确认新增";
-					
+
 					if (res.statusCode == "0000") {
 						_this.$message({
 				          message: "新增成功",
@@ -183,7 +183,7 @@
 		font-size: 25px;
 		color: #6562b6;
 	}
-	
+
 	.input_box {
 		margin-bottom: 25px;
 		position: relative;
@@ -198,12 +198,12 @@
 		font-size: 14px;
 		line-height: 36px;
 	}
-	
+
 	span.import:before {
 		content: '*  ';
 		color: #F14B3B;
 	}
-	
+
 	.right_box input,
 	.right_box select,
 	.right_box textarea {
@@ -214,7 +214,7 @@
 		color: #666;
 		width: 200px;
 	}
-	
+
 	.ibs_dialog .trip_text {
 		position: absolute;
 		top: 100%;
@@ -223,11 +223,11 @@
 		font-size: 12px;
 		color: #F14B3B;
 	}
-	
+
 	.dialog_footer {
 		text-align: center;
 	}
-	
+
 	.dialog_footer button {
 		font-size: 18px;
 		background-color: #F14B3B;
@@ -235,7 +235,7 @@
 		padding: 3px 30px;
 		color: #fff;
 	}
-	
+
 	.dialog_footer button:last-of-type {
 		background-color: #fff;
 		color: #F14B3B;
@@ -243,14 +243,14 @@
 		padding: 1.5px 28px;
 		margin-left: 20px;
 	}
-	
+
 	.uplond_box {
 		position: relative;
 		text-align: center;
 		width: auto;
 		border: none;
 	}
-	
+
 	.uplond_box label {
 		width: 200px;
 		min-height: 100px;
@@ -267,7 +267,7 @@
 		width: 30px;
 		height: 30px;
 	}
-	
+
 	.img_box img {
 		width: 100%;
 		height: auto;
