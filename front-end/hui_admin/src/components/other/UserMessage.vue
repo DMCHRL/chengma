@@ -1,24 +1,24 @@
 <template>
 	<div class="content_box">
-		
+
 		<!--修改密码弹窗-->
-		
-		<password-change 
-			:title="dialogTitle" 
-			:dialogVisible="dialogVisible" 
+
+		<password-change
+			:title="dialogTitle"
+			:dialogVisible="dialogVisible"
 			:url='url'
 			:loginAccount="user.login"
 			@close="dialogClose">
 		</password-change>
-		
-		
+
+
 		<div class="titling ">
 			<span>基本信息</span>
 		</div>
 		<div class="message_box">
-			
+
 			<div class="_row clearfix">
-				
+
 				<div class="item_boxs pull-left">
 					<span>姓名</span>
 					<span>{{user.firstName}}</span>
@@ -36,11 +36,11 @@
 				<div class="item_boxs pull-left">
 					<span>登录密码</span>
 					<span>*********</span>
-					<el-button 
-						class="pull-right _button"  
-						type="primary" 
-						icon="el-icon-edit" 
-						slot="reference" 
+					<el-button
+						class="pull-right _button"
+						type="primary"
+						icon="el-icon-edit"
+						slot="reference"
 						@click="dialogVisible = true">
 					</el-button>
 				</div>
@@ -78,8 +78,8 @@
 				    <span v-show="showinput != 4">{{user.mobile}}</span>
 				</div>
 			</div>
-			
-			
+
+
 		</div>
 		<!-- <h1>欢迎登陆汇添溢管理后台！</h1> -->
 	</div>
@@ -97,7 +97,7 @@
 				zheng_image: '',
 				fan_image: '',
 				showinput: '0',
-				
+
 				oldPassword: '',
 				newPassword: '',
 				newPassword2: '',
@@ -155,9 +155,9 @@
 			dialogClose () {
 				this.dialogVisible=false;
 			},
-			
+
 			GetAccountList () {
-				
+
 				let acclist = JSON.parse(localStorage.getItem("accList"));
 				if (acclist) {
 					this.accList = acclist;
@@ -171,11 +171,11 @@
 				_this.$until.superGet("/api/bank_info/get/"+id,function (res) {
 //					console.log(res)
 					if (res.statusCode == "0000") {
-						
+
 						if (res.data) {
 							_this.bank = res.data;
 						}
-						
+
 					}else {
 						console.log("获取银行卡失败")
 					}
@@ -195,7 +195,7 @@
 		padding: 100px 0;
 		padding-left: 120px;
 	}
-	
+
 	.message_box {
 	margin: 20px;
 	}
@@ -218,7 +218,7 @@
 		padding: 0 15px;
 	}
 	.item_boxs span:first-of-type{
-		background-color: #f2825b;
+		background-color: #2f5579;
 		color: #fff;
 		width: 160px;
 		text-align: center;
@@ -233,17 +233,17 @@
 
 
 
-	
+
 	.dialog_title {
 		text-align: center;
 		font-size: 25px;
 		color: #6562b6;
 	}
-	
+
 	.ibs_dialog .input_box {
 		margin-bottom: 10px;
 	}
-	
+
 	.ibs_dialog .input_box span {
 		display: inline-block;
 		width: 40%;
@@ -251,12 +251,12 @@
 		padding-right: 10px;
 		color: #000;
 	}
-	
+
 	.ibs_dialog .input_box span.import:before {
 		content: '*  ';
 		color: #F14B3B;
 	}
-	
+
 	.ibs_dialog .input_box input,
 	.ibs_dialog .input_box select {
 		border: 1px solid #ccc;
@@ -264,18 +264,18 @@
 		padding: 0 10px;
 		border-radius: 5px;
 	}
-	
+
 	.ibs_dialog .input_box p {
 		cursor: pointer;
 		text-align: center;
 		font-size: 14px;
 		color: #b4b4b4;
 	}
-	
+
 	.dialog_footer {
 		text-align: center;
 	}
-	
+
 	.dialog_footer button {
 		font-size: 14px;
 		background-color: #F14B3B;
@@ -283,7 +283,7 @@
 		padding: 3px 30px;
 		color: #fff;
 	}
-	
+
 	.dialog_footer button:last-of-type {
 		background-color: #fff;
 		color: #F14B3B;

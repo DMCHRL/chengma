@@ -21,9 +21,9 @@
 			</div>
 			<div class="btn_box">
 				<button @click="tologin" ref='login_btn'>登录</button>
-				<button @click="toregister">注册</button>
+				<!--<button @click="toregister">注册</button>-->
 			</div>
-			<p class="copy_text">Copyright©2017-2018 TxasFx.All rights reseverd.</p>
+			<p class="copy_text">Copyright©2018-2019 HRL.All rights reseverd.</p>
 		</div>
 	</div>
 </template>
@@ -59,7 +59,7 @@
 //							localStorage.setItem("name",res.data[0].accountName);
 //							localStorage.setItem("accList",JSON.stringify(res.data));
 //						}
-//						
+//
 //						_this.$message({
 //				          message: '登录成功',
 //				          type: 'success'
@@ -74,13 +74,13 @@
 //							_this.$router.push('/manage')
 //						}
 //					}
-//					
+//
 //				})
 //			},
 			tologin() {
 				let _this = this;
 				let btn_el = _this.$refs.login_btn;
-				
+
 				if (_this.username == "") {
 					_this.$message({
 			          message: '账户不能为空',
@@ -102,27 +102,27 @@
 			        });
 			        return;
 				}
-				
+
 				btn_el.innerHTML = '登录中...';
 				btn_el.setAttribute('disabled','true');
-				
+
 				let datas = {
 					'username': _this.username,
 					'password': _this.userpass,
 					"verifyCode": _this.VerificaInput
 				}
-				
+
 				_this.$post("/api/authenticate",datas).then((res) => {
 //					console.log(res)
-					
+
 					btn_el.innerHTML = '登录';
 				    btn_el.removeAttribute('disabled');
-					
+
 					if (res.statusCode == '0000') {
 						_this.$until.tokener.set(res.data.id_token);
 						_this.$store.commit("setToken",res.data.id_token);
 						localStorage.setItem("user",JSON.stringify(res.data.user));
-						
+
 						_this.$message({
 				          message: '登录成功',
 				          type: 'success'
@@ -136,7 +136,7 @@
 //						}else {
 //							_this.$router.push('/manage')
 //						}
-						
+
 //						_this.getUserAccount(res.data.user.department);
 					}else if (res.statusCode == "0100") {
 						_this.changeImg();
@@ -150,7 +150,7 @@
 					          message: '密码错误',
 					          type: 'warning'
 					        });
-							
+
 						}
 					}else {
 						_this.$message({
@@ -159,7 +159,7 @@
 				        });
 					}
 				})
-				
+
 			},
 			toregister() {
 				this.$router.push({path: '/regiter'})
@@ -175,18 +175,18 @@
 		},
 		mounted() {
 			let _this = this;
-			
+
 			_this.changeImg();
-			
+
 			_this.computedWH();
 			window.onresize = () => _this.computedWH();
-			
+
 		}
 	}
 </script>
 
 <style scoped>
-	
+
 	input,
 	button,
 	select,
@@ -195,27 +195,27 @@
 		-webkit-appearance: none;
 		border-radius: 0;
 	}
-	
+
 	::-webkit-input-placeholder {
 		/* WebKit browsers */
 		color: #fff;
 	}
-	
+
 	:-moz-placeholder {
 		/* Mozilla Firefox 4 to 18 */
 		color: #fff;
 	}
-	
+
 	::-moz-placeholder {
 		/* Mozilla Firefox 19+ */
 		color: #fff;
 	}
-	
+
 	:-ms-input-placeholder {
 		/* Internet Explorer 10+ */
 		color: #fff;
 	}
-	
+
 	.login_section {
 		position: relative;
 		height: 100%;
@@ -224,9 +224,9 @@
 		background-repeat: no-repeat;
 		background-position: center;
 	}
-	
+
 	.form_box {
-		height: 500px;
+		height: 450px;
 		width: 400px;
 		position: absolute;
 		top: 0;
@@ -241,9 +241,9 @@
 		padding: 0 40px;
 		padding-top: 30px;
 		text-align: center;
-		background-color: rgba(255, 255, 255, .3);
+		background-color: rgba(18, 18, 19, 0.2)
 	}
-	
+
 	.form_box h3 {
 		font-size: 28px;
 		color: #fff;
@@ -251,18 +251,18 @@
 		margin-bottom: 25px;
 		border-bottom: 2px solid #fff;
 	}
-	
+
 	.form_box .input_box {
 		border-radius: 20px;
 		border: 1px solid #fff;
 		margin-bottom: 20px;
 	}
-	
+
 	/*.input_box img {
 		position: relative;
 		top: 8px;
 	}*/
-	
+
 	.input_box input {
 		height: 34px;
 		width: 70%;
@@ -301,14 +301,14 @@
 		border-radius: 20px;
 		margin-top: 20px;
 	}
-	
+
 	.btn_box button:last-of-type {
 		color: #fff;
 		background-color: transparent;
 		border: 1px solid #fff;
-		margin-left: 40px;
+		margin-left: 0px;
 	}
-	
+
 	.copy_text {
 		font-size: 12px;
 		color: #fff;

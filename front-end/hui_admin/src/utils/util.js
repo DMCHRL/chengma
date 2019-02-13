@@ -1,9 +1,9 @@
 import $axios from 'axios'
 import { Loading, Message } from 'element-ui'
 
-/*const host = 'http://192.168.1.135:8089/hpp';*/
+const host = 'http://192.168.1.102:8089/hpp';
 //const host = 'http://192.168.1.139:8083/hpp';
-const host = 'http://end.hui1688.com.cn/hpp';//线上
+/*const host = 'http://end.hui1688.com.cn/hpp';//线上*/
 
 const localer = { //本地存储操作
 	set(key, value) {
@@ -99,9 +99,9 @@ function convertBase64UrlToBlob(urlData) {
 function uploadImage(url, obj) {
 	return new Promise((resolve, reject) => {
 
-		var urls = host + url; // 接收上传文件的后台地址 
+		var urls = host + url; // 接收上传文件的后台地址
 		var form = new FormData(); // FormData 对象
-		form.append("image", obj); // 文件对象 
+		form.append("image", obj); // 文件对象
 		let xhr = new XMLHttpRequest(); // XMLHttpRequest 对象
 		xhr.open("post", urls, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
 		xhr.onload = function(evt) {

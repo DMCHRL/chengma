@@ -20,7 +20,7 @@
 							</div>
 							<div class="pull-left">
 								<input type="text" name="" id="" value="" placeholder="请输入栏目" v-model="newsType" />
-								
+
 							</div>
 					</div>
 					<div class="input_box clearfix">
@@ -48,13 +48,13 @@
 							</label>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
-			
+
 			<div id="editor" type="text/plain" style="width:1300px;height:400px;"></div>
 		</div>
-		
+
 		<div class="btn_box">
 			<button @click="clearContent">清空</button>
 			<button class="submit" @click="submits" :disabled="isDisabled">提交</button>
@@ -96,7 +96,7 @@
 						_this.bookFace = res.data.listImg;
 						_this.newsType = res.data.type;
 						_this.old = res.data.context;
-						
+
 						setTimeout(function () {
 							_this.xieru();
 						},1000)
@@ -107,7 +107,7 @@
 				this.ue = UE.getEditor('editor', {
 					BaseUrl: '',
 					UEDITOR_HOME_URL: 'static/utf8-jsp/',
-					// toolbars:[] 
+					// toolbars:[]
 				});
 			},
 			imgUpload () {
@@ -210,10 +210,10 @@
 		height: 100%;
 	}
 	.btn_box {
+    width: 100%;
 		background-color: #fff;
 		padding-right: 100px;
-		padding-top: 100px;
-		padding-bottom: 50px;
+		padding-top: 50px;
 		text-align: center;
 	}
 	.btn_box button {

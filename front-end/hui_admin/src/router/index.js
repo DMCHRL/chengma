@@ -72,8 +72,8 @@ export default new Router({
 		children: [
       {
 				path: '/',
-				name: 'HomeManagement',
-				component: HomeManagement
+				name: 'UserMessage',
+				component: UserMessage
 			},
 			{
 				path: '/video',
@@ -110,7 +110,7 @@ export default new Router({
 				name: 'ExchangerPage',
 				component: ExchangerPage
 			},
-					
+
 				//任务
 				{
 					path: '/task',
@@ -143,7 +143,7 @@ export default new Router({
           name: 'IntegralDetail',
           component: IntegralDetail
         },
-			 
+
 				{
 					path: '/news',
 					name: 'NewsList',

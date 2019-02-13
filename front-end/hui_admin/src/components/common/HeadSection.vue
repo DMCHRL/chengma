@@ -5,7 +5,7 @@
 				<div class="pull-left headname">
 					<router-link to="/">
 						<img src="../../assets/img/logo_01.png"/>
-						<span>汇添溢管理员后台</span>
+						<span>外汇跟单系统管理员后台</span>
 					</router-link>
 				</div>
 				<div class="pull-right headbutton">
@@ -24,7 +24,7 @@
 		<el-dialog custom-class="ibs_dialog" :show-close="false" :visible.sync="dialogVisible" width="20%">
 			<!--添加银行卡弹窗-->
 			<!--<add-bank-card :innerVisible="innerVisible" @cancelDialog="cancelDialog"></add-bank-card>-->
-			
+
 			<h3 slot="title" class="dialog_title">提现</h3>
 			<div class="input_box">
 				<span>提现账号</span>
@@ -111,7 +111,7 @@
 				localStorage.removeItem("name");
 				localStorage.removeItem("user");
 				localStorage.removeItem("bindid");
-				
+
 				_this.$router.push({path: '/login'});
 			},
 			cancelDialog () {
@@ -123,7 +123,7 @@
 			},
 			rateChange () {
 				let _this = this;
-				
+
 				_this.$until.superPost('/api/tlb-rate/getAll',{},function (res) {
 					//console.log(res)
 					if (res.statusCode == '0000') {
@@ -134,12 +134,12 @@
 				        _this.dialogVisible2 = true;
 					}
 				})
-				
-				
+
+
 			},
 			rateComit () {
 				let _this = this;
-				
+
 				let datas = {
 					"id": "1",
 					"rate": _this.tiRate,
@@ -165,20 +165,20 @@
 
 <style scoped>
 	/*公共头部*/
-	
+
 	header {
 		background-color: #19183e;
 		line-height: 55px;
 		height: 55px;
 		overflow: hidden;
 	}
-	
+
 	.headname {
 		width: 13%;
 		text-align: center;
 		overflow: hidden;
 	}
-	
+
 	.headname span {
 		font-size: 16px;
 		color: #fff;
@@ -189,11 +189,11 @@
 		width: 50px;
 		/*margin-right: 20px;*/
 	}
-	
+
 	.headtab {
 		margin-left: -15px;
 	}
-	
+
 	.headtab a {
 		display: inline-block;
 		font-size: 16px;
@@ -201,29 +201,29 @@
 		border-top: 4px solid #19183e;
 		padding: 20px 30px;
 	}
-	
+
 	.headtab a.router-link-exact-active {
 		border-top: 4px solid #b0aeff;
 		background-color: #2c2b5c;
 	}
-	
+
 	.headtab a:hover {
 		border-top: 4px solid #b0aeff;
 		background-color: #2c2b5c;
 	}
-	
+
 	.headtab .badge {
 		position: relative;
 		top: -10px;
 		left: 10px;
 		background-color: #f14b3b;
 	}
-	
+
 	.headbutton {
 		width: 87%;
 		text-align: right;
 	}
-	
+
 	.headbutton button {
 		background-color: #f14b3b;
 		font-size: 14px;
@@ -233,7 +233,7 @@
 		line-height: 30px;
 		padding: 0 30px;
 	}
-	
+
 	.headbutton button.logout {
 		color: #fff;
 		background-color: transparent;
@@ -243,7 +243,7 @@
 		width: 20px;
 		margin-right: 10px;
 	}
-	
+
 	.uplond_box {
 		text-align: center;
 	}

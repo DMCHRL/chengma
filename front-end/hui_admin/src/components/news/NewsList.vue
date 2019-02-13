@@ -8,15 +8,15 @@
 		</div>
 		<div class="list_section">
 			<div class="headlist clearfix myback2">
-				
+
 				<template v-for="(item,index) in headlist">
 					<span :key="index"
-						:class="['pull-left', item.istime? 'time': '', item.sort?'pointer':'']" 
+						:class="['pull-left', item.istime? 'time': '', item.sort?'pointer':'']"
 						@click="Sort(item.sort)">{{item.name}}
 						<i v-if="item.sort" class="el-icon-d-caret"></i>
 					</span>
 				</template>
-				
+
 				<span class="pull-right">操作</span>
 			</div>
 			<ul class="bodylist">
@@ -43,9 +43,7 @@
 							</el-switch>
 						</div>
 						<div class="pull-right btn_box">
-							<!--<button @click="editVideoType(item)">编辑视频集</button>
-							<button class="delete" @click="deleteType(item.videoTypeName,item.id)">删除视频集</button>-->
-							<el-button @click="sendNews(item.title,item.id)" type="info" icon="el-icon-bell" circle></el-button>
+							<!--<el-button @click="sendNews(item.title,item.id)" type="info" icon="el-icon-bell" circle></el-button>-->
 								<router-link :to="'/addnews?id='+ item.id">
 							<el-button type="primary" icon="el-icon-edit" circle></el-button>
 							</router-link>
@@ -203,21 +201,21 @@
 	.bodylist li>div {
 		width: 220px;
 	}
-	
+
 	.headlist span.time,
 	.bodylist li>div.time {
 		width: 260px;
 	}
-	
+
 	.bodylist li {
 		padding: 10px 0;
 	}
-	
+
 	.img_box {
 		width: 140px;
 		margin: 0 auto;
 	}
-	
+
 	.img_box img {
 		width: 100%;
 	}

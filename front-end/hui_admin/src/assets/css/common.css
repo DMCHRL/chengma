@@ -5,7 +5,7 @@
 		padding: 0;
 		font-family: "微软雅黑";
 	}
-	
+
 	fieldset,
 	img,
 	input,
@@ -15,75 +15,75 @@
 		margin: 0;
 		outline-style: none;
 	}
-	
+
 	ul,
 	ol {
 		list-style: none;
 	}
-	
+
 	input {
 		padding: 0;
 		margin: 0;
 		font-family: "微软雅黑";
 	}
-	
+
 	select,
 	input {
 		vertical-align: middle;
 	}
-	
+
 	select,
 	input,
 	textarea {
 		font-size: 12px;
 		margin: 0;
 	}
-	
+
 	textarea {
 		resize: none;
 		outline: none;
 	}
-	
+
 	img {
 		border: 0;
 		vertical-align: middle;
 	}
-	
+
 	body {
 		font-family: "微软雅黑";
 		color: #666;
 		background-color: #ececec;
 	}
-	
+
 	i,
 	em,
 	b {
 		font-weight: normal;
 		font-style: normal;
 	}
-	
+
 	label {
 		font-style: normal;
 		font-weight: normal;
 		margin: 0;
 		padding: 0;
 	}
-	
+
 	a {
 		color: #685c56;
 		text-decoration: none;
 	}
-	
+
 	a:visited {
 		color: #685c56;
 		text-decoration: none;
 	}
-	
+
 	a:hover {
 		color: #685c56;
 		text-decoration: none;
 	}
-	
+
 	a:active {
 		color: #685c56;
 		text-decoration: none;
@@ -105,26 +105,26 @@
 		-ms-user-select: none;
 		user-select: none;
 	}
-	
+
 	.pr0 {
 		padding-right: 0;
 	}
-	
+
 	.uppercase {
 		text-transform: uppercase;
 	}
-	
+
 	.img_box img {
 		width: 100%;
 	}
-	
+
 	@media only screen and (max-width: 640px) {
 		.xs_hide {
 			display: none;
 		}
 	}
-	
-	
+
+
 	/*饿了吗分页*/
 	.el-pagination.is-background .btn-next,
 	.el-pagination.is-background .btn-prev,
@@ -133,12 +133,12 @@
 		border-radius: 0 !important;
 		background-color: #4493f4 !important;
 	}
-	
+
 	.el-pagination.is-background .el-pager li:not(.disabled).active {
 		background-color: #fff !important;
 		color: #4493f4 !important;
 	}
-	
+
 	.el-pagination {
 		margin: 0 -20px;
 		background-color: #fff;
@@ -146,41 +146,41 @@
 		padding-top: 20px !important;
 	}
 	/*分页end*/
-	
+
 	.headlist span {
 		font-size: 14px;
 		color: #fff;
 		text-align: center;
 	}
-	
+
 	.top_content p,
 	.top_content span {
 		color: #fff;
 	}
-	
+
 .myback {
-	background: -webkit-linear-gradient(left, #e3132b, #f2825b);
+	background: -webkit-linear-gradient(left,#31516dd1, #0e1129);
 	/* Safari 5.1 - 6.0 */
-	background: -o-linear-gradient(right, #e3132b, #f2825b);
+	background: -o-linear-gradient(right,#31516dd1, #0e1129);
 	/* Opera 11.1 - 12.0 */
-	background: -moz-linear-gradient(right, #e3132b, #f2825b);
+	background: -moz-linear-gradient(right,#31516dd1, #0e1129);
 	/* Firefox 3.6 - 15 */
-	background: linear-gradient(to right, #e3132b, #f2825b);
+	background: linear-gradient(to right, #31516dd1, #0e1129);
 	/* 标准的语法（必须放在最后） */
 }
 .myback2 {
-	background: -webkit-linear-gradient(top, #e3132b, #f2825b);
+	background: -webkit-linear-gradient(top, #31516dd1, #0e1129);
 	/* Safari 5.1 - 6.0 */
-	background: -o-linear-gradient(bottom, #e3132b, #f2825b);
+	background: -o-linear-gradient(bottom, #31516dd1, #0e1129);
 	/* Opera 11.1 - 12.0 */
-	background: -moz-linear-gradient(bottom, #e3132b, #f2825b);
+	background: -moz-linear-gradient(bottom, #31516dd1, #0e1129);
 	/* Firefox 3.6 - 15 */
-	background: linear-gradient(to bottom, #e3132b, #f2825b);
+	background: linear-gradient(to right, #31516dd1, #0e1129);
 	/* 标准的语法（必须放在最后） */
 }
 
 .loginback {
-	background-image: url("http://cat58.com/hui/img/login.png");
+	background-image: url("../img/login.jpg");
 }
 
 

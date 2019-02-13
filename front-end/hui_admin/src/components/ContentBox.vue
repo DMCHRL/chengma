@@ -36,15 +36,15 @@
 		},
 		mounted () {
 			let _this = this;
-			
+
 			window.onresize = () => _this.setHeight();
-			
+
 			if (_this.$until.tokener.get()) {
 				this.setHeight();
 			}else {
 				_this.$router.push({path: '/login'})
 			}
-			
+
 		}
 	}
 </script>
@@ -80,7 +80,7 @@
 		line-height: 50px;
 		margin-top: -20px;
 	}
-	
+
 	.titling span {
 		border-left: 4px solid #6562b6;
 		font-size: 18px;
@@ -97,13 +97,13 @@
 	.titling button {
 		font-size: 14px;
 		color: #fff;
-		background-color: #f14b3b;
+		background-color: #2a578c;
 		border-radius: 20px;
 		line-height: 30px;
 		padding: 0px 20px;
 		margin-left: 20px;
 	}
-	
+
 	.headlist {
 		background-color: #6562b6;
 		padding: 8px 0;
@@ -134,7 +134,7 @@
 		border-bottom: 2px solid #6562b6;
 		background-color: rgba(100,100,180,.2);
 	}
-	
+
 	.bodylist li span {
 		font-size: 14px;
 		color: #3e3e3e;
@@ -163,7 +163,7 @@
 		width: 10%;
 		min-height: 1px;
 	}
-	
+
 	/*无数据*/
 	.trip_box {
 		text-align: center;
