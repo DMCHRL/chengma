@@ -1,15 +1,15 @@
 <template>
 	<div class="content_box">
 		<my-header :leftOptions="headOption" ></my-header>
-        
+
         <div class="hui_content" id="hui-content">
-        
-		<my-swiper :list="bannerList"></my-swiper>
-		
+
+		<!--<my-swiper :list="bannerList"></my-swiper>
+
 		<div class="welcome_box">
 			<p>欢迎交易高手入驻“汇添溢”。您的到来将给您和用户更多的惊喜！信号入驻需要经过审核，请按照下表填写。我们将在一个工作日内与您取得联系。</p>
-		</div>
-        
+		</div>-->
+
         <div class="list_box">
 		<div class="item_box flex_bet flex_align_center">
 			<div class="name_box">
@@ -75,16 +75,16 @@
 				<input type="text" name="" id="42" value="" v-model="server" />
 			</div>
 		</div>
-        
+
         </div>
-        
+
         </div>
-		
+
 		<div class="bottom_btn myback">
 			<button :disabled="isDisable" @click="Commit">确认申请</button>
 		</div>
-        
-        
+
+
 	</div>
 </template>
 
@@ -174,12 +174,12 @@
 </script>
 
 <style scoped>
-    
+
     .list_box {
         padding-bottom: 50px;
         background-color: #fff;
     }
-    
+
 	.welcome_box {
 		background-color: #fff;
 		padding: 0.2666rem;
@@ -190,13 +190,13 @@
 		font-size: 0.3rem;
 		line-height: 0.5333rem;
 	}
-	
+
 	.name_box {
 		width: 20%;
 		text-align: center;
 		line-height: 1.2rem;
 	}
-	
+
 	.text_box {
 		height: inherit;
 		border-bottom: 1px solid #ededed;
@@ -227,5 +227,5 @@
 		line-height: .8rem;
 		border-radius: 1rem;
 	}
-	
+
 </style>

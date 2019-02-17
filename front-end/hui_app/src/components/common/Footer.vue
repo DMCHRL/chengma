@@ -1,25 +1,25 @@
 <template>
 	<div class="foot_section">
 		<tabbar>
-			<tabbar-item 
-			:badge="noticeNum <= 0? '': noticeNum.toString()"  
-			:selected="active == 0" 
-			link="/" 
+			<tabbar-item
+			:badge="noticeNum <= 0? '': noticeNum.toString()"
+			:selected="active == 0"
+			link="/"
 			@on-item-click="indexChange">
 				<img slot="icon-active" src="../../assets/img/h_01.png">
 				<img slot="icon" src="../../assets/img/h_11.png">
-				<span slot="label">汇添溢</span>
+				<span slot="label">首页</span>
 			</tabbar-item>
 			<tabbar-item :selected="active == 1" link="/strategy" @on-item-click="indexChange">
 				<img slot="icon-active" src="../../assets/img/h_02.png">
 				<img slot="icon" src="../../assets/img/h_12.png">
 				<span slot="label">策略<i class="">·</i>跟单</span>
 			</tabbar-item>
-			<tabbar-item :selected="active == 2" link="/exchanger" @on-item-click="indexChange">
+			<!--<tabbar-item :selected="active == 2" link="/exchanger" @on-item-click="indexChange">
 				<img slot="icon-active" src="../../assets/img/h_03.png">
 				<img slot="icon" src="../../assets/img/h_13.png">
 				<span slot="label">汇商超市</span>
-			</tabbar-item>
+			</tabbar-item>-->
 			<tabbar-item :selected="active == 3" link="/mine" @on-item-click="indexChange">
 				<img slot="icon-active" src="../../assets/img/h_04.png">
 				<img slot="icon" src="../../assets/img/h_14.png">
@@ -111,7 +111,7 @@
 	.i_icon {
 		font-size: 20px;
 	}
-    
+
     .x_bottom {
         width: 100%;
         height: 30px;

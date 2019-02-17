@@ -1,11 +1,11 @@
 <template>
-	<div class="dialog_box"> 
+	<div class="dialog_box">
 		<h3 slot="title" class="dialog_title">新增/编辑推送消息</h3>
-		  
-		  <div class="input_box ">
+
+		 <!-- <div class="input_box ">
 		  	<span class="">消息路径</span>
 		  	<input type="text" name="" id="2" value="" placeholder="" v-model="url"/>
-		  </div>
+		  </div>-->
 		  <div class="input_box">
 		  	<span class="import">消息类型（标题）</span>
 		  	<input type="text" name="" id="1" value="" maxlength="15"  placeholder="15字以内" v-model="type"/>
@@ -14,7 +14,7 @@
 		  	<span class="import">消息内容</span>
 		  	<textarea name="" rows="6" cols="" placeholder="" v-model="context"></textarea>
 		  </div>
-		  
+
 		  <div slot="footer" class="dialog_footer">
 		  	<button @click="Commit">确认</button>
 		  </div>
@@ -58,7 +58,7 @@
 		methods: {
 			Commit () {
 				let _this = this;
-				
+
 				if (_this.type == "") {
 					_this.$message({
 			          message: '消息类型不能为空',
@@ -73,7 +73,7 @@
 			        });
 					return;
 				}
-				
+
 				let datas = {
 					id: _this.id,
 					url: _this.url,
@@ -87,10 +87,10 @@
 				          message: '添加成功',
 				          type: 'success'
 				        });
-				        
+
 				        _this.type = '';
 				        _this.content = '';
-				        
+
 						_this.$emit("close");
 					}else{
 						_this.$message({

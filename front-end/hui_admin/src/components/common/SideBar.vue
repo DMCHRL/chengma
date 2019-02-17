@@ -118,16 +118,6 @@
 						picnum: '4',
 						identity: 'admin',
 						showdown: false,
-						children: [
-							{
-								href: '/user',
-								name: '管理员设置'
-							},
-							{
-								href: '/appuser',
-								name: 'APP用户'
-							}
-						]
 					},
 					{
 						href: '/protocol',

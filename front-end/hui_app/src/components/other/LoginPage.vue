@@ -6,7 +6,7 @@
 			</div>
 		</div>
 		<div class="sec_2">
-			<h3>登录汇添溢</h3>
+			<h3>登录</h3>
 			<div class="input_box flex_bet flex_align_center">
 				<div class="icon_box">
 					<img src="../../assets/img/login_01.png"/>
@@ -26,18 +26,18 @@
 					<button @click="getMessCode" :disabled="codeBtnDisablued">{{btnName}}</button>
 				</div>
 			</div>
-			
+
 			<div class="btn_box">
 				<button class="myback" @click="toLogin" :disabled="loginDisablued">{{loginText}}</button>
 			</div>
 		</div>
-		
+
 	</div>
 </template>
 
 <script>
 	import { mapActions }from'vuex'
-	import {setCookie} from '../../utils/util' 
+	import {setCookie} from '../../utils/util'
 	export default {
 		data() {
 			return {
@@ -84,19 +84,19 @@
 					}
 			    })
 			},
-			
+
 			toLogin () {
 				let _this = this;
-				
+
 				if (_this.phoneNum == '') {
 					_this.$vux.toast.text('手机号不能为空','middle')
 					return;
 				}
-				if (_this.messCode == '') {
+				/*if (_this.messCode == '') {
 					_this.$vux.toast.text('验证码不能为空','middle')
 					return;
-				}
-				
+				}*/
+
 				let datas = {
 					"mobileNum": this.phoneNum,
 					"validateCode": this.messCode
@@ -108,10 +108,10 @@
 					if (res.data) {
 						localStorage.setItem("id_token",res.data.id_token);
 						localStorage.setItem("user",JSON.stringify(res.data.user));
-						
+
 						_this.$store.commit("setToken",res.data.id_token);
 						_this.$store.commit("setUserInfo",res.data.user);
-						
+
 						_this.getUserMess();
 						_this.loginText = '登录成功';
 						_this.$router.push({path: '/'})
@@ -122,7 +122,7 @@
 			}
 		},
 		mounted () {
-			
+
 		}
 	}
 </script>
@@ -171,7 +171,7 @@
 	.sec_1 img {
 		width: 4.7733rem;
 	}
-	
+
 	.sec_2 {
 		margin-top: 128px;
 		text-align: center;

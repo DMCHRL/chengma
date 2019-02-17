@@ -16,11 +16,11 @@
 				</router-link>
 			</div>
 		</div>
-    
+
     <div class="hui_content" id="hui-content">
-    
+
 		<div class="mine_list">
-			<router-link to="/order">
+			<!--<router-link to="/order">
 				<div class="item_link flex_bet flex_align_center">
 					<div class="icon_box">
 						<img src="../../assets/img/4_09.png" />
@@ -30,7 +30,7 @@
 					</div>
 					<div class="arrow_right"></div>
 				</div>
-			</router-link>
+			</router-link>-->
 			<!-- <router-link to="/notice">
 				<div class="item_link flex_bet flex_align_center">
 					<div class="icon_box">
@@ -75,7 +75,7 @@
 					<div class="arrow_right"></div>
 				</div>
 			</router-link>
-			<router-link to="/point">
+			<!--<router-link to="/point">
 				<div class="item_link flex_bet flex_align_center">
 					<div class="icon_box">
 						<img src="../../assets/img/4_03.png" />
@@ -85,9 +85,9 @@
 					</div>
 					<div class="arrow_right"></div>
 				</div>
-			</router-link>
+			</router-link>-->
 
-			<div class="item_link flex_bet flex_align_center" @click="show11 = true">
+			<!--<div class="item_link flex_bet flex_align_center" @click="show11 = true">
 				<div class="icon_box">
 					<img src="../../assets/img/4_04.png" />
 				</div>
@@ -95,7 +95,7 @@
 					<span>联系客服</span>
 				</div>
 				<div class="arrow_right"></div>
-			</div>
+			</div>-->
 			<!--<router-link to="/set">
 				<div class="item_link flex_bet flex_align_center">
 					<div class="icon_box">
@@ -134,7 +134,7 @@
 		</div>
 
 		<contact-box :show='show11' @close="closeContactBox"></contact-box>
-     
+
      </div>
 	</div>
 </template>
@@ -185,7 +185,7 @@
 </script>
 
 <style scoped>
-  
+
   .hui_content {
     padding-top: 200px;
     padding-bottom: 60px;

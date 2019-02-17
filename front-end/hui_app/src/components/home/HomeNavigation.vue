@@ -4,11 +4,11 @@
 			<router-link to="/online">
 				<div class="flex-box pad_top" @click="countFlag('video')">
 					<img src="../../assets/img/grid_1.png" />
-					<p>交易战法视频</p>
+					<p>交易学习视频</p>
 				</div>
 			</router-link>
 		</flexbox-item>
-		<flexbox-item :span="1/3">
+		<!--<flexbox-item :span="1/3">
 			<router-link to="/training">
 				<div class="flex-box pad_top" @click="countFlag('course')">
 					<img src="../../assets/img/grid_2.png" />
@@ -29,28 +29,28 @@
 				<img src="../../assets/img/grid_4.png" />
 				<p>视频直播</p>
 			</div>
-		</flexbox-item>
+		</flexbox-item>-->
 
 		<flexbox-item :span="1/3">
 			<router-link to="/application">
-				<div class="flex-box" @click="countFlag('strategy')">
+				<div class="flex-box pad_top" @click="countFlag('strategy')">
 					<img src="../../assets/img/grid_5.png" />
 					<p>策略入驻</p>
 				</div>
 			</router-link>
 		</flexbox-item>
 		<flexbox-item :span="1/3" >
-			<div class="flex-box" @click="share">
+			<div class="flex-box pad_top" @click="share">
 				<img src="../../assets/img/grid_10.png" />
 				<p>分享APP</p>
 			</div>
 		</flexbox-item>
 
 		<flexbox-item :span="1/3">
-			<router-link to="/point">
+			<router-link to="/exchanger">
 				<div class="flex-box" @click="countFlag('integral')">
-					<img src="../../assets/img/grid_7.png" />
-					<p>积分钱包</p>
+					<img src="../../assets/img/grid_3.png" />
+					<p>汇商开户</p>
 				</div>
 			</router-link>
 		</flexbox-item>
@@ -68,9 +68,9 @@
 				<img src="../../assets/img/grid_9.png" />
 				<p>联系客服</p>
 			</div>
-			
+
 			<contact-box :show='show11' @close="closeContactBox"></contact-box>
-      	
+
 		</flexbox-item>
 
 	</flexbox>
@@ -144,7 +144,7 @@
 </script>
 
 <style scoped>
-	
+
 	.flex-box {
 		position: relative;
 		text-align: center;
@@ -154,13 +154,13 @@
 	.pad_top {
 		padding-top: 0.2666rem;
 	}
-	
+
 	.flex-box img {
 		width: 1.5733rem;
 		height: 1.5733rem;
 		margin-bottom: 0.2666rem;
 	}
-	
+
 	.flex-box p {
 		font-size: 0.2933rem;
 		color: #666666;

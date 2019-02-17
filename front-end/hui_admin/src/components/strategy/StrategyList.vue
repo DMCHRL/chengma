@@ -25,7 +25,7 @@
 		</el-dialog>
 
 		<div class="titling">
-			<span>策略管理</span>
+			<span>线上策略</span>
 			<!--<button @click="saveShow = true">申请策略</button>-->
 		</div>
 
@@ -33,18 +33,18 @@
 
 		<div class="list_section">
 			<div class="headlist clearfix myback2">
-				
+
 				<template v-for="(item,index) in headlist">
 					<span :key="index"
-						:class="['pull-left', item.istime? 'time': '', item.sort?'pointer':'']" 
+						:class="['pull-left', item.istime? 'time': '', item.sort?'pointer':'']"
 						@click="Sort(item.sort)">{{item.name}}
 						<i v-if="item.sort" class="el-icon-d-caret"></i>
 					</span>
 				</template>
-				
+
 				<span class="pull-right time">操作</span>
 			</div>
-			
+
 			<ul class="bodylist">
 				<li v-for="(item,index) in list" class="item_box clearfix">
 					<div class="pull-left" >
@@ -316,12 +316,12 @@
 
 <style scoped>
 	@import url("../../assets/css/dialog.css");
-	
+
 	.headlist span,
 	.bodylist li>div {
 		width: 120px;
 	}
-	
+
 	.headlist span.time,
 	.bodylist li>div.time {
 		width: 165px;

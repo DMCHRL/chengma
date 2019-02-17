@@ -1,14 +1,14 @@
 <template>
 	<div class="content_box">
 		<my-header :leftOptions="headOption" ></my-header>
-        
-        <div class="hui_content">
-            
-        
+
+        <div class="hui_content" >
+
+
 		<my-swiper :list="bannerList"></my-swiper>
 		<div class="list_box">
 			<template v-for="item in list">
-				
+
 				<div class="item_box flex_around flex_align_center">
 					<div class="left flex_one">
 						<h3>{{item.sinksName}}</h3>
@@ -21,25 +21,25 @@
 						<router-link :to="'/ech-details?id='+ item.id"><img :src="item.listImg"/></router-link>
 					</div>
 				</div>
-				
+
 			</template>
-			
+
 			<!-- <spinner-loading v-show="isloading" >
 					<p slot='text'>努力加载中...</p>
 			</spinner-loading > -->
-			
+
 			<div v-show="isloading"  class="trip_box">
 				<spinner :type="'ios'" size='30px'></spinner>
 			</div>
-			
+
 			<div v-show="notrip" class="trip_box">
 				<img src="../../assets/img/h_13.png"/>
 				<p>暂无汇商数据</p>
 			</div>
-			
-			
+
+
 		</div>
-        
+
         </div>
 	</div>
 </template>
@@ -51,7 +51,7 @@
 	export default {
 		data() {
 			return {
-				headOption: {title: '汇商',showBack: false},
+				headOption: {title: '汇商',backText: '',showBack: true},
 				bannerList: [],
 				list: [],
 				notrip: false,
@@ -81,7 +81,7 @@
 					clearTimeout(timer)
 					_this.isloading = false;
 					_this.list = res.data.list;
-					
+
 					if (res.data.list.length) {
 						_this.notrip = false;
 					}else {
@@ -100,7 +100,7 @@
 </script>
 
 <style scoped>
-	
+
 	.list_box {
 		background-color: #f5f5f5;
 		padding: 0 0.2933rem;
@@ -141,11 +141,11 @@
 		border-radius: 0.4rem;
 		margin-top: 0.2666rem;
 	}
-	
+
 	.right {
 		width: 3.2rem;
 	}
-	
+
 	.right img {
 		width: 3.2rem;
 	}

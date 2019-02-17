@@ -30,43 +30,43 @@
 				<span class="pull-left time">{{item.email}}</span>
 				<!-- <span class="pull-left">{{item.charNo}}</span>
 				<span class="pull-left">{{item.recommendationTotal}}</span> -->
-				
+
 				<span class="pull-left">{{item.department | idName}}</span>
 				<span class="pull-left time">{{item.createdDate}}</span>
 				<!--<span class="pull-left">{{item.parentName}}</span>-->
 				<!--<span class="pull-left small">{{item.proxyCount}}</span>-->
 				<!--<span class="pull-left small">{{item.accountCount}}</span>-->
 				<div class="pull-right" v-if="user.department == 'admin' || user.department == 'service'">
-					<!--<button 
-						v-if="user.department == 'admin' && item.department != 'user' && item.department != 'admin'" 
+					<!--<button
+						v-if="user.department == 'admin' && item.department != 'user' && item.department != 'admin'"
 						@click="brokerageSet(item.department,item.id)">佣金设置</button>
 					<button @click="Edit(item)">编辑</button>
 					<button v-if="user.department == 'admin'" @click="Delete(item.id)" >删除</button>-->
 
 					<el-popover placement="bottom" width="100" trigger="click" popper-class="popover_box">
 
-						<!--<button 
+						<!--<button
 							v-if="user.department == 'admin'"
 							@click="brokerageSet(item.department,item.id)">
 							佣金设置
 						</button>-->
-						<!--<button 
-							v-if="user.department == 'admin' || user.department == 'service'" 
+						<!--<button
+							v-if="user.department == 'admin' || user.department == 'service'"
 							@click="CardSet(item.id)">
 							银行卡设置
 						</button>-->
 
-						<button 
-							v-if="user.department == 'admin' || user.department == 'service'" 
+						<button
+							v-if="user.department == 'admin' || user.department == 'service'"
 							@click="Edit(item)">
 							编辑用户
 						</button>
-						<!--<button 
-							v-if="user.department == 'admin' || user.department == 'service'" 
+						<!--<button
+							v-if="user.department == 'admin' || user.department == 'service'"
 							@click="addAccount(item.id)">
 							新增账户
 						</button>-->
-						<button class="delete" 
+						<button class="delete"
 							v-if="user.department == 'admin'" @click="Delete(item.id)">
 							删除
 						</button>
@@ -76,7 +76,7 @@
 
 				</div>
 			</li>
-			
+
 		</ul>
 		<div class="trip_box" v-show="!list.length">
 			<img src="../../assets/img/nodata_2.png" />
@@ -114,6 +114,9 @@
             break;
           case 'mt4':
             return '云端管理员'
+            break;
+          case 'mobile':
+            return 'App用户'
             break;
 					default:
 						return '未知'
@@ -191,7 +194,7 @@
 						"userId": id, //编辑userid
 						"lotAmount": value
 					}
-					
+
 					_this.$until.superPost("/api/tlb-commission/setConfiguration", datas, function(res) {
 						//			        		console.log(res)
 						if(res.statusCode == "0000") {
@@ -248,19 +251,19 @@
 	.bodylist li span.time {
 		width: 200px;
 	}
-	
+
 	.headlist span:last-of-type,
 	.bodylist li>div {
 		width: 200px;
 	}
-	
-	
+
+
 	.bodylist li>div button:last-of-type {
 		background-color: transparent;
 		color: #409eff;
 		border: none
 	}
-	
+
 	.popover_box button {
 		font-size: 14px;
 		color: #6562b6;
@@ -271,7 +274,7 @@
 		border: 1px solid #6562b6;
 		border-radius: 20px;
 	}
-	
+
 	.popover_box button.delete {
 		color: #f14b3b;
 		border: 1px solid #f14b3b;
