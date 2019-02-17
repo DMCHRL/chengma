@@ -100,9 +100,9 @@ public class HppProtocolServiceImpl implements HppProtocolService {
 
     @Override
     public void delete(String id) {
-        //hppProtocolRepository.delete(id);
-        HppProtocol hppProtocol = hppProtocolRepository.findOne(id);
+        hppProtocolRepository.delete(id);
+        /*HppProtocol hppProtocol = hppProtocolRepository.findOne(id);
         hppProtocol.setDelFlag("Y");
-        hppProtocolRepository.save(hppProtocol);
+        hppProtocolRepository.save(hppProtocol);*/
     }
 }

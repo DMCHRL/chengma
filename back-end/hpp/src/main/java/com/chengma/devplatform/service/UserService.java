@@ -369,7 +369,7 @@ public class UserService {
         StringBuilder column = new StringBuilder(" select \tu.*,\n" +
                 "\tcount(u2.c_recommendation) as recommendation_total ");
 
-        StringBuilder cond = new StringBuilder(" from jhi_user u  LEFT JOIN t_hpp_user u2 ON u.c_char_no\t= u2.c_recommendation where u.department !='mobile' and u.department !='user' and c_del_flag='1'");
+        StringBuilder cond = new StringBuilder(" from jhi_user u  LEFT JOIN t_hpp_user u2 ON u.c_char_no\t= u2.c_recommendation where  c_del_flag='1'");
 
         //检查当前登录用户
         User user = getUserWithAuthorities();
