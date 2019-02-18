@@ -25,17 +25,17 @@ export default {
 	actionSetToken ({commit}) {
 		commit('localToken')
 	},
-	
+
 	setUserInfo ({commit},userInfo) {
 		commit('set', {userInfo})
 	},
-  
+
   async getUserMess({commit, state}) {
 		fetch("/api/hpp_mobile_user/get/"+state.userInfo.mobile).then((res) => {
 			// console.log(res)
-			if (res.statusCode == '0000') {
-				const userMess = res.data
-				localStorage.setItem('userMess',JSON.stringify(res.data))
+			if (res.statusCode === '0000') {
+				const userMess = res.data;
+				localStorage.setItem('userMess',JSON.stringify(res.data));
 				commit('setUserMess', userMess)
 			}
 		})
@@ -48,7 +48,7 @@ export default {
 					commit('setNoticeNum', res.data.unreadNum)
 				}
 			})
-	
+
 	  },
 
 //   // 异步获取食品分类列表
@@ -61,7 +61,7 @@ export default {
 //       commit(RECEIVE_CATEGORYS, {categorys})
 //     }
 //   },
-// 
+//
 //   // 异步获取商家列表
 //   async getShops({commit, state}) {
 //     // 发送异步ajax请求
@@ -73,12 +73,12 @@ export default {
 //       commit(RECEIVE_SHOPS, {shops})
 //     }
 //   },
-// 
+//
 //   // 同步记录用户信息
 //   recordUser({commit}, userInfo) {
 //     commit(RECEIVE_USER_INFO, {userInfo})
 //   },
-// 
+//
 //   // 异步获取用户信息
 //   async getUserInfo({commit}) {
 //     const result = await reqUserInfo()
@@ -87,7 +87,7 @@ export default {
 //       commit(RECEIVE_USER_INFO, {userInfo})
 //     }
 //   },
-// 
+//
 //   // 异步登出
 //   async logout({commit}) {
 //     const result = await reqLogout()
@@ -95,7 +95,7 @@ export default {
 //       commit(RESET_USER_INFO)
 //     }
 //   },
-// 
+//
 //   // 异步获取商家信息
 //   async getShopInfo({commit}) {
 //     const result = await reqShopInfo()
@@ -104,7 +104,7 @@ export default {
 //       commit(RECEIVE_INFO, {info})
 //     }
 //   },
-// 
+//
 //   // 异步获取商家评价列表
 //   async getShopRatings({commit}, callback) {
 //     const result = await reqShopRatings()
@@ -115,7 +115,7 @@ export default {
 //       callback && callback()
 //     }
 //   },
-// 
+//
 //   // 异步获取商家商品列表
 //   async getShopGoods({commit}, callback) {
 //     const result = await reqShopGoods()
@@ -126,7 +126,7 @@ export default {
 //       callback && callback()
 //     }
 //   },
-// 
+//
 //   // 同步更新food中的count值
 //   updateFoodCount({commit}, {isAdd, food}) {
 //     if (isAdd) {
@@ -135,15 +135,15 @@ export default {
 //       commit(DECREMENT_FOOD_COUNT, {food})
 //     }
 //   },
-// 
+//
 //   // 同步清空购物车
 //   clearCart({commit}) {
 //     commit(CLEAR_CART)
 //   },
-// 
+//
 //   // 异步获取商家商品列表
 //   async searchShops({commit, state}, keyword) {
-// 
+//
 //     const geohash = state.latitude + ',' + state.longitude
 //     const result = await reqSearchShop(geohash, keyword)
 //     if (result.code === 0) {
