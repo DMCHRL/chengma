@@ -1,11 +1,11 @@
 <template>
 	<div class="content_box">
 		<my-header :leftOptions="headOption" ></my-header>
-        
+
         <div class="hui_content">
-            
+
 		<ul class="link_body flex_col">
-			
+
 			<li class="link_box" v-for="item in list">
 				<router-link :to="'/vdetails?id='+item.id">
 				  	<div class="flex_bet">
@@ -18,23 +18,23 @@
 				  			<!-- <p>上传时间：{{item.updateAt}}</p> -->
 				  		</div>
 				  		<div class="right_box flex_col">
-				  			<span v-show="item.feeFlag == 2" class="xian">免费</span>
-				  			<span v-show="item.feeFlag == 1" class="fu">￥{{item.price}}</span>
+				  			<span class="xian">免费</span>
+				  			<!--<span v-show="item.feeFlag == 1" class="fu">￥{{item.price}}</span>-->
 				  		</div>
 				  	</div>
 			  	</router-link>
 			</li>
 		</ul>
-		
+
 		<div v-show="isloading"  class="trip_box">
 			<spinner :type="'ios'" size='30px'></spinner>
 		</div>
-		
+
 		<div class="trip_box" v-show="notrip">
 			<img src="../../assets/img/no.png"/>
 			<p>暂无视频</p>
 		</div>
-        
+
         </div>
 	</div>
 </template>
@@ -55,7 +55,7 @@
 			}
 		},
 		components: {
-			
+
 		},
 		methods: {
 			initPage () {
@@ -84,7 +84,7 @@
 </script>
 
 <style scoped>
-	
+
 	.titling span{
 		display: block;
 		padding: 0.2666rem 0.4rem;
@@ -140,5 +140,5 @@
 		display: block;
 		margin-top: 0.6666rem;
 	}
-	
+
 </style>

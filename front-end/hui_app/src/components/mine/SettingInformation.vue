@@ -1,9 +1,9 @@
 <template>
 	<div class="content_box">
 		<my-header :leftOptions="headOption" ></my-header>
-		
+
         <div class="hui_content" id="hui-content">
-        
+
 		<label>
 			<div class="item_box flex_bet flex_align_center">
 				<input type="file" name="" id="" value="" style="display: none;" accept="image/*" ref="img_input"  @change="changeHeadImg"/>
@@ -13,7 +13,7 @@
 				<div class="text_box flex_one flex_bet flex_align_center">
 					<span>更换头像</span>
 					<div class="img_box flex_row flex_align_center">
-						<img :src="userMess.headImg"/>
+						<img :src="userInfo.imageUrl"/>
 						<div class="arrow_right"></div>
 					</div>
 				</div>
@@ -25,10 +25,10 @@
 			</div>
 			<div class="text_box flex_one flex_bet flex_align_center">
 				<span>修改昵称</span>
-				<span>{{userMess.userName}}</span>
+				<span>{{userInfo.firstName}}</span>
 			</div>
 		</div>
-		<div class="item_box flex_bet flex_align_center">
+	<!--	<div class="item_box flex_bet flex_align_center">
 			<div class="icon_box">
 				<img src="../../assets/img/4_06.png"/>
 			</div>
@@ -36,8 +36,8 @@
 				<span>推荐码</span>
 				<span>{{userMess.recommendation}}</span>
 			</div>
-		</div>
-		<div class="item_box flex_bet flex_align_center">
+		</div>-->
+		<!--<div class="item_box flex_bet flex_align_center">
 			<div class="icon_box">
 				<img src="../../assets/img/4_02.png"/>
 			</div>
@@ -45,8 +45,8 @@
 				<span>推荐人数</span>
 				<span>{{userMess.recommendationTotal | nullName}}</span>
 			</div>
-		</div>
-		
+		</div>-->
+
 		<div class="item_box flex_bet flex_align_center" @click="Logout">
 			<div class="icon_box icon_box1">
 				<img src="../../assets/img/4_08.png" alt="."/>
@@ -56,9 +56,9 @@
 				<!--<span>Ryan</span>-->
 			</div>
 		</div>
-		
+
 		<div v-transfer-dom>
-	      	<confirm 
+	      	<confirm
 	      		v-model="show3"
 	      		ref="confirm3"
 		      	show-input
@@ -72,8 +72,8 @@
 		<!--<div class="btn_box">
 			<button class="myback">确认修改</button>
 		</div>-->
-        
-        
+
+
         </div>
 	</div>
 </template>
@@ -90,8 +90,8 @@
 			return {
 				headOption: {title: '个人设置',backText: '',showBack: true},
 				mess: {
-					userName: '',
-					headImg: ''
+					firstName: '',
+					imageUrl: ''
 				},
 				show3: false
 			}
@@ -107,7 +107,7 @@
 		},
 		computed: {
 			...mapState(['userInfo', 'userMess']),
-			
+
 		},
 		components: {
 			Confirm
@@ -123,29 +123,33 @@
 				let imgObj = _this.$refs.img_input.files[0];
 				uploadImage("/api/uploadImage",imgObj).then((res) => {
 					let imgUrl = res.target.responseText;
-					_this.mess.headImg = imgUrl;
+					_this.mess.imageUrl = imgUrl;
 					_this.setUserMess();
 				})
 			},
 			onCancel () {},
 			onConfirm (val) {
-				this.mess.userName = val;
+       /* console.log(val);*/
+				this.mess.firstName = val;
 				this.setUserMess();
 			},
 			onShow () {
-				this.$refs.confirm3.setInputValue(this.mess.userName)
+				this.$refs.confirm3.setInputValue(this.mess.firstName)
 			},
 			setUserMess () {
 				let _this = this;
-				_this.mess.id = _this.userMess.id;
-				_this.$post("/api/hpp_mobile_user/edit",_this.mess).then((res) => {
-					if (res.statusCode == '0000') {
-						_this.$vux.toast.text('修改成功','middle')
-						_this.getUserMess();
+				_this.mess.id = _this.userInfo.id;
+				_this.$post("/api/user/edit",_this.mess).then((res) => {
+					if (res.statusCode === '0000') {
+						_this.$vux.toast.text('修改成功','middle');
+						console.log(res.data);
+            localStorage.setItem("user",JSON.stringify(res.data));
+            _this.$store.commit("setUserInfo",res.data);
 					}else {
 						_this.$vux.toast.text(res.msgCode,'middle')
 					}
 				})
+
 			}
 		},
 		activated () {

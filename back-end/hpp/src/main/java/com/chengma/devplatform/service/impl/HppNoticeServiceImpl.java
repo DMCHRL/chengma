@@ -135,12 +135,12 @@ public class HppNoticeServiceImpl implements HppNoticeService {
             return retMap;
         }
 
-        List<HppMobileUserDTO> list =null;
+        List<User> list =null;
         //通知全体
         if(hppSendNoticeDTO.getType().equals(DevplatformConstants.WHOLE_NOTICE)){
             hppNotice.setObject(DevplatformConstants.WHOLE_NOTICE);
-            list = hppMobileUserService.findAll();
-        }else if(hppSendNoticeDTO.getType().equals(DevplatformConstants.FOLLOW_NOTICE)){
+            list = userService.findList();
+        }/*else if(hppSendNoticeDTO.getType().equals(DevplatformConstants.FOLLOW_NOTICE)){
             //跟单用户
             hppNotice.setObject(DevplatformConstants.FOLLOW_NOTICE);
             list =hppMobileUserService.findWithFollowFlag();
@@ -148,14 +148,14 @@ public class HppNoticeServiceImpl implements HppNoticeService {
             //消费用户
             hppNotice.setObject(DevplatformConstants.BUY_NOTICE);
             list =hppMobileUserService.findWithBuyFlag();
-        }else if(hppSendNoticeDTO.getType().equals(DevplatformConstants.MULTIPLE_NOTICE)){
+        }*/else if(hppSendNoticeDTO.getType().equals(DevplatformConstants.MULTIPLE_NOTICE)){
             //自选用户
             hppNotice.setObject(DevplatformConstants.MULTIPLE_NOTICE);
-            list =hppSendNoticeDTO.getHppMobileUserDTOList();
+            list =hppSendNoticeDTO.getUserList();
         }else if(hppSendNoticeDTO.getType().equals(DevplatformConstants.DEFAULT_NOTICE)){
             //自动通知
             hppNotice.setObject(DevplatformConstants.DEFAULT_NOTICE);
-            list =hppSendNoticeDTO.getHppMobileUserDTOList();
+            list =hppSendNoticeDTO.getUserList();
         }
 
         if(list == null || list.size()==0){
@@ -168,21 +168,21 @@ public class HppNoticeServiceImpl implements HppNoticeService {
         hppNotice.setSendTime(new Date());
 
         //添加提醒
-        for(HppMobileUserDTO hppMobileUserDTO : list){
+        for(User user : list){
             HppNoticeSignDTO hppNoticeSignDTO = new HppNoticeSignDTO();
-            hppNoticeSignDTO.setMobile(hppMobileUserDTO.getPhone());
+            hppNoticeSignDTO.setMail(user.getLogin());
             hppNoticeSignDTO.setNoticeId(hppSendNoticeDTO.getNoticeId());
             hppNoticeSignDTO.setStatus("N");
             hppNoticeSignService.save(hppNoticeSignDTO);
             hppNoticeRepository.save(hppNotice);
         }
 
-        //发送到通知栏
+        /*//发送到通知栏
         if(hppSendNoticeDTO.getType().equals(DevplatformConstants.WHOLE_NOTICE)){
             sendToField(hppSendNoticeDTO,hppNotice,null);
         }else{
             sendToField(hppSendNoticeDTO,hppNotice,list);
-        }
+        }*/
 
         retMap.put("statusCode", ResponseResult.SUCCESS_CODE);
         return retMap;

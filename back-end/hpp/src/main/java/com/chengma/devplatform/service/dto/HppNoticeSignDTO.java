@@ -14,7 +14,7 @@ public class HppNoticeSignDTO {
 
     private String id;
 
-    private String mobile;  //电话号码
+    private String mail;  //电话号码
 
     private String noticeId; //消息体Id
 
@@ -36,12 +36,12 @@ public class HppNoticeSignDTO {
         this.id = id;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getMail() {
+        return mail;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getNoticeId() {

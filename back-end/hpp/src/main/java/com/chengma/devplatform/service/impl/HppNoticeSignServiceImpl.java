@@ -98,8 +98,8 @@ public class HppNoticeSignServiceImpl implements HppNoticeSignService {
     }
 
     @Override
-    public HppNoticeSignDTO unreadNum(String mobile) {
-        String sql = "select count(*) as unread_num from  t_hpp_notice_sign where c_mobile='"+mobile+"' and c_status='N'";
+    public HppNoticeSignDTO unreadNum(String mail) {
+        String sql = "select count(*) as unread_num from  t_hpp_notice_sign where c_mail='"+mail+"' and c_status='N'";
         List<HppNoticeSignDTO > list = baseDao.findListBySql(sql,HppNoticeSignDTO.class);
         if(list == null ||list.size() ==0){
             return null;
@@ -109,12 +109,12 @@ public class HppNoticeSignServiceImpl implements HppNoticeSignService {
 
     /**
      * 读取消息通知
-     * @param mobile
+     * @param mail
      * @return
      */
     @Override
     @Transactional
-    public List<HppNoticeDTO> readList(String mobile) {
+    public List<HppNoticeDTO> readList(String mail) {
         /**
          * 标记已读
          */
@@ -139,7 +139,7 @@ public class HppNoticeSignServiceImpl implements HppNoticeSignService {
                 "\tt_hpp_notice_sign t2\n" +
                 "WHERE\n" +
                 "\tt1.c_id = t2.c_notice_id\n" +
-                "AND c_mobile = '"+mobile+"'\n"+
+                "AND c_mail = '"+mail+"'\n"+
                 "AND (ISNULL(t2.c_del_flag) or t2.c_del_flag !='Y')\n"+
                 "\t order by d_create_time desc";
         List<HppNoticeDTO> noticeList = baseDao.findListBySql(sql, HppNoticeDTO.class);

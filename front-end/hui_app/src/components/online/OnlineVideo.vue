@@ -1,9 +1,9 @@
 <template>
 	<div class="content_box">
 		<my-header :leftOptions="headOption" ></my-header>
-        
+
         <div class="hui_content">
-        
+
 		<my-swiper :list="bannerList"></my-swiper>
 		<!--每日推荐-->
 		<gongge-list :list="FindDayList"></gongge-list>
@@ -12,7 +12,7 @@
 				<span>精选专辑</span>
 			</div>
 			<ul class="link_body flex_col">
-				
+
 				<li class="link_box" v-for="item in list">
 					<router-link :to="'/vlist?id='+item.id">
 					  	<div class="flex_bet">
@@ -31,10 +31,10 @@
 					  	</div>
 				  	</router-link>
 				</li>
-				
+
 			</ul>
 		</div>
-        
+
         </div>
 	</div>
 </template>
@@ -45,7 +45,7 @@
 	export default {
 		data() {
 			return {
-				headOption: {title: '交易战法视频',backText: '',showBack: true},
+				headOption: {title: '交易学习视频',backText: '',showBack: true},
 				list: [],
 				bannerList: [],
 				FindDayList: [],
@@ -98,7 +98,7 @@
 		font-size: 0.4rem;
 		color: #333333;
 	}
-	
+
 	.link_body {
 		padding: 0 0.2933rem ;
 	}
@@ -142,5 +142,5 @@
 		display: block;
 		margin-top: 0.3666rem;
 	}
-	
+
 </style>

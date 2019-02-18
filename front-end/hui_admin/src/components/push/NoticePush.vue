@@ -1,20 +1,20 @@
 <template>
 	<div class="content_box">
-		
+
 		<div class="titling">
 			<span>消息推送</span>
 			<button @click="dialogVisible = true">新增消息</button>
 		</div>
-		
+
 		<el-dialog :visible.sync="dialogVisible" width="30%">
 		  <add-push @close="dialogClose" :mess="mess"></add-push>
 		</el-dialog>
-		
+
 		<mobile-list :dialogFormVisible="dialogVisible2" :noticeId="noticeId" :noticeName="noticeName" @close="dialogClose"></mobile-list>
-		
+
 		<!--<filter-work @Inquire="Inquire" :parent="3"></filter-work>-->
-		
-		
+
+
 		<div class="list_body">
 			<div class="clearfix table_head myback2">
 				<div class="pull-left">
@@ -34,7 +34,7 @@
 				</div>
 			</div>
 			<div v-for="item in list" class="item_box clearfix">
-				
+
 				<div class="pull-left">
 					<span>{{item.type}}</span>
 				</div>
@@ -52,7 +52,7 @@
 					<span>{{item.createTime}}</span>
 				</div>
 				<div class="pull-right ">
-					
+
 					<el-button v-show="item.sendFlag == 'N'" type="text" @click="allSend(item.id,item.type)">全部发送</el-button>
 					<el-button v-show="item.sendFlag == 'N'" type="text" @click="selectSend(item.id,item.type)">指定发送</el-button>
 					<el-button v-show="item.sendFlag == 'N'" type="text" @click="editMess(item)">编辑</el-button>
@@ -60,13 +60,13 @@
 					<i class="del_button"><el-button type="text" @click="Delete(item.id)">删除</el-button></i>
 				</div>
 			</div>
-			
+
 			<div class="trip_box" v-show="!list.length">
 				<img src="../../assets/img/nodata_2.png" />
 				<p>暂无数据</p>
 			</div>
 		</div>
-		
+
 		<!--分页-->
 		<pagination @currentChange="currentChange" :page="page"></pagination>
 	</div>
@@ -116,7 +116,7 @@
 			},
 			Delete (id) {
 				let _this = this;
-				
+
 				_this.$confirm('确认删除?', '提示', {
 						confirmButtonText: '确定',
 						cancelButtonText: '取消',
@@ -137,7 +137,7 @@
 								});
 							}
 						})
-						
+
 					}).catch(() => {});
 			},
 			dialogClose () {
@@ -171,9 +171,9 @@
 								});
 							}
 						})
-						
+
 					}).catch(() => {});
-				
+
 			},
 			selectSend (id,name) {
 				let _this = this;
@@ -232,7 +232,7 @@
 		height: 50px;
 		padding: 10px 0;
 		border-bottom: 1px solid #999;
-	} 
+	}
 	.table_head>div,
 	.item_box>div{
 		width: 300px;

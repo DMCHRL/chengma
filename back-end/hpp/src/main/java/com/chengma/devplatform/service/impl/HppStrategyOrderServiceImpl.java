@@ -393,10 +393,10 @@ public class HppStrategyOrderServiceImpl implements HppStrategyOrderService {
         hppSendNoticeDTO.setType(DevplatformConstants.DEFAULT_NOTICE);
 
         //添加通知对象
-        HppMobileUserDTO hppMobileUserDTO=hppMobileUserService.findByMobile(hppStrategyOrder.getMobileNum());
-        List<HppMobileUserDTO> hppMobileUserDTOList = new ArrayList<>();
-        hppMobileUserDTOList.add(hppMobileUserDTO);
-        hppSendNoticeDTO.setHppMobileUserDTOList(hppMobileUserDTOList);
+        User user=userService.findUserByMobile(hppStrategyOrder.getMobileNum());
+        List<User> userList = new ArrayList<>();
+        userList.add(user);
+        hppSendNoticeDTO.setUserList(userList);
         hppNoticeService.sendNotice(hppSendNoticeDTO);
     }
 

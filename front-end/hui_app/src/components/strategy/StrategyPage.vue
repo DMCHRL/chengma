@@ -1,22 +1,22 @@
 <template>
 	<div class="content_box">
-		
+
 		<my-header :leftOptions="headOption" ></my-header>
-		
+
         <div class="hui_content">
-        
-		<swiper 
-		v-model="swiper_index" 
-		height="140px" 
-		:show-dots="true" 
-		:dots-position="'center'" 
+
+		<swiper
+		v-model="swiper_index"
+		height="140px"
+		:show-dots="true"
+		:dots-position="'center'"
 		>
 			<template v-for="(item,index) in accList" >
 				<swiper-item :key="index">
 					<div class="swiper_box myback flex_bet flex_align_center">
 						<div class="left_box">
 							<div class="img_box">
-								<img :src="userMess.headImg" />
+								<img :src="userInfo.imageUrl" />
 							</div>
 						</div>
 						<div class="mid_box flex_one" >
@@ -28,10 +28,10 @@
 									<p>%</p>
 								</div>
 							</div>
-							<p v-if="item.strategyName">跟单策略：{{item.strategyName}} | 
+							<p v-if="item.strategyName">跟单策略：{{item.strategyName}} |
 								<router-link :to="'/strategy-details?account='+ item.strategyAccount">
 									<img src="../../assets/img/2_02.png" />
-								</router-link> 
+								</router-link>
 							</p>
 							<p v-else>跟单策略：暂无跟单策略</p>
 						</div>
@@ -42,27 +42,27 @@
 						</div>
 					</div>
 				</swiper-item>
-			</template>	
-			
+			</template>
+
 			<swiper-item v-if="!accList.length">
 				<div class="swiper_box myback flex_bet flex_align_center">
 					<div class="left_box">
 						<div class="img_box">
-							<img :src="userMess.headImg" />
+							<img :src="userInfo.imageUrl" />
 						</div>
 					</div>
 					<div class="mid_box flex_one" >
-						<h3>昵称：{{userMess.userName}}</h3>
+						<h3>昵称：{{userInfo.firstName}}</h3>
 						<p>跟单账户：暂无</p>
 						<p>跟单策略：暂无</p>
 					</div>
 				</div>
 			</swiper-item>
-			
+
 		</swiper>
-		
-		
-		
+
+
+
 		<div class="sec_2">
 			<div class="title_box flex_center flex_align_center">
 				<img src="../../assets/img/2_04.png" />
@@ -88,23 +88,23 @@
 						</div>
 					</div>
 				</template>
-				
+
 				<!-- <spinner-loading v-show="isloading" >
 					<p slot='text'>努力加载中...</p>
 				</spinner-loading > -->
-				
+
 				<div class="trip_box" v-show="isloading" >
 					<spinner :type="'ios'" size='30px'></spinner>
 				</div>
-				
+
 				<div class="trip_box" v-show="notrip">
 					<img src="../../assets/img/h_12.png"/>
 					<p>暂无策略数据</p>
 				</div>
-				
+
 			</div>
 		</div>
-        	
+
         </div>
 	</div>
 </template>
@@ -158,7 +158,7 @@
 					}
 				})
 			}
-			
+
 		},
 		activated () {
 			this.initPage();
@@ -168,7 +168,7 @@
 </script>
 
 <style scoped>
-	
+
 	.swiper_box {
 		position: relative;
 		height: 100%;
@@ -192,36 +192,36 @@
 		color: #fff;
 		font-size: 0.3733rem;
 	}
-	
+
 	.mid_box p:last-of-type {
 		font-size: 0.3rem;
 	}
-	
+
 	.small_box p {
 		font-size: 0.3rem;
 		line-height: 0.5rem;
 		margin-top: 0.1rem;
 	}
-	
+
 	.mid_box span {
 		color: #fff;
 		font-size: 0.96rem;
 		margin: 0 0.1333rem;
 	}
-	
+
 	.mid_box img {
 		position: relative;
 		top: -1px;
 		width: 0.28rem;
 		height: 0.28rem;
 	}
-	
+
 	.right_box {
 		position: absolute;
 		right: 0;
 		top: 0;
 	}
-	
+
 	.right_box span {
 		color: #eb0021;
 		font-size: 0.2933rem;
@@ -230,32 +230,32 @@
 		padding: 0.1333rem 0.6666rem;
 		border-radius: 0.3666rem 0 0 0.3666rem;
 	}
-	
+
 	.sec_2 {
 		background-color: #f5f5f5;
 	}
-	
+
 	.title_box {
 		padding: 0.3333rem 0;
 	}
-	
+
 	.title_box img {
 		width: 0.64rem;
 		height: 0.2133rem;
         margin-top: 3px;
 	}
-	
+
 	.title_box span {
 		color: #eb0021;
 		font-size: 0.3733rem;
 		padding: 0 0.1333rem;
 	}
-	
+
 	.list_box {
 		padding: 0 0.2933rem;
 		padding-bottom: 1.3333rem;
 	}
-	
+
 	.item_box {
 		background-color: #fff;
 		border-radius: 0.2rem;
@@ -271,31 +271,31 @@
 		text-align: center;
 		line-height: 0.8666rem;
 	}
-	
+
 	.item_box p {
 		font-size: 0.3rem;
 		color: #aaaaaa;
 		text-align: center;
 	}
-	
+
 	.mid {
 		border-right: 0.0133rem solid #cccccc;
 		padding-right: 0.5rem;
 		text-align: center;
 	}
-	
+
 	.mid span {
 		font-size: 0.6933rem;
 		font-weight: bold;
 		color: #ea4853;
 	}
-	
+
 	.mid i {
 		color: #ea4853;
 		font-size: 0.4rem;
 		font-weight: bold;
 	}
-	
+
 	.right button {
 		border: 1px solid #ea4853;
 		color: #ea4853;

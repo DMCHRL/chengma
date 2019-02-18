@@ -12,12 +12,14 @@ import com.chengma.devplatform.common.util.ReflectUtils;
 import com.chengma.devplatform.common.util.SqlUtil;
 import com.chengma.devplatform.config.Constants;
 import com.chengma.devplatform.domain.Authority;
+import com.chengma.devplatform.domain.HppMobileUser;
 import com.chengma.devplatform.domain.HppStrategyTrade;
 import com.chengma.devplatform.domain.User;
 import com.chengma.devplatform.repository.AuthorityRepository;
 import com.chengma.devplatform.repository.UserRepository;
 import com.chengma.devplatform.security.AuthoritiesConstants;
 import com.chengma.devplatform.security.SecurityUtils;
+import com.chengma.devplatform.service.dto.UserDTO;
 import com.chengma.devplatform.service.dto.HppStrategyTradeDTO;
 import com.chengma.devplatform.service.dto.TlbAccountDTO;
 import com.chengma.devplatform.service.dto.UserDTO;
@@ -371,8 +373,11 @@ public class UserService {
 
         StringBuilder cond = new StringBuilder(" from jhi_user u  LEFT JOIN t_hpp_user u2 ON u.c_char_no\t= u2.c_recommendation where  c_del_flag='1'");
 
+        if(StringUtils.isNotBlank(login)){
+            cond.append(" and login like '%"+login+"%' ");
+        }
         //检查当前登录用户
-        User user = getUserWithAuthorities();
+        //User user = getUserWithAuthorities();
         /*if(EnumRole.COMPANY.value().equals(user.getDepartment())){
             cond.append(" and u.c_parent_id = '" + user.getId() + "' and u.department = '" + EnumRole.PROXY.value() +"'");
         }else if(EnumRole.PROXY.value().equals(user.getIsProxy())){
@@ -844,6 +849,37 @@ public class UserService {
         }else{
             return null;
         }
+    }
+
+    public HashMap<String, Object> checkUserDTO(UserDTO userDTO) {
+        HashMap<String, Object>  retMap = new HashMap<>();
+        if(StringUtils.isBlank(userDTO.getFirstName())){
+            retMap.put("statusCode", ResponseResult.FAIL_CODE);
+            retMap.put("msg", "请输入昵称");
+            return retMap;
+        }
+        if(StringUtils.isBlank(userDTO.getImageUrl())){
+            retMap.put("statusCode", ResponseResult.FAIL_CODE);
+            retMap.put("msg", "请上传头像");
+            return retMap;
+        }
+        retMap.put("statusCode", ResponseResult.SUCCESS_CODE);
+        return retMap;
+    }
+
+    public User edit(UserDTO userDTO){
+        User user = userRepository.findOne(userDTO.getId());
+        if(StringUtils.isNotBlank(userDTO.getImageUrl())){
+            user.setImageUrl(userDTO.getImageUrl());
+        }
+        if(StringUtils.isNotBlank(userDTO.getFirstName())){
+            user.setFirstName(userDTO.getFirstName());
+        }
+        return saveDomainUser(user);
+    }
+
+    public List<User> findList(){
+        return userRepository.findAll();
     }
 
 }

@@ -37,16 +37,16 @@ public class HppNoticeSignResource {
 
     /**
      * 加载未读消息个数(app)
-     * @param mobile
+     * @param mail
      * @return
      * @throws URISyntaxException
      */
     @GetMapping("/hpp_notice_sign/unreadNum/{mobile}")
     @Timed
-    public ResponseEntity<ResponseResult> saveHppNoticeSign(@PathVariable String mobile) throws URISyntaxException {
+    public ResponseEntity<ResponseResult> saveHppNoticeSign(@PathVariable String mail) throws URISyntaxException {
         ResponseResult json = new ResponseResult();
-        HppNoticeSignDTO hppNoticeSignDTO = hppNoticeSignService.unreadNum(mobile);
-        log.debug("REST request to get a HppNoticeSign unread num: {}", mobile);
+        HppNoticeSignDTO hppNoticeSignDTO = hppNoticeSignService.unreadNum(mail);
+        log.debug("REST request to get a HppNoticeSign unread num: {}", mail);
         json.setStatusCode(ResponseResult.SUCCESS_CODE);
         json.setData(hppNoticeSignDTO);
         return new ResponseEntity<>(json, null, HttpStatus.OK);
@@ -55,14 +55,14 @@ public class HppNoticeSignResource {
     /**
      * Post  .
      *读取消息通知list(app)
-     * @param mobile the pagination information
+     * @param mail the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of sysComponents in body
      */
     @GetMapping("/hpp_notice_sign/read/{mobile}")
     @Timed
-    public ResponseEntity<ResponseResult> readList(@PathVariable String mobile) {
+    public ResponseEntity<ResponseResult> readList(@PathVariable String mail) {
         log.debug("REST request to get a list of HppNoticeSign");
-        List<HppNoticeDTO> list = hppNoticeSignService.readList(mobile);
+        List<HppNoticeDTO> list = hppNoticeSignService.readList(mail);
         ResponseResult json = new ResponseResult();
         HashMap<String, Object> retMap = new HashMap<>();
         retMap.put("list", list);

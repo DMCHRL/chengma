@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public interface HppNoticeSignRepository extends JpaRepository<HppNoticeSign,String> {
 
-    HppNoticeSign findByNoticeIdEqualsAndMobileEquals(String noticeId,String mobile);
+    //HppNoticeSign findByNoticeIdEqualsAndMobileEquals(String noticeId,String mobile);
 
     /**
      * 根据消息Id删除消息记录表

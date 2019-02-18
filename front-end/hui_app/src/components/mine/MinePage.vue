@@ -6,9 +6,9 @@
 				<router-link to="/set">
 					<div>
 						<div class="img_box">
-							<img :src="userMess.headImg" />
+							<img :src="userInfo.imageUrl" />
 						</div>
-						<p v-text="userMess.userName">--</p>
+						<p v-text="userInfo.firstName">--</p>
 					</div>
 					<div class="xicon_box">
 						<x-icon type="ios-arrow-right" size="30"></x-icon>
@@ -160,7 +160,7 @@
 			}
 		},
 		computed: {
-			...mapState(['userInfo', 'userMess', 'noticeNum']),
+			...mapState(['userInfo', 'userMess', 'noticeNum','user']),
 		},
 		components: {
 			XHeader,

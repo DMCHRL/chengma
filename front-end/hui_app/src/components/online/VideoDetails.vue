@@ -1,9 +1,9 @@
 <template>
 	<div class="content_box">
 		<my-header :leftOptions="headOption"></my-header>
-    
+
     <div class="hui_content">
-    
+
 		<div class="video_box">
 
 			<video v-if="video.videoUrl" controls="controls" autoplay="false" controlslist="nodownload" :src="video.videoUrl">
@@ -14,17 +14,17 @@
 					<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
 				</object> 当前浏览器不支持 video直接播放，点击这里下载视频：
 			</video>
-      
+
       <!-- <video-player :sources="sources"></video-player> -->
-      
-      <div v-else class="video_trip">
+
+      <!--<div v-else class="video_trip">
       	<p>该视频为付费视频，暂不可观看</p>
       	<span>￥{{video.price}} / 积分{{video.price}}</span>
       	<router-link :to="'/settle?type=video&id='+ video.id">
       		<button class="myback" type="primary">立即购买 </button>
       	</router-link>
-      </div>
-      
+      </div>-->
+
 		</div>
 		<div class="sec_box sec_1 flex_bet">
 			<div class="left_box flex_col">
@@ -49,21 +49,21 @@
 			<selection-slider :videoTypeId="video.videoTypeId" :id="video.id"></selection-slider>
 		</div>
 		<div class="sec_box sec_3 ">
-			<div class="titling flex_bet">
+			<!--<div class="titling flex_bet">
 				<span>评论</span>
 				<span class="right_span">共{{commentList.length}}条</span>
 			</div>
-			<comment-list :commentList="commentList"></comment-list>
+			<comment-list :commentList="commentList"></comment-list>-->
 		</div>
-		<div class="sec_box sec_bottom flex_bet myback">
+		<!--<div class="sec_box sec_bottom flex_bet myback">
 			<div class="input_box flex_one">
 				<input type="text" name="" id="" value="" v-model="commentText" placeholder="请输入评论内容(字数40字以内)" />
 			</div>
 			<button @click="Commit" :disabled="isDisabled">发表评论</button>
-		</div>
-    
+		</div>-->
+
     </div>
-    
+
 	</div>
 </template>
 
@@ -87,12 +87,12 @@
 					{id: 'integral',description: '积分'}
 				], //支付方式
 				w: null, //请求中
-        
+
         sources: null,
 			}
 		},
 		computed: {
-      
+
 			id() {
 				return this.$route.query.id;
 			},
@@ -117,7 +117,7 @@
       VideoPlayer
 		},
 		methods: {
-      
+
       plusReady () {
         let _this = this;
         // 创建视频播放控件
@@ -164,12 +164,12 @@
 					// console.log(res)
 					_this.video = res.data;
 					_this.headOption.title = res.data.videoName;
-          
+
           _this.sources = [{
           			type: "video/mp4",
           			src: res.data.videoUrl
           		}]
-          
+
 				})
 			},
 
@@ -178,10 +178,10 @@
 			let _this = this;
 			this.initPage();
 			this.getCommentList();
-// 			
+//
 //       let w = document.documentElement.clientWidth || document.body.clientWidth;
 //       this.playerOptions.width = w;
-      
+
 // 			document.addEventListener('plusready', _this.plusReady, false);
 // 			_this.plusReady();
 		}
@@ -189,10 +189,10 @@
 </script>
 
 <style scoped>
-    
+
     /* @import "../../assets/scss/player.scss"; */
-  
-  
+
+
   .video_box {
     min-height: 200px;
 		position: relative;
@@ -210,6 +210,13 @@
 		padding-top: 0.6rem;
 		margin-bottom: 0.2666rem;
 	}
+
+  .sec_2 {
+    padding: 0.3333rem;
+    padding-top: 0.6rem;
+    height: 8rem;
+    margin-bottom: 0.2666rem;
+  }
 
 	.sec_1 .right_box {
 		text-align: right;
@@ -304,7 +311,7 @@
 	.video_trip span {
 		font-size: .35rem;
 		color: #FF4C39;
-		
+
 	}
 	.video_trip button {
 		font-size: 14px;

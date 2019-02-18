@@ -1,20 +1,12 @@
 <template>
-	
+
 	<div class="content_box">
         <div class="head_bar myback"></div>
-		<!-- <my-header :leftOptions="headOption"></my-header> -->
-        
         <div class="hui_content">
             <my-swiper :list="bannerList"></my-swiper>
             <home-navigation @share="toShare"></home-navigation>
             <news-section :newsList="newsList"></news-section>
         </div>
-		
-
-		
-		<!-- <div class="call_box">
-            <img src="../../assets/img/icon_1.png"/>
-        </div> -->
 	</div>
 </template>
 
@@ -56,18 +48,17 @@
 				scrollerHeight: '-115',
 				pushTimer: null,
 				isWXSceneTimeline: false,
-                
-                friendMsg: {
-                    type: 'web',
-                    thumbs: ['../../assets/img/grid_5.png'],
-                    href: shareUrl,
-                    title: '“汇添溢”投教联盟APP',
-                    content: '“汇添溢”投教联盟APP为第三方教育共享软件，是为进入市场的人们通过名师指导、面对面授课，经过系统的学习，准确找到适合自己的获胜战法，从而提升自己的战法水准。所培训内容以人社部审定的“中国金融交易师”能力等级标准为教材，并由教材编撰人胡国政院长主训。'
-                },
-                CircleOfFriendsMsg: {
-                    type:'image',
-                    pictures: [shareImgUrl]
-                }
+            friendMsg: {
+                type: 'web',
+                thumbs: ['../../assets/img/grid_5.png'],
+                href: shareUrl,
+                title: '“汇添溢”投教联盟APP',
+                content: '“汇添溢”投教联盟APP为第三方教育共享软件，是为进入市场的人们通过名师指导、面对面授课，经过系统的学习，准确找到适合自己的获胜战法，从而提升自己的战法水准。所培训内容以人社部审定的“中国金融交易师”能力等级标准为教材，并由教材编撰人胡国政院长主训。'
+            },
+            CircleOfFriendsMsg: {
+                type:'image',
+                pictures: [shareImgUrl]
+            }
 			}
 		},
 		watch: {
@@ -141,7 +132,7 @@
 					_this.bannerList = res.data.list;
 				})
 			},
-			
+
 			//微信分享
 			toShare() {
 				let _this = this;
@@ -151,7 +142,7 @@
 				}, function(e) {
 					(e.index > 0) && _this.share(_this.sweixin, _this.buttons[e.index - 1]);
 				}) : plus.nativeUI.alert('当前环境不支持微信分享操作!');
-                
+
 			},
 			share(srv, button) {
 				let _this = this;
@@ -159,7 +150,7 @@
 					_this.$vux.toast.text('无效的分享服务！');
 					return;
 				}
-				
+
                 let msg = {};
 				if (button.extra.scene == 'WXSceneTimeline') {
                     //点击分享朋友圈
@@ -168,8 +159,7 @@
 				}else {
                     msg = _this.friendMsg;
                 }
-				
-				
+
 				button && (msg.extra = button.extra);
 				// 发送分享
 				if (srv.authenticated) {
@@ -197,18 +187,14 @@
 			// 发送分享
 			doShare(srv, msg) {
 				let _this = this;
-                
                 //后台奖励积分
 				if (_this.isWXSceneTimeline) {
 					_this.shareToCommunity();
 				}else {
 					_this.shareToFriend();
 				}
-                
 				srv.send(msg, function() {
-					
 					_this.$vux.toast.text('分享成功！');
-					
 				}, function(e) {
 					// alert(JSON.stringify(e))
 					_this.$vux.toast.text('分享失败！');
@@ -269,13 +255,12 @@
 				})
 			}
 			document.addEventListener('plusready', _this.plusReady, false);
-
 		}
 	}
 </script>
 
 <style scoped>
-    
+
     .hui_content {
         padding-top: 30px;
     }
@@ -288,7 +273,7 @@
         right: 0;
         z-index: 9;
     }
-    
+
 	.call_box {
 		width: 1.0666rem;
 		height: 1.0933rem;

@@ -6,13 +6,13 @@
 			</div>
 		</div>
 		<div class="sec_2">
-			<h3>登录</h3>
+			<h3>&nbsp;</h3>
 			<div class="input_box flex_bet flex_align_center">
 				<div class="icon_box">
 					<img src="../../assets/img/login_01.png"/>
 				</div>
 				<div class="flex_one">
-					<input type="text" name="" id="" value="" placeholder="请输入手机号" v-model="phoneNum" />
+					<input type="text" name="" id="" value="" placeholder="请输入邮箱" v-model="mail" />
 				</div>
 			</div>
 			<div class="input_box flex_bet flex_align_center">
@@ -41,12 +41,12 @@
 	export default {
 		data() {
 			return {
-				phoneNum: '',
+				mail: '',
 				messCode: '',
 				btnName: '获取验证码',
 				codeBtnDisablued: false,
 				loginDisablued: false,
-				num: 60,
+				num: 120,
 				loginText: '确认登录'
 			}
 		},
@@ -70,13 +70,13 @@
 			},
 			getMessCode () {
 				let _this = this;
-				if (_this.phoneNum == '') {
-					_this.$vux.toast.text('手机号不能为空','middle')
+				if (_this.mail === '') {
+					_this.$vux.toast.text('手机号不能为空','middle');
 					return;
 				}
 				_this.codeBtnDisablued = true;
 				_this.codeBtnCountdown();
-				_this.$post('/api/mobileValidate/sendCode',{"mobileNum": _this.phoneNum}).then((res) => {
+				_this.$post('/api/mailValidate/sendCode',{"mail": _this.mail}).then((res) => {
 			        if (res.statusCode == '0000') {
 			        	// _this.$vux.toast.text('验证码发送成功','middle')
 			        }else {
@@ -88,7 +88,7 @@
 			toLogin () {
 				let _this = this;
 
-				if (_this.phoneNum == '') {
+				if (_this.mail == '') {
 					_this.$vux.toast.text('手机号不能为空','middle')
 					return;
 				}
@@ -98,12 +98,12 @@
 				}*/
 
 				let datas = {
-					"mobileNum": this.phoneNum,
+					"mail": this.mail,
 					"validateCode": this.messCode
 				}
 				_this.loginDisablued = true;
 				_this.loginText = '登录中...';
-				_this.$post('/api/mobileValidate/verification',datas).then((res) => {
+				_this.$post('/api/mailValidate/verification',datas).then((res) => {
 					_this.loginDisablued = false;
 					if (res.data) {
 						localStorage.setItem("id_token",res.data.id_token);

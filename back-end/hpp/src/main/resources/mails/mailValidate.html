@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<style>
+			* {padding: 0;margin: 0;}
+			.head_div img, .foot_div img {width: 80%;}
+			.body_div p, .foot_div p {font-size: 14px;color: #000;line-height: 30px;text-indent: 2em;}
+			.foot_div p i {color: #ff0000;font-size: 12px;}
+		</style>
+		<div class="body_div">
+			<p>尊敬的先生/小姐，您好:</p>
+			<p>您的验证码为<span th:text="${user.charNo}"></span>，&nbsp;2钟内有效。</p>
+		</div>
+	</body>
+</html>

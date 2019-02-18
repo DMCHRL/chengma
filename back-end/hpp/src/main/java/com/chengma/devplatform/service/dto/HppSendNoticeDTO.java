@@ -1,11 +1,7 @@
 package com.chengma.devplatform.service.dto;
 
 
-import com.chengma.devplatform.CustomDateSerializer;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-import java.util.Date;
+import com.chengma.devplatform.domain.User;
 import java.util.List;
 
 /**
@@ -17,7 +13,7 @@ public class HppSendNoticeDTO {
 
     private String type;  //发送类型 multiple(单个或多个) whole(全体)
 
-    private List<HppMobileUserDTO> hppMobileUserDTOList;
+    private List<User> userList;
 
     public String getNoticeId() {
         return noticeId;
@@ -35,11 +31,11 @@ public class HppSendNoticeDTO {
         this.type = type;
     }
 
-    public List<HppMobileUserDTO> getHppMobileUserDTOList() {
-        return hppMobileUserDTOList;
+    public List<User> getUserList() {
+        return userList;
     }
 
-    public void setHppMobileUserDTOList(List<HppMobileUserDTO> hppMobileUserDTOList) {
-        this.hppMobileUserDTOList = hppMobileUserDTOList;
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 }

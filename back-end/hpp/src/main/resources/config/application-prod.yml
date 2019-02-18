@@ -168,7 +168,7 @@ jhipster:
 application:
       noCheckUrl: /api/tlb-user/createTlbUser;/api/tlb-user-feedback/createTlbUserFeedback;/api/xxpay/pay_callback;/api/xxpay/bind_callback;
                   /api/mobileValidate/sendCode;/api/tlb-rate/**;/api/generateVerifyCode;/api/mobileValidate/**;
-                  /api/tlb-mt-price/findLastPrice;/api/tlb-history-k/**;/api/upload;/api/uploadImage;/api/uploadUEditorImage;/api/config;/api/testfile;/api/wxpay/notifyUrl
+                  /api/tlb-mt-price/findLastPrice;/api/tlb-history-k/**;/api/upload;/api/uploadImage;/api/uploadUEditorImage;/api/config;/api/testfile;/api/wxpay/notifyUrl;/api/mailValidate/sendCode;/api/mailValidate/verification
 
 #登录控制
 loginControl:

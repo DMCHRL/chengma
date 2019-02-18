@@ -16,8 +16,8 @@ import java.util.Date;
 public class HppNoticeSign extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Column(name="c_mobile")
-    private String mobile;  //电话号码
+    @Column(name="c_mail")
+    private String mail;  //电话号码
 
     @Column(name="c_notice_id")
     private String noticeId; //消息体Id
@@ -31,12 +31,12 @@ public class HppNoticeSign extends BaseEntity implements Serializable {
     @Column(name="c_del_flag")
     private String delFlag;  //删除标记
 
-    public String getMobile() {
-        return mobile;
+    public String getMail() {
+        return mail;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getNoticeId() {

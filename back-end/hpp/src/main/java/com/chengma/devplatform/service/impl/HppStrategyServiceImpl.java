@@ -550,7 +550,7 @@ public class HppStrategyServiceImpl implements HppStrategyService {
                 "AND o.c_state = 'EFFECTIVE'\n" +
                 "AND o.c_strategy_id = '" + strategyId + "'\n" +
                 "GROUP BY u.c_cid ";
-        List<HppMobileUserDTO> list = baseDao.findListBySql(sql, HppMobileUserDTO.class);
+        List<User> list = baseDao.findListBySql(sql, User.class);
 
 
         if (list != null && list.size() > 0) {
@@ -561,7 +561,7 @@ public class HppStrategyServiceImpl implements HppStrategyService {
 
             HppSendNoticeDTO hppSendNoticeDTO = new HppSendNoticeDTO();
             hppSendNoticeDTO.setNoticeId(noticeDTO.getId());
-            hppSendNoticeDTO.setHppMobileUserDTOList(list);
+            hppSendNoticeDTO.setUserList(list);
             hppSendNoticeDTO.setType(DevplatformConstants.DEFAULT_NOTICE);
             hppNoticeService.sendNotice(hppSendNoticeDTO);
         }

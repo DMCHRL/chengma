@@ -11,6 +11,7 @@ import com.chengma.devplatform.service.UserService;
 import com.chengma.devplatform.service.dto.UserDTO;
 import com.chengma.devplatform.service.mapper.UserMapper;
 import com.chengma.devplatform.web.rest.util.PaginationUtil;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -241,6 +242,25 @@ public class UserResource {
         ResponseResult json = new ResponseResult();
         json.setStatusCode(ResponseResult.SUCCESS_CODE);
         json.setData(retMap);
+        return new ResponseEntity<>(json, null, HttpStatus.OK);
+    }
+
+    @PostMapping("/user/edit")
+    @Timed
+    public ResponseEntity<ResponseResult> edit(@RequestBody UserDTO userDTO) {
+        log.debug("REST request to edit user {}",userDTO);
+        ResponseResult json = new ResponseResult();
+
+        if(StringUtils.isBlank(userDTO.getId())){
+            HashMap<String, Object> checkMap=userService.checkUserDTO(userDTO);
+            if(!ResponseResult.SUCCESS_CODE.equals(checkMap.get("statusCode"))){
+                json.setMsgCode(checkMap.get("msg").toString());
+                return new ResponseEntity<>(json, null, HttpStatus.OK);
+            }
+        }
+        User user = userService.edit(userDTO);
+        json.setStatusCode(ResponseResult.SUCCESS_CODE);
+        json.setData(user);
         return new ResponseEntity<>(json, null, HttpStatus.OK);
     }
 

@@ -119,6 +119,12 @@ public class MailService {
     }
 
     @Async
+    public void sendMailValidate(User user) {
+        log.debug("Sending mail validate email to '{}'", user.getEmail());
+        sendEmailFromTemplate(user, "mailValidate", "email.mail.vaildate");
+    }
+
+    @Async
     public void sendFundInMail(User user, TlbAccountDTO tlbAccountDTO) {
         log.debug("Sending create account email to '{}'", user.getEmail());
         sendEmailFromTemplate(user, tlbAccountDTO, "fundInEmail", "email.fundIn.title");

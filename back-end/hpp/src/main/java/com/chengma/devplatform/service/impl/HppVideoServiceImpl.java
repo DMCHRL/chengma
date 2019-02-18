@@ -183,7 +183,8 @@ public class HppVideoServiceImpl implements HppVideoService {
                 "\tv.d_update_at,\n" +
                 "\tv.c_img,\n" +
                 "\tv.i_sort_num,\n" +
-                "\tCASE\n" +
+                "\tv.c_video_url\n" +
+              /*  "\tCASE\n" +
                 "WHEN v.i_fee_flag = 2 THEN\n" +
                 "\tv.c_video_url\n" +
                 "WHEN v.i_fee_flag = 1\n" +
@@ -191,7 +192,7 @@ public class HppVideoServiceImpl implements HppVideoService {
                 "\tv.c_video_url\n" +
                 "ELSE\n" +
                 "\t''\n" +
-                "END AS c_video_url\n" +
+                "END AS c_video_url\n" +*/
                 "FROM\n" +
                 "\tt_hpp_video v left join t_wx_order o on o.c_body = 'video' and c_object='"+user.getMobile()+"' AND o.c_body_id = v.c_id  and o.c_status !='"+ DevplatformConstants.PAY_STATUS_DISABLE+"'\n" +
                 "where v.c_id='"+id+"'\n";
@@ -306,8 +307,9 @@ public class HppVideoServiceImpl implements HppVideoService {
                 "\tv.d_update_at,\n" +
                 "\tv.c_img,\n" +
                 "\tv.i_sort_num,\n" +
-                "\tt.c_video_type_name AS c_video_type_name,\n" +
-                "\tCASE\n" +
+                "\tv.c_video_url,\n" +
+                "\tt.c_video_type_name AS c_video_type_name\n" +
+               /* "\tCASE\n" +
                 "WHEN v.i_fee_flag = 2 THEN\n" +
                 "\tv.c_video_url\n" +
                 "WHEN v.i_fee_flag = 1\n" +
@@ -315,7 +317,7 @@ public class HppVideoServiceImpl implements HppVideoService {
                 "\tv.c_video_url\n" +
                 "ELSE\n" +
                 "\t''\n" +
-                "END AS c_video_url\n" +
+                "END AS c_video_url\n" +*/
                 "FROM\n" +
                 "\tt_hpp_video v\n" +
                 "JOIN t_hpp_video_type t ON v.c_video_type_id = t.c_id\n" +

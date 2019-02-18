@@ -1,7 +1,7 @@
 <template>
 	<div class="content_box">
 		<my-header :leftOptions="headOption" ></my-header>
-		
+
     <div class="title_tab clearfix">
     	<span class="pull-left" :class="{active: swiper_index == 0}" @click="swiper_index = 0">基本信息</span>
     	<span class="pull-left" :class="{active: swiper_index == 1}" @click="swiper_index = 1">身份证明</span>
@@ -10,17 +10,17 @@
     <!-- <div class="title_box">
     	<span>基本信息</span>
     </div> -->
-    
+
     <!-- <div class="title_box">
     	<span>身份证明</span>
     </div> -->
-    
+
     <!-- <div class="title_box">
     	<span>财务信息</span>
     </div> -->
-    
+
     <div class="hui_content" id="hui-content">
-    
+
 		<!--<div class="title_box">
 			<span>账户类型</span>
 		</div>
@@ -34,7 +34,7 @@
 				<span>ECN账户</span>
 			</div>
 		</div>-->
-    
+
     <swiper v-model="swiper_index" height="500px" :show-dots="false">
     	<swiper-item>
         <div class="swiper_item_box">
@@ -62,14 +62,14 @@
           		<input type="text" name="" id="" value="" placeholder="填写您的手机号" v-model="phone" />
           	</div>
           </div>
-          <div class="item_box flex_bet flex_align_center">
+         <!-- <div class="item_box flex_bet flex_align_center">
           	<div class="icon_box">
           		<img src="../../assets/img/kai_04.png"/>
           	</div>
           	<div class="input_box flex_one">
           		<input type="text" name="" id="" value="" placeholder="填写推荐码（可不填）" v-model="code" />
           	</div>
-          </div>
+          </div>-->
         </div>
       </swiper-item>
       <swiper-item>
@@ -134,7 +134,7 @@
       						<p>上传证件照片</p>
       					</div>
       				</div>
-      				
+
       			</label>
       		</div>
       	</div>
@@ -177,23 +177,23 @@
       						<p>上传银行卡正面</p>
       					</div>
       				</div>
-      				
+
       			</label>
       		</div>
       	</div>
       </swiper-item>
     </swiper>
-		
-		
-      
-      
+
+
+
+
     </div>
-    
+
       <div class="bottom_btn myback my_btn_box">
       	<button  @click="Commit" :disabled="isDisabled">提交</button>
       </div>
-    
-		
+
+
 	</div>
 </template>
 
@@ -220,7 +220,7 @@
 				img2: null,
 				img3: null,
 				img4: null,
-        
+
         whichImg: null,
         buttons: [
         	{title: '拍照'},
@@ -246,7 +246,7 @@
         SwiperItem
 		},
 		methods: {
-      
+
       canvasDataURL (path, obj, callback) {
       	var img = new Image();
       	img.src = path;
@@ -291,14 +291,14 @@
       		type: mime
       	});
       },
-      
+
       resolveUrl (p) {
         let _this = this;
         _this.$vux.loading.show({
          text: '上传中...'
         })
         plus.io.resolveLocalFileSystemURL(p,function(entry){
-                    
+
             let src = entry.toLocalURL();
             _this.canvasDataURL(src,{quality:0.7,width:500},function (base64) {
               // console.log(base64)
@@ -306,7 +306,7 @@
               // console.log(blob)
               _this.upLoadAndShow(blob)
             })
-            
+
 //             var image = new Image();
 //             image.crossOrigin = '';
 //             image.src = src;
@@ -314,11 +314,11 @@
 //               var base64 = _this.getBase64Image(image);
 //              console.log(base64)
 //               var imgBlob = _this.convertBase64UrlToBlob(base64);
-//               
+//
 //               console.log(imgBlob)
 //               return;
 //               _this.upLoadAndShow(imgBlob)
-//               
+//
 //             };
         },function(e){
             console.log('读取拍照文件错误：'+e.message);
@@ -328,7 +328,7 @@
       upLoadImg (input) {
       	let _this = this;
       	_this.whichImg = input;
-      	
+
       	plus.nativeUI.actionSheet({
       		cancel: '取消',
       		buttons: _this.buttons
@@ -340,9 +340,9 @@
       				_this.imageGalleryPicture();
       			}
       		}
-      		
+
       	})
-      	
+
       },
       // 拍照添加图片
       imageCameraPicture(){
@@ -362,17 +362,17 @@
           _this.resolveUrl(p)
         });
       },
-      
+
 			upLoadAndShow (entry) {
 				let _this = this;
 				_this.isDisabled = true;
-        
+
 				uploadImage("/api/uploadImage",entry).then((res) => {
           // console.log(res)
           _this.$vux.loading.hide();
 					_this.isDisabled = false;
 					let imgUrl = res.target.responseText;
-          
+
           if (_this.whichImg == 'idPositive') {
             _this.img1 = imgUrl;
           }else if (_this.whichImg == 'idOther') {
@@ -385,7 +385,7 @@
             console.log(_this.whichImg)
             console.log(imgUrl)
           }
-          
+
 				})
 			},
 // 			changeImg2 () {
@@ -399,7 +399,7 @@
 // 					_this.isDisabled = false;
 // 				})
 // 			},
-			
+
       changeType () {
         let _this = this;
         plus.nativeUI.actionSheet({
@@ -416,19 +416,19 @@
 			Commit () {
 				let _this = this;
 				let datas = {
-					username: _this.name,// 是  string 姓名   
-					phone: _this.phone,// 是  string  手机号    
-					email: _this.email,//      是  string  邮箱    
+					username: _this.name,// 是  string 姓名
+					phone: _this.phone,// 是  string  手机号
+					email: _this.email,//      是  string  邮箱
 					recommendation: _this.code,
-					sinksType: _this.id,//      是  string  汇商id  
-					userType: _this.userType,//      是  string  用户类型 NORMAL  OR ECN   
-					idNumber: _this.idNum,//      是  string  身份证号    
-					idPositive: _this.img1,//      是  string  身份证正面    
-					idOther: _this.img2,//      是  string  身份证反面    
-					cardNumber: _this.bankNum,//      是  string  银行卡号    
-					openingBank: _this.bankName,//      是  string  开户银行    
-					branch: _this.bankName2,//      是  string  开户支行    
-					cardPositive: _this.img3,//      是  string  银行卡正面  
+					sinksType: _this.id,//      是  string  汇商id
+					userType: _this.userType,//      是  string  用户类型 NORMAL  OR ECN
+					idNumber: _this.idNum,//      是  string  身份证号
+					idPositive: _this.img1,//      是  string  身份证正面
+					idOther: _this.img2,//      是  string  身份证反面
+					cardNumber: _this.bankNum,//      是  string  银行卡号
+					openingBank: _this.bankName,//      是  string  开户银行
+					branch: _this.bankName2,//      是  string  开户支行
+					cardPositive: _this.img3,//      是  string  银行卡正面
 					secondPositive: _this.img4,
 					secondType: _this.addressType
 				}
@@ -466,7 +466,7 @@
   .hui_content {
   	padding-top: 115px;
   }
-  
+
   .title_tab {
     background-color: #fff;
     position: fixed;
@@ -489,8 +489,8 @@
     border-color: #ff5752;
     color: #ff5752;
   }
-  
-  
+
+
 	/* .title_box {
 		height: 1.0666rem;
 		border-bottom: 1px solid #ff5752;
@@ -503,7 +503,7 @@
 		font-size: 0.3466rem;
 		color: #333;
 	}
-	
+
 	.type_box {
 		height: 1.0666rem;
 		border-bottom: 1px solid #ccc;
@@ -522,8 +522,8 @@
 	.checked .radio_icon {
 		border-color: #ff5752;
 	} */
-  
-  
+
+
 	.icon_box img {
 		width: 0.64rem;
 		height: 0.64rem;
@@ -541,7 +541,7 @@
     font-size: .3rem;
 		background-color: #fff;
 	}
-	
+
 	.photo_up{
 		padding:0.2666rem ;
 	}
@@ -563,7 +563,7 @@
 	.up_box_2 {
 		width: 8rem;
 	}
-	
+
 	.up_box p {
 		background-color: #f6615f;
 		color: #fff;
@@ -584,5 +584,5 @@
 		/* position: relative;
     margin-top: 100px; */
 	}
-	
+
 </style>
