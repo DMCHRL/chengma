@@ -1,7 +1,10 @@
 package com.chengma.devplatform.domain;
 
+import com.chengma.devplatform.CustomDateSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.chengma.devplatform.config.Constants;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Email;
@@ -75,6 +78,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String resetKey;
 
     @Column(name = "reset_date")
+    @JsonFormat( pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonSerialize(using = CustomDateSerializer.class)
     private Date resetDate = null;
 
     @Column(name = "c_char_no")
@@ -96,9 +101,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String mobile;
 
     @Column(name = "d_onboard_date")
+    @JsonFormat( pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonSerialize(using = CustomDateSerializer.class)
     private Date onboardDate;
 
     @Column(name = "d_expire_date")
+    @JsonFormat( pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonSerialize(using = CustomDateSerializer.class)
     private Date expireDate;
 
     @Column(name = "c_status")
@@ -108,6 +117,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String delFlag;
 
     @Column(name = "d_password_expire_date")
+    @JsonFormat( pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonSerialize(using = CustomDateSerializer.class)
     private Date passwordExpireDate;
 
     @Column(name = "department")
