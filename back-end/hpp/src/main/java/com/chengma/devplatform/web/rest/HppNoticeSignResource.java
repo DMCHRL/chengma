@@ -37,16 +37,15 @@ public class HppNoticeSignResource {
 
     /**
      * 加载未读消息个数(app)
-     * @param mail
      * @return
      * @throws URISyntaxException
      */
-    @GetMapping("/hpp_notice_sign/unreadNum/{mobile}")
+    @GetMapping("/hpp_notice_sign/unreadNum")
     @Timed
-    public ResponseEntity<ResponseResult> saveHppNoticeSign(@PathVariable String mail) throws URISyntaxException {
+    public ResponseEntity<ResponseResult> saveHppNoticeSign() throws URISyntaxException {
         ResponseResult json = new ResponseResult();
-        HppNoticeSignDTO hppNoticeSignDTO = hppNoticeSignService.unreadNum(mail);
-        log.debug("REST request to get a HppNoticeSign unread num: {}", mail);
+        HppNoticeSignDTO hppNoticeSignDTO = hppNoticeSignService.unreadNum();
+        log.debug("REST request to get a HppNoticeSign unread num: {}");
         json.setStatusCode(ResponseResult.SUCCESS_CODE);
         json.setData(hppNoticeSignDTO);
         return new ResponseEntity<>(json, null, HttpStatus.OK);
@@ -55,20 +54,19 @@ public class HppNoticeSignResource {
     /**
      * Post  .
      *读取消息通知list(app)
-     * @param mail the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of sysComponents in body
      */
-    @GetMapping("/hpp_notice_sign/read/{mobile}")
+    @GetMapping("/hpp_notice_sign/read")
     @Timed
-    public ResponseEntity<ResponseResult> readList(@PathVariable String mail) {
+    public ResponseEntity<ResponseResult> readList() {
         log.debug("REST request to get a list of HppNoticeSign");
-        List<HppNoticeDTO> list = hppNoticeSignService.readList(mail);
+        List<HppNoticeDTO> list = hppNoticeSignService.readList();
         ResponseResult json = new ResponseResult();
         HashMap<String, Object> retMap = new HashMap<>();
         retMap.put("list", list);
         retMap.put("total", list.size());
-        json.setData(retMap);
         json.setStatusCode(ResponseResult.SUCCESS_CODE);
+        json.setData(retMap);
         return new ResponseEntity<>(json, null, HttpStatus.OK);
     }
 

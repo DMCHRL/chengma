@@ -525,7 +525,7 @@ public class TlbAccountServiceImpl implements TlbAccountService {
                 "\t left JOIN t_hpp_strategy_order od ON od.c_account = a.c_account and od.c_type='IN' and od.c_state='EFFECTIVE' and od.c_status='PASSED'\n" +
                 "\t left JOIN t_hpp_strategy st ON st.c_id = od.c_strategy_id\n" +
                 " WHERE\n" +
-                "\ta.c_mobile_num = '"+user.getMobile()+"'";
+                "\ta.c_mobile_num = '"+user.getLogin()+"'";
         return baseDao.findListBySql(sql,TlbAccountDTO.class);
     }
 

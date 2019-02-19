@@ -22,7 +22,7 @@ public class HppStrategyOrderDTO  {
 
     private String strategyId;    //策略id
 
-    private String mobileNum;       //电话号码
+    private String mail;       //电话号码
 
     private String risk;          //KEEP(保守) STEADY(稳健) RADICAL(激进)
 
@@ -70,12 +70,12 @@ public class HppStrategyOrderDTO  {
         this.strategyId = strategyId;
     }
 
-    public String getMobileNum() {
-        return mobileNum;
+    public String getMail() {
+        return mail;
     }
 
-    public void setMobileNum(String mobileNum) {
-        this.mobileNum = mobileNum;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getRisk() {

@@ -81,16 +81,12 @@ public class HppStrategyOrderServiceImpl implements HppStrategyOrderService {
         hppStrategyOrderDTO.setStatus(DevplatformConstants.STRATEGY_ORDER_APPLY_STATUS_APPLYING);
         hppStrategyOrderDTO.setState(DevplatformConstants.STRATEGY_EFFECTIVE);
 
-        User user = userService.findByDepartment(EnumRole.MT4.value());
+       /* User user = userService.findByDepartment(EnumRole.MT4.value());
         //发送任务通知
         if(user != null){
             noticeToCharge(user.getMobile());
-        }
-        //发送用户通知
+        }*/
         HppStrategyOrder hppStrategyOrder =  hppStrategyOrderMapper.toEntity(hppStrategyOrderDTO);
-        HppStrategyDTO hppStrategyDTO = hppStrategyService.findOne(hppStrategyOrderDTO.getStrategyId());
-        notice(DevplatformConstants.STRATEGY_ORDER_APPLY_STATUS_PASSED,DevplatformConstants.STRATEGY_IN,hppStrategyOrder,hppStrategyDTO);
-
         return hppStrategyOrderMapper.toDto(hppStrategyOrderRepository.save(hppStrategyOrder));
     }
 
@@ -114,16 +110,16 @@ public class HppStrategyOrderServiceImpl implements HppStrategyOrderService {
         hppStrategyOrderDTO.setState(DevplatformConstants.STRATEGY_EFFECTIVE);
         hppStrategyOrderDTO = hppStrategyOrderMapper.toDto(hppStrategyOrderRepository.save(hppStrategyOrderMapper.toEntity(hppStrategyOrderDTO)));
 
-        User user = userService.findByDepartment(EnumRole.MT4.value());
+      /*  User user = userService.findByDepartment(EnumRole.MT4.value());
         if(user != null){
             noticeToCharge(user.getMobile());
-        }
+        }*/
 
         //自动解绑
-        HashMap<String,Object> params =new HashMap<>();
+       /* HashMap<String,Object> params =new HashMap<>();
         params.put("strategyOrderId",hppStrategyOrderDTO.getId());
         params.put("status","PASSED");
-        hppStrategyOrderDTO=this.approve(params);
+        hppStrategyOrderDTO=this.approve(params);*/
         return hppStrategyOrderDTO;
     }
 
@@ -148,7 +144,7 @@ public class HppStrategyOrderServiceImpl implements HppStrategyOrderService {
             return retMap;
         }*/
 
-        if(hppMobileUserService.findByMobile(hppStrategyOrderDTO.getMobileNum())==null){
+        if(hppMobileUserService.findByMobile(hppStrategyOrderDTO.getMail())==null){
             retMap.put("statusCode", ResponseResult.FAIL_CODE);
             retMap.put("msg", "请输入有效联系方式");
             return retMap;
@@ -169,7 +165,7 @@ public class HppStrategyOrderServiceImpl implements HppStrategyOrderService {
 
         if(type.equals(DevplatformConstants.STRATEGY_IN)) {
             if (tlbAccountService.findByAccount(hppStrategyOrderDTO.getAccount()) != null) {
-                if (tlbAccountService.findOneByMobileAndAccount(hppStrategyOrderDTO.getMobileNum(), hppStrategyOrderDTO.getAccount()) == null) {
+                if (tlbAccountService.findOneByMobileAndAccount(hppStrategyOrderDTO.getMail(), hppStrategyOrderDTO.getAccount()) == null) {
                     retMap.put("statusCode", ResponseResult.FAIL_CODE);
                     retMap.put("msg", hppStrategyOrderDTO.getAccount() + "账号首次捆绑非本机号码，请联系客服");
                     return retMap;
@@ -271,26 +267,20 @@ public class HppStrategyOrderServiceImpl implements HppStrategyOrderService {
 
                 //更改account交易状态
                 tlbAccountService.changeEnableTrade(hppStrategyOrder.getAccount(),"N");
-                if(!this.existFollowByMobile(hppStrategyOrder.getMobileNum())){
-                    hppMobileUserService.followFlagN(hppStrategyOrder.getMobileNum()); //标记为不跟单用户
+                if(!this.existFollowByMail(hppStrategyOrder.getMail())){
+                    hppMobileUserService.followFlagN(hppStrategyOrder.getMail()); //标记为不跟单用户
                 }
             }else{
-
                 if(tlbAccountService.findByAccount(hppStrategyOrder.getAccount()) == null){
                     createAccount(hppStrategyOrder);
                 }
-
-                //首次使用，加1000积分
-                List<HppStrategyOrder> hppStrategyOrders = hppStrategyOrderRepository.findByMobileNumEquals(hppStrategyOrder.getMobileNum());
-                if(hppStrategyOrders != null && hppStrategyOrders.size() ==1 ){
-                    hppIntegralService.addIntegral(hppStrategyOrder.getMobileNum(),1000.0);
-                    HppIntegralDetailDTO hppIntegralDetailDTO = new HppIntegralDetailDTO(hppStrategyOrder.getMobileNum(),new Date(), DevplatformConstants.INTEGRAL_IN,DevplatformConstants.INTEGRAL_DETAIL_TYPE_STRATEGY,1000.0,null);
-                    hppIntegralDetailService.save(hppIntegralDetailDTO);
-                }
-
+                //发送用户通知
+               /* HppStrategyOrder hppStrategyOrder =  hppStrategyOrderMapper.toEntity(hppStrategyOrderDTO);
+                HppStrategyDTO hppStrategyDTO = hppStrategyService.findOne(hppStrategyOrderDTO.getStrategyId());*/
+                notice(DevplatformConstants.STRATEGY_ORDER_APPLY_STATUS_PASSED,DevplatformConstants.STRATEGY_IN,hppStrategyOrder,hppStrategyDTO);
                 hppStrategyOrder.setMt4Status(DevplatformConstants.STRATEGY_ORDER_MT4_STATUS_NOLINE); //默认标记为未上线
                 tlbAccountService.changeEnableTrade(hppStrategyOrder.getAccount(),"Y");
-                hppMobileUserService.followFlagY(hppStrategyOrder.getMobileNum());
+                hppMobileUserService.followFlagY(hppStrategyOrder.getMail());
             }
 
             hppStrategyOrder.setStatus(DevplatformConstants.STRATEGY_ORDER_APPLY_STATUS_PASSED);
@@ -318,7 +308,7 @@ public class HppStrategyOrderServiceImpl implements HppStrategyOrderService {
         tlbAccountDTO.setAccount(hppStrategyOrder.getAccount());
         tlbAccountDTO.setMt4Password(hppStrategyOrder.getPassword());
         tlbAccountDTO.setCreateAt(new Date());
-        tlbAccountDTO.setMobileNum(hppStrategyOrder.getMobileNum());
+        tlbAccountDTO.setMobileNum(hppStrategyOrder.getMail());
         tlbAccountDTO.setEnableTrade("Y"); //跟单
         tlbAccountService.saveAccount(tlbAccountDTO);
 
@@ -352,20 +342,20 @@ public class HppStrategyOrderServiceImpl implements HppStrategyOrderService {
                 hppNoticeDTO.setContext("您的"+hppStrategyOrder.getAccount()+"交易帐户，已与"+hppStrategyDTO.getStrategyName()+"交易帐号策略解除绑定。请检查您的交易帐户是否存有遗留未处理单，若有请及时处理。");
 
                 //短信通知用户
-                HashMap<String,Object> param = new HashMap<>();
-                param.put("mobileNum",hppStrategyOrder.getMobileNum());
+               /* HashMap<String,Object> param = new HashMap<>();
+                param.put("mobileNum",hppStrategyOrder.getMail());
                 param.put("sendType","strategyOut");
                 param.put("content",hppStrategyOrder.getAccount()+","+hppStrategyDTO.getStrategyName());
-                hppMobileValidateService.notice(param);
+                hppMobileValidateService.notice(param);*/
             }else{
                 hppNoticeDTO.setType(DevplatformConstants.MSG_TYPE_FOLLOW_ORDER);
-                hppNoticeDTO.setContext("您的"+hppStrategyOrder.getAccount()+"交易帐户申请跟随"+hppStrategyDTO.getStrategyName()+"交易帐号策略，已递交系统审核，请稍后关注。（审核时间：工作日9：30----18：30。过18：30次日审核）");
+                hppNoticeDTO.setContext("您的"+hppStrategyOrder.getAccount()+"交易帐户已跟随"+hppStrategyDTO.getStrategyName()+"交易帐号策略。");
 
-                HashMap<String,Object> param = new HashMap<>();
-                param.put("mobileNum",hppStrategyOrder.getMobileNum());
+              /*  HashMap<String,Object> param = new HashMap<>();
+                param.put("mobileNum",hppStrategyOrder.getMail());
                 param.put("sendType","strategyIn");
                 param.put("content",hppStrategyOrder.getAccount()+","+hppStrategyDTO.getStrategyName());
-                hppMobileValidateService.notice(param);
+                hppMobileValidateService.notice(param);*/
             }
         }else{
             if(hppStrategyOrder.getType().equals(DevplatformConstants.STRATEGY_OUT)){
@@ -375,11 +365,11 @@ public class HppStrategyOrderServiceImpl implements HppStrategyOrderService {
                 hppNoticeDTO.setType(DevplatformConstants.MSG_TYPE_FOLLOW_ORDER);
                 hppNoticeDTO.setContext("您的帐户与策略帐户服务器不匹配，请联系客服，我们会快速解决您的需求。");
 
-                HashMap<String,Object> param = new HashMap<>();
-                param.put("mobileNum",hppStrategyOrder.getMobileNum());
+               /* HashMap<String,Object> param = new HashMap<>();
+                param.put("mobileNum",hppStrategyOrder.getMail());
                 param.put("sendType","strategyInReject");
                 //param.put("content",hppStrategyOrder.getAccount()+","+hppStrategyDTO.getStrategyName());
-                hppMobileValidateService.notice(param);
+                hppMobileValidateService.notice(param);*/
             }
         }
         hppNoticeDTO.setCreateTime(new Date());
@@ -393,7 +383,7 @@ public class HppStrategyOrderServiceImpl implements HppStrategyOrderService {
         hppSendNoticeDTO.setType(DevplatformConstants.DEFAULT_NOTICE);
 
         //添加通知对象
-        User user=userService.findUserByMobile(hppStrategyOrder.getMobileNum());
+        User user=userService.getUserWithAuthoritiesByLogin(hppStrategyOrder.getMail());
         List<User> userList = new ArrayList<>();
         userList.add(user);
         hppSendNoticeDTO.setUserList(userList);
@@ -557,8 +547,8 @@ public class HppStrategyOrderServiceImpl implements HppStrategyOrderService {
     }
 
     @Override
-    public boolean existFollowByMobile(String mobile) {
-        List<HppStrategyOrder> list = hppStrategyOrderRepository.findByMobileNumEqualsAndTypeEqualsAndStatusEqualsAndStateEquals(mobile,DevplatformConstants.STRATEGY_IN,DevplatformConstants.STRATEGY_APPLY_STATUS_PASSED,DevplatformConstants.STRATEGY_EFFECTIVE);
+    public boolean existFollowByMail(String mail) {
+        List<HppStrategyOrder> list = hppStrategyOrderRepository.findByMailEqualsAndTypeEqualsAndStatusEqualsAndStateEquals(mail,DevplatformConstants.STRATEGY_IN,DevplatformConstants.STRATEGY_APPLY_STATUS_PASSED,DevplatformConstants.STRATEGY_EFFECTIVE);
        if(list != null && list.size()>0){
            return true;
        }else{

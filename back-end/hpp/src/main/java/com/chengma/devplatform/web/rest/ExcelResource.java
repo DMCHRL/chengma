@@ -222,7 +222,7 @@ public class ExcelResource {
     @PostMapping("/export/hppStrategyOrder")
     @ResponseBody
     public void hppStrategyOrder(HttpServletResponse response, @RequestBody HashMap<String,Object> params){
-        String[] headArray = {"名称","类型","手机号","账号","时间","状态"};
+        String[] headArray = {"名称","类型","联系方式","账号","时间","状态"};
         List<HppStrategyOrderDTO> list =  hppStrategyOrderService.pageList(params).getContent();
         List<Object[]> contentList = new ArrayList<>();
         if(list.size()>0) {
@@ -248,7 +248,7 @@ public class ExcelResource {
                 Object[] o = {
                         entity.getStrategyName(),
                         type,
-                        entity.getMobileNum(),
+                        entity.getMail(),
                         entity.getAccount(),
                         entity.getCreateAt(),
                         status,

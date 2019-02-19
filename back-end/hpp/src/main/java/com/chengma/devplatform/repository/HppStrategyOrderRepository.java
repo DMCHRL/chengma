@@ -35,18 +35,18 @@ public interface HppStrategyOrderRepository extends JpaRepository<HppStrategyOrd
 
     /**
      * 查询是否首次使用策略跟单
-     * @param mobileNum
+     * @param mail
      * @return
      */
-    public List<HppStrategyOrder> findByMobileNumEquals(String mobileNum);
+    public List<HppStrategyOrder> findByMailEquals(String mail);
 
     /**
      * 根据手机号检查是否有跟单
-     * @param mobileNum
+     * @param mail
      * @param type
      * @param status
      * @param state
      * @return
      */
-    public List<HppStrategyOrder> findByMobileNumEqualsAndTypeEqualsAndStatusEqualsAndStateEquals(String mobileNum,String type,String status,String state);
+    public List<HppStrategyOrder> findByMailEqualsAndTypeEqualsAndStatusEqualsAndStateEquals(String mail,String type,String status,String state);
 }

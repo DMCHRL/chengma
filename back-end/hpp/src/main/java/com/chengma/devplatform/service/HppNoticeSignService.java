@@ -30,17 +30,15 @@ public interface HppNoticeSignService {
 
     /**
      * 未读消息个数
-     * @param mail
      * @return
      */
-    HppNoticeSignDTO unreadNum(String mail);
+    HppNoticeSignDTO unreadNum();
 
     /**
      * app端加载消息列表
-     * @param mail
      * @return
      */
-    List<HppNoticeDTO> readList(String mail);
+    List<HppNoticeDTO> readList();
 
     /**
      * 标为已读状态

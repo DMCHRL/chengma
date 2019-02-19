@@ -61,10 +61,10 @@ public interface HppStrategyOrderService {
 
     /**
      * 检查手机号是否有跟单
-     * @param mobile
+     * @param mail
      * @return
      */
-    boolean existFollowByMobile(String mobile);
+    boolean existFollowByMail(String mail);
 
     void setMt4Status(HashMap<String,Object> params);
 }

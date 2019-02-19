@@ -23,8 +23,8 @@ public class HppStrategyOrder extends BaseEntity implements Serializable {
     @Column(name = "c_strategy_id")
     private String strategyId;    //策略id
 
-    @Column(name = "c_mobile_num")
-    private String mobileNum;       //交易账号
+    @Column(name = "c_mail")
+    private String mail;       //交易账号
 
     @Column(name = "c_risk")
     private String risk;          //KEEP(保守) STEADY(稳健) RADICAL(激进)
@@ -64,12 +64,12 @@ public class HppStrategyOrder extends BaseEntity implements Serializable {
         this.strategyId = strategyId;
     }
 
-    public String getMobileNum() {
-        return mobileNum;
+    public String getMail() {
+        return mail;
     }
 
-    public void setMobileNum(String mobileNum) {
-        this.mobileNum = mobileNum;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getRisk() {
