@@ -119,7 +119,7 @@
 				</div>
 			</router-link>
 
-			<div class="item_link flex_bet flex_align_center" @click="downLoadMt4">
+			<!--<div class="item_link flex_bet flex_align_center" @click="downLoadMt4">
 				<div class="icon_box">
 					<img src="../../assets/img/4_07.png" />
 				</div>
@@ -127,7 +127,7 @@
 					<span>下载Meta Trader 4</span>
 				</div>
 				<div class="arrow_right"></div>
-			</div>
+			</div>-->
 
 
 

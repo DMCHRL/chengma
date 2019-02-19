@@ -1,9 +1,9 @@
 import $axios from 'axios'
 import { Loading, Message } from 'element-ui'
 
-const host = 'http://192.168.1.108:8089/hpp';
+/*const host = 'http://192.168.1.108:8089/hpp';*/
 //const host = 'http://192.168.1.139:8083/hpp';
-/*const host = 'http://end.hui1688.com.cn/hpp';//线上*/
+const host = 'http://47.105.110.81:8080/hpp/';//线上
 
 const localer = { //本地存储操作
 	set(key, value) {
