@@ -1,9 +1,9 @@
 <template>
 	<div class="content_box">
 		<my-header :leftOptions="headOption" ></my-header>
-        
+
         <div class="hui_content" id="hui-content">
-            
+
 		<div class="item_box flex_bet flex_align_center">
 			<div class="icon_box">
 				<img src="../../assets/img/8_01.png"/>
@@ -20,7 +20,7 @@
 				<input type="password" name="" id="2" value="" placeholder="输入交易密码" v-model="passWord"/>
 			</div>
 		</div>
-		
+
 		<div class="item_box flex_bet">
 			<div class="icon_box">
 				<img src="../../assets/img/4_05.png"/>
@@ -43,7 +43,7 @@
 				</ul>
 			</div>
 		</div>
-		
+
 		<div class="btn_box">
 			<button class="myback" :disabled="isDisable" @click="Commit">确认跟单</button>
 			<div>
@@ -52,15 +52,15 @@
 				</router-link>
 			</div>
 		</div>
-		
+
 		<risk-notice :show="show12" :context='context' @ToBinding="show12 = false" @cancle="show12 = false">
 			<div class="bottom_btn myback" slot="bottom_btn">
 				<button class="" @click="show12 = false">已阅读并同意</button>
 			</div>
 		</risk-notice>
-        
+
         </div>
-        
+
 	</div>
 </template>
 
@@ -105,7 +105,7 @@
 						// console.log(res)
 						if (res.data) {
 							_this.context = res.data.context;
-							_this.show12 = true;	
+							_this.show12 = true;
 						}
 					})
 				}
@@ -129,7 +129,7 @@
 				let datas = {
 					account: _this.account,//	是	string	交易账号
 					password: _this.passWord,//	是	string	密码
-					mobileNum: _this.user.mobile,//	是	string	手机号码
+					mail: _this.user.login,//	是	string	手机号码
 					risk: _this.typeNum,//	是	string	风险设置 STEADY(稳健) RADICAL(激进)
 					strategyId: _this.id//
 				}
@@ -137,7 +137,7 @@
 				_this.$post("/api/hpp_strategy_order/follow",datas).then((res) => {
 					_this.isDisable = false;
 					if (res.statusCode == '0000') {
-						_this.$vux.toast.text('提交跟单成功,耐心等待审核通过','middle')
+						_this.$vux.toast.text('提交跟单成功,耐心等待审核通过','middle');
 						_this.$router.push({
 							path: '/strategy'
 						})
@@ -173,7 +173,7 @@
 		width: 0.5rem;
 		height: 0.5rem;
 	}
-	
+
 	.text_box {
 		height: inherit;
 		border-bottom: 1px solid #ededed;
@@ -206,7 +206,7 @@
 		display: block;
 		color: #005CBF;
 	}
-	
+
 	.text_box p {
 		line-height: 1.2rem;
 		font-size: 0.3733rem;
@@ -236,7 +236,7 @@
 	._radio_box span.active:before {
 		border-color: #FF0000;
 		background-color: #FF0000;
-	} 
+	}
 	/* ._btn_box {
 		position: fixed;
 		bottom: 0;

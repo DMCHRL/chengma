@@ -42,7 +42,7 @@ export default {
 
   },
 	async getNoticeNum({commit, state}) {
-			fetch("/api/hpp_notice_sign/unreadNum/"+state.userInfo.mobile).then((res) => {
+			fetch("/api/hpp_notice_sign/unreadNum").then((res) => {
 				// console.log(res)
 				if (res.statusCode == '0000') {
 					commit('setNoticeNum', res.data.unreadNum)

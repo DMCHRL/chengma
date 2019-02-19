@@ -1,9 +1,9 @@
 <template>
 	<div class="content_box">
 		<my-header :leftOptions="headOption" ></my-header>
-        
+
         <div class="hui_content" id="hui-content">
-        
+
 		<div class="item_box flex_bet flex_align_center">
 			<div class="icon_box">
 				<img src="../../assets/img/8_01.png"/>
@@ -23,13 +23,13 @@
 		<div class="trips_box">
 			<p>请在解绑完成后登录您的交易帐户查询是否还有持单，请及时按照自己的计划及时处理，以确保帐户安全。</p>
 		</div>
-		
+
 		<div class="btn_box">
 			<button class="myback" :disabled="isDisable" @click="Commit">确认解除</button>
 		</div>
-        
+
         </div>
-        
+
 	</div>
 </template>
 
@@ -75,7 +75,7 @@
 			},
 			Commit () {
 				let _this = this;
-                
+
 				if (_this.user.account == '') {
 					_this.$vux.toast.text('请输入交易账号','middle')
 					return;
@@ -87,14 +87,14 @@
 				let datas = {
 					account: _this.account,//	是	string	交易账号
 					password: _this.passWord,//	是	string	密码
-					mobileNum: _this.user.mobile,//	是	string	手机号码
+					mail: _this.user.login,//	是	string	手机号码
 					strategyId: _this.id//
 				}
 				_this.isDisable = true;
 				_this.$post("/api/hpp_strategy_order/relieve",datas).then((res) => {
 					_this.isDisable = false;
-					if (res.statusCode == '0000') {
-						_this.$vux.toast.text('提交解除成功','middle')
+					if (res.statusCode === '0000') {
+						_this.$vux.toast.text('提交解除成功','middle');
 						_this.$router.go(-1)
 					}else {
 						_this.$vux.toast.text(res.msgCode,'middle')
@@ -127,7 +127,7 @@
 		width: 0.5rem;
 		height: 0.5rem;
 	}
-	
+
 	.text_box {
 		height: inherit;
 		border-bottom: 1px solid #ededed;
@@ -149,7 +149,7 @@
 		line-height: 1.0666rem;
 		border-radius: 0.8rem;
 	}
-	
+
 	.text_box p {
 		line-height: 1rem;
 		font-size: 0.3733rem;
@@ -173,7 +173,7 @@
 	}
 	._radio_box span.active:before {
 		border-color: #FF0000;
-	} 
+	}
 	.trips_box {
 		background-color: #fff;
 		padding: 0.2666rem;

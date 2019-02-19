@@ -1,9 +1,9 @@
 <template>
 	<div class="content_box">
 		<my-header :leftOptions="headOption"></my-header>
-        
+
         <div class="hui_content" id="hui-content">
-        
+
 		<ul>
 			<template v-for="(items,indexs) in list">
 				<li class="item_box" :key="items.id">
@@ -73,9 +73,9 @@
 
 			<p v-show="notrip">暂无消息！</p>
 		</div>
-        
+
         </div>
-        
+
 	</div>
 </template>
 
@@ -194,7 +194,7 @@
 				let timer = setTimeout(function() {
 					_this.isloading = true;
 				}, 1000)
-				_this.$fetch("/api/hpp_notice_sign/read/" + _this.userInfo.mobile).then((res) => {
+				_this.$fetch("/api/hpp_notice_sign/read").then((res) => {
                     // console.log(res)
 					clearTimeout(timer)
 					_this.isloading = false;

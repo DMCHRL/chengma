@@ -1,7 +1,7 @@
 import $axios from 'axios'
 import { Loading, Message } from 'element-ui'
 
-const host = 'http://192.168.1.102:8089/hpp';
+const host = 'http://192.168.1.108:8089/hpp';
 //const host = 'http://192.168.1.139:8083/hpp';
 /*const host = 'http://end.hui1688.com.cn/hpp';//线上*/
 

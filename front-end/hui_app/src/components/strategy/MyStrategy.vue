@@ -1,14 +1,14 @@
 <template>
 	<div class="content_box">
 		<my-header :leftOptions="headOption" ></my-header>
-    
+
 		<div class="hui_content" id="hui-content">
-      
+
 		<div class="sec_1 myback ">
 			<div class="flex_bet flex_align_center">
 				<div class="left_box">
 					<div class="img_box">
-						<img :src="userMess.headImg" />
+						<img :src="userInfo.imageUrl" />
 					</div>
 				</div>
 				<div class="mid_box flex_one">
@@ -20,10 +20,10 @@
 							<p>%</p>
 						</div>
 					</div>
-					<p v-if="strategy.strategyName">跟单策略：{{strategy.strategyName}} | 
+					<p v-if="strategy.strategyName">跟单策略：{{strategy.strategyName}} |
 						<router-link :to="'/strategy-details?account='+ strategy.strategyAccount">
 							<img src="../../assets/img/2_02.png" />
-						</router-link> 
+						</router-link>
 					</p>
 					<p v-else>跟单策略：暂无跟单策略</p>
 				</div>
@@ -40,26 +40,26 @@
 			</div>
 
 		</div>
-		
+
 		<data-summary :strategy="strategy" :my="true"></data-summary>
-		
+
 		<chart-section></chart-section>
-		
+
 		<trade-history v-if="!tradeHistory.length" :hisData="tradeHistory"></trade-history>
-		
-		
+
+
 		<!-- <risk-notice :show="show12" @ToBinding="stopFollow" @cancle="show12 = false"></risk-notice> -->
 		<risk-notice :show="show12" :context="context" @ToBinding="stopFollow" @cancle="show12 = false"></risk-notice>
-    
+
 		</div>
-    
+
     <div class="bottom_btn myback" >
     	<router-link v-if="strategy.strategyId == null" to="/strategy">
-    		<button>此账号暂无跟单，去跟单</button>	
+    		<button>此账号暂无跟单，去跟单</button>
     	</router-link>
     	<button v-else :disabled="isDisable" @click="getRiskNotice">解除跟单</button>
     </div>
-    
+
 	</div>
 </template>
 
@@ -83,17 +83,17 @@
 		filters: {
 
 		  numFilter(value) {
-		
+
 		  // 截取当前数据到小数点后两位
-		
+
 		    let realVal = Number(value).toFixed(2)
-		
+
 		    // num.toFixed(2)获取的是字符串
-		
+
 		    return Number(realVal)
-		
+
 		  }
-		
+
 		},
 		computed: {
 			...mapState(['userInfo', 'userMess']),
@@ -128,7 +128,7 @@
 						// console.log(res)
 						if (res.data) {
 							_this.context = res.data.context;
-							_this.show12 = true;	
+							_this.show12 = true;
 						}
 					})
 				}
@@ -146,7 +146,7 @@
 					if (res.data) {
 						_this.tradeHistory = res.data;
 					}
-					
+
 				})
 			},
 			initPage () {
@@ -182,37 +182,37 @@
 	.left_box img {
 		width: 100%;
 	}
-	
+
 	.mid_box p {
 		color: #fff;
 		font-size: 0.3733rem;
 	}
-	
+
 	.mid_box p:last-of-type {
 		font-size: 0.2933rem;
 	}
-	
+
 	.small_box p {
 		font-size: 0.2933rem;
 		line-height: 0.5rem;
 		margin-top: 0.1rem;
 	}
-	
+
 	.mid_box span {
 		color: #fff;
 		font-size: 0.96rem;
 		margin: 0 0.1333rem;
 	}
-	
+
 	.mid_box img {
 		width: 0.28rem;
 		height: 0.28rem;
 	}
-	
+
 	.right_box {
 		height: 3.1333rem;
 	}
-	
+
 	.right_box span {
 		color: #eb0021;
 		font-size: 0.2933rem;
@@ -221,7 +221,7 @@
 		padding: 0.1333rem 0.6666rem;
 		border-radius: 0.3666rem 0 0 0.3666rem;
 	}
-	
+
 	.item_bottom {
 		width: 50%;
 		background-color: rgba(255,255,255,.3);
@@ -237,8 +237,8 @@
 		color: #fff;
 		line-height: 0.6666rem;
 	}
-	
-	
+
+
 	.titling {
 		line-height: 1.0666rem;
 		padding: 0 0.2rem;
@@ -250,7 +250,7 @@
 		font-size: 0.3466rem;
 		color: #333;
 	}
-	
+
 	.sec_box {
 		background-color: #fff;
 		box-shadow: 0px 3px 4px #ededed;

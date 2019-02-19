@@ -1,7 +1,7 @@
 
-// const host = 'http://192.168.1.135:8089/hpp';
+ const host = 'http://192.168.1.108:8089/hpp';
 //const host = 'http://192.168.1.139:8083/hpp';
-const host = 'http://end.hui1688.com.cn/hpp';//线上
+/*const host = 'http://end.hui1688.com.cn/hpp';//线上*/
 
 
 //android
@@ -32,12 +32,12 @@ export function setCookie (c_name, value, expire) {
 export function getCookie(c_name){
     if (document.cookie.length>0){
         let c_start=document.cookie.indexOf(c_name + "=")
-        if (c_start!=-1){ 
-            c_start=c_start + c_name.length+1 
+        if (c_start!=-1){
+            c_start=c_start + c_name.length+1
             let c_end=document.cookie.indexOf(";",c_start)
             if (c_end==-1) c_end=document.cookie.length
                 return unescape(document.cookie.substring(c_start,c_end))
-            } 
+            }
         }
     return ""
 };
@@ -49,10 +49,10 @@ export function delCookie(c_name) {
 //上传图片
 export function uploadImage (url,obj) {
 	return new Promise((resolve, reject) => {
-		
-		var urls = host+url; // 接收上传文件的后台地址 
+
+		var urls = host+url; // 接收上传文件的后台地址
 		var form = new FormData(); // FormData 对象
-		form.append("image", obj); // 文件对象 
+		form.append("image", obj); // 文件对象
 		let xhr = new XMLHttpRequest(); // XMLHttpRequest 对象
 		xhr.open("post", urls, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
 		xhr.onload = function (evt) {
@@ -61,9 +61,9 @@ export function uploadImage (url,obj) {
 		xhr.onerror = function (err) {
 			reject(err)
 		}; //请求失败
-		
+
 		xhr.send(form); //开始上传，发送form数据
-		
+
 	})
 };
 
