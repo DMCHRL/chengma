@@ -33,9 +33,9 @@ spring:
 #        url: jdbc:mysql://192.168.1.139:3306/crm?useUnicode=true&characterEncoding=utf8&useSSL=false
 #        username: root
 #        password: 123
-        url: jdbc:mysql://47.104.81.128:3306/hpp?useUnicode=true&characterEncoding=utf8&useSSL=false
-        username: hppuser
-        password: hpp123
+        url: jdbc:mysql://47.105.110.81:3306/hpp?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password: dmchrl
         #url: jdbc:mysql://47.105.110.81:3306/hpp?useUnicode=true&characterEncoding=utf8&useSSL=false
         #username: root
         #password: dmchrl
