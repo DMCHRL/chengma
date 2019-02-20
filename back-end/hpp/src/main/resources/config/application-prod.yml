@@ -69,10 +69,10 @@ spring:
 #            hibernate.cache.use_query_cache: false
 #            hibernate.generate_statistics: true
     mail:
-        host: smtp.ym.163.com
-        port: 25
-        username: service@txasfx.com
-        password: abc123
+        host: smtp.qq.com
+        port: 587
+        username: 962841511@qq.com
+        password: cjqbypbeaabnbded
         properties:
           mail:
             smtp:
@@ -134,7 +134,7 @@ jhipster:
                 token-validity-in-seconds: 31536000
                 token-validity-in-seconds-for-remember-me: 2592000
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: service@txasfx.com
+        from: 962841511@qq.com
         base-url: http://tlb.txasfx.com/txas
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
@@ -271,7 +271,7 @@ fileManage:
 
 logging:
   # config: classpath:logback-spring.xml
-  path: c:\log\apps\hpp
+  path: /log/apps/hpp
   #path: /mydata/tomcat/web/log/hpp
   appName : hpp
 

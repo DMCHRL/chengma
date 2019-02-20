@@ -13,6 +13,7 @@
     "@xkeshi/vue-qrcode": "xkeshi/vue-qrcode",
     "axios": "^0.18.0",
     "clipboard": "^2.0.1",
+    "compression-webpack-plugin": "^1.1.12",
     "echarts": "^4.0.4",
     "element-ui": "^2.3.4",
     "file-saver": "^2.0.0-rc.3",

@@ -14,7 +14,7 @@ const instance = axios.create({
 //http request 拦截器
 instance.interceptors.request.use(
 	config => {
-		
+
 		if(!store.state.token) { // 判断是否存在token，如果存在的话，则每个http header都加上token
 			store.dispatch('actionSetToken');
 		}
@@ -52,7 +52,7 @@ instance.interceptors.response.use(
 								} //从哪个页面跳转
 							})
 						default:
-							
+
         }
     }else {
     	return Promise.reject(error.response.data)
@@ -73,6 +73,7 @@ export function fetch(url, params = {}) {
 				params: params
 			})
 			.then(response => {
+			  //console.log(response.data);
 				resolve(response.data);
 			})
 			.catch(err => {
@@ -97,7 +98,7 @@ export function post(url, data = {}) {
 			.catch(err => {
 				reject(err)
 			})
-			
+
 	})
 }
 
